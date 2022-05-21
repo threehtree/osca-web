@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.osca.mapper.RequestMapper">
+
+    <insert id="reqInsert">
+        <selectKey resultType="int" keyProperty="conNo" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+        insert into tbl_contract (conName, conCategory, conLocation, conSpace, memId)
+        values (#{conName}, #{conCategory}, #{conLocation}, #{conSpace}, #{memId})
+    </insert>
+
+    <select id="selectRequestList" resultType="com.osca.domain.Contract">
+        select *
+        from tbl_contract
+        where memId = #{memberId}
+        order by conNo asc
+            limit #{listDTO.skip}, #{listDTO.size}
+    </select>
+
+    <select id="getRequestTotal" resultType="int">
+        select count(conNo)
+        from tbl_contract
+    </select>
+
+
+</mapper>

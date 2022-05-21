@@ -6,20 +6,24 @@ import java.time.LocalDate;
 
 @Data
 public class ContractDTO {
-    private int conNo;
-    private String reqID;
-    private String conID;
-    private String categoryNum;
-    private String conArea;
-    private String conScope;
-    private String conContent;
-    private LocalDate conStart;
-    private LocalDate conEnd;
+    private Integer conNo;
     private String conName;
-    private String conFileNum;
-    private String price;
-    private String negotiationNum;
+    private String conCategory;
+    private String conLocation;
+    private String conSpace;
+    private String conContent;
+    private String conRequest;
+    private String conCondition;
+    private String conStartDay;
+    private String conEndDay;
+    private String conPrice;
+    private String conDocument;
+    private String conImg;
+    private String memId;
+    private String comId;
+    private String comState;
 
     private LocalDate regDate;
     private LocalDate updateDate;
+    private int delFlag;
 }
