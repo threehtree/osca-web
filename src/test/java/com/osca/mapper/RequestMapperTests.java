@@ -25,6 +25,8 @@ public class RequestMapperTests {
                 .conCategory("sss")
                 .conLocation("dddd")
                 .conSpace("ddddd")
+                .conContent("content")
+                .conRequest("Request")
                 .build();
 
         requestMapper.reqInsert(contract);

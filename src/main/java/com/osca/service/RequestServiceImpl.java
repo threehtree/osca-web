@@ -26,6 +26,15 @@ public class RequestServiceImpl implements RequestService{
                         .conName(contractDTO.getConName())
                         .conCategory(contractDTO.getConCategory())
                         .conLocation(contractDTO.getConLocation())
+                        .conSpace(contractDTO.getConSpace())
+                        .conContent(contractDTO.getConContent())
+                        .conRequest(contractDTO.getConRequest())
+                        .conCondition(contractDTO.getConCondition())
+                        .conStartDay(contractDTO.getConStartDay())
+                        .conEndDay(contractDTO.getConEndDay())
+                        .conPrice(contractDTO.getConPrice())
+                        .conDocument(contractDTO.getConDocument())
+                        .conImg(contractDTO.getConImg())
                 .build());
     }
 

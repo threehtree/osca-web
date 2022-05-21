@@ -9,8 +9,8 @@
         <selectKey resultType="int" keyProperty="conNo" order="AFTER">
             select last_insert_id()
         </selectKey>
-        insert into tbl_contract (conName, conCategory, conLocation, conSpace, memId)
-        values (#{conName}, #{conCategory}, #{conLocation}, #{conSpace}, #{memId})
+        insert into tbl_contract (conName, conCategory, conLocation, conSpace, memId, conContent, conRequest, conCondition, conStartDay, conEndDay, conPrice, conDocument, conImg )
+        values (#{conName}, #{conCategory}, #{conLocation}, #{conSpace}, #{memId}, #{conContent}, #{conRequest}, #{conCondition},#{conStartDay}, #{conEndDay}, #{conPrice}, #{conDocument}, #{conImg})
     </insert>
 
     <select id="selectRequestList" resultType="com.osca.domain.Contract">

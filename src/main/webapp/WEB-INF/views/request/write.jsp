@@ -19,6 +19,20 @@
     <input type="text" name="conName" value="계약명">
     <input type="text" name="conCategory" value="공사분야">
     <input type="text" name="conLocation" value="공사 위치">
+    <input type="text" name="conSpace" value="공사 범위">
+    <input type="text" name="conContent" value="공사 내용">
+    <input type="text" name="conRequest" value="요청 사항">
+    <input type="text" name="conCondition" value="1">
+    <input type="text" name="conStartDay" value="공사 시작">
+    <input type="text" name="conEndDay" value="공사 종료">
+    <input type="text" name="conPrice" value="계약 가격">
+    <input type="text" name="conDocument" value="계약 문서">
+    <input type="text" name="conImg" value="계약 사진">
+<%--    <input type="text" name="comState" value="공사 위치">--%>
+<%--    TODO 이거 comState 맞나요?--%>
+
+
+
 <%--    <input type="text" name="conSpace" value="공사영역">--%>
     <button>계약서 등록</button>
 </form>

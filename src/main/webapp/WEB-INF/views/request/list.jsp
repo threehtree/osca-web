@@ -31,6 +31,7 @@ ${reqDto}
 
                 <th scope="col">카테고리</th>
                 <th scope="col">공사주소</th>
+
             </tr>
             </thead>
             <tbody class="tableValue">
@@ -41,8 +42,17 @@ ${reqDto}
                 <td>${con.conName}</td>
                 <td>${con.conCategory}</td>
                 <td>${con.conLocation}</td>
+                <td>${con.conSpace}</td>
+                <td>${con.conContent}</td>
+                <td>${con.conRequest}</td>
+                <td>${con.conCondition}</td>
+                <td>${con.conStartDay}</td>
+                <td>${con.conEndDay}</td>
+                <td>${con.conPrice}</td>
+                <td>${con.conDocument}</td>
+                <td>${con.conImg}</td>
 
-                </c:forEach>
+            </c:forEach>
             </tbody>
         </table>
     </c:when>
