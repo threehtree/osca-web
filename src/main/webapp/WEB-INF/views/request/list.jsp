@@ -37,20 +37,20 @@ ${reqDto}
             <tbody class="tableValue">
             <c:forEach items="${reqDto}" var="con" varStatus="modIdx">
             <tr>
-                <th>${con.conNo}</th>
+                <th><a href="/request/detail/${con.conNo}">${con.conNo}</a></th>
 
-                <td>${con.conName}</td>
-                <td>${con.conCategory}</td>
-                <td>${con.conLocation}</td>
-                <td>${con.conSpace}</td>
-                <td>${con.conContent}</td>
-                <td>${con.conRequest}</td>
-                <td>${con.conCondition}</td>
-                <td>${con.conStartDay}</td>
-                <td>${con.conEndDay}</td>
-                <td>${con.conPrice}</td>
-                <td>${con.conDocument}</td>
-                <td>${con.conImg}</td>
+                <td><a href="/request/detail/${con.conNo}">${con.conName}</a></td>
+                <td><a href="/request/detail/${con.conNo}">${con.conCategory}</a></td>
+                <td><a href="/request/detail/${con.conNo}">${con.conLocation}</a></td>
+                <td><a href="/request/detail/${con.conNo}">${con.conSpace}</a></td>
+                <td><a href="/request/detail/${con.conNo}">${con.conContent}</a></td>
+                <td><a href="/request/detail/${con.conNo}">${con.conRequest}</a></td>
+                <td><a href="/request/detail/${con.conNo}">${con.conCondition}</a></td>
+                <td><a href="/request/detail/${con.conNo}">${con.conStartDay}</a></td>
+                <td><a href="/request/detail/${con.conNo}">${con.conEndDay}</a></td>
+                <td><a href="/request/detail/${con.conNo}">${con.conPrice}</a></td>
+                <td><a href="/request/detail/${con.conNo}">${con.conDocument}</a></td>
+                <td><a href="/request/detail/${con.conNo}">${con.conImg}</a></td>
 
             </c:forEach>
             </tbody>
@@ -63,6 +63,14 @@ ${reqDto}
         </form>
     </c:otherwise>
 </c:choose>
+<%--/----------------------------------------------------%>
+<script>
+
+
+
+//    ========================================================================================
+
+</script>
 
 </body>
 </html>

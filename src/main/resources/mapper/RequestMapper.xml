@@ -21,10 +21,29 @@
             limit #{listDTO.skip}, #{listDTO.size}
     </select>
 
+    <select id="getRequestOne" resultType="com.osca.domain.Contract">
+        select *
+        from tbl_contract
+        where conNo = #{conNo}
+    </select>
+
     <select id="getRequestTotal" resultType="int">
         select count(conNo)
         from tbl_contract
     </select>
 
+<!--TODO 이거 아닌것 같음-->
+    <select id="selectCompanyList" resultType="com.osca.domain.Company">
+        select *
+        from tbl_company
+        where conNo = #{conNo}
+        order by comNo asc
+            limit #{listDTO.skip}, #{listDTO.size}
+    </select>
+
+    <select id="getCompanyTotal" resultType="int">
+        select count(comNo)
+        from tbl_company
+    </select>
 
 </mapper>

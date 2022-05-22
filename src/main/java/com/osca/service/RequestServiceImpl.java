@@ -1,6 +1,8 @@
 package com.osca.service;
 
+import com.osca.domain.Company;
 import com.osca.domain.Contract;
+import com.osca.dto.CompanyDTO;
 import com.osca.dto.ContractDTO;
 import com.osca.dto.ListDTO;
 import com.osca.dto.ListResponseDTO;
@@ -53,6 +55,29 @@ public class RequestServiceImpl implements RequestService{
                 .build();
 
 
+    }
+
+    @Override
+    public ContractDTO getRequestOne(Integer conNo) {
+        Contract contract = requestMapper.getRequestOne(conNo);
+        ContractDTO contractDTO = modelMapper.map(contract, ContractDTO.class);
+
+        return contractDTO;
+
+    }
+
+    @Override
+    public ListResponseDTO<CompanyDTO> getCompanyList(ListDTO listDTO, Integer conNo) {
+        List<Company> companyList = requestMapper.selectCompanyList(listDTO, conNo);
+
+        List<CompanyDTO> dtoList = companyList.stream().map(company -> modelMapper.map(company, CompanyDTO.class))
+                .collect(Collectors.toList());
+
+        return ListResponseDTO.<CompanyDTO>builder()
+                .dtoList(dtoList)
+                .total(requestMapper.getCompanyTotal(listDTO))
+//                TODO 이거 아닌듯한데...
+                .build();
     }
 
 }

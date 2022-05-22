@@ -37,5 +37,11 @@ public class RequestMapperTests {
         requestMapper.getRequestTotal(new ListDTO());
 
     }
+    @Test
+    public void testCompanyList(){
+        int conNo = 53;
+        requestMapper.selectCompanyList(new ListDTO(),conNo);
+
+    }
 
 }

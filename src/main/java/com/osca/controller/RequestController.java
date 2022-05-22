@@ -39,8 +39,12 @@ public class RequestController {
     }
 
 
-    @GetMapping("/detail/{reqId}")
-    public void reqDetail(){
+    @GetMapping("/detail/{conNo}")
+    public String reqDetail(@PathVariable ("conNo")Integer conNO, Model model, ListDTO listDTO){
+        model.addAttribute("reqDtoOne",requestService.getRequestOne(conNO));
+        model.addAttribute("comDtoList", requestService.getCompanyList(listDTO, conNO));
+//        TODO 조인 처리 해야 올바른 값이 나오나?? 이거 페이징 해줘야 할 것 같긴 한데
+        return "/request/detail";
 
     }
     @GetMapping("/list/on/{reqId}")
