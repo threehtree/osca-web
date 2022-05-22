@@ -1,8 +1,6 @@
 package com.osca.controller;
 
-import com.osca.dto.ContractDTO;
-import com.osca.dto.ListDTO;
-import com.osca.dto.ListResponseDTO;
+import com.osca.dto.*;
 import com.osca.service.RequestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -30,6 +28,7 @@ public class RequestController {
         List<ContractDTO> dtoList = contractDTOListResponseDTO.getDtoList();
         model.addAttribute("reqDto", dtoList);
         model.addAttribute("isEmpty", dtoList.isEmpty());
+        model.addAttribute("pageMaker",new PageMaker(listDTO.getPage(), contractDTOListResponseDTO.getTotal()));
     }
 
     @GetMapping("/write")
@@ -41,8 +40,13 @@ public class RequestController {
 
     @GetMapping("/detail/{conNo}")
     public String reqDetail(@PathVariable ("conNo")Integer conNO, Model model, ListDTO listDTO){
+
+        ListResponseDTO<CompanyDTO> responseDTO = requestService.getCompanyList(listDTO,conNO);
         model.addAttribute("reqDtoOne",requestService.getRequestOne(conNO));
-        model.addAttribute("comDtoList", requestService.getCompanyList(listDTO, conNO));
+        model.addAttribute("comDtoList",responseDTO);
+        int companyTotal = responseDTO.getTotal();
+
+        model.addAttribute("pageMaker", new PageMaker(listDTO.getPage(),companyTotal));
 //        TODO 조인 처리 해야 올바른 값이 나오나?? 이거 페이징 해줘야 할 것 같긴 한데
         return "/request/detail";
 

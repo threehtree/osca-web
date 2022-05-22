@@ -39,7 +39,7 @@ public class RequestMapperTests {
     }
     @Test
     public void testCompanyList(){
-        int conNo = 53;
+        int conNo = 44;
         requestMapper.selectCompanyList(new ListDTO(),conNo);
 
     }

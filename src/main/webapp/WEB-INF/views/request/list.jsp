@@ -18,6 +18,7 @@ ${reqDto}
 <h3>-----------------------------------------------</h3>
 <%--<h3>${isEmpty}</h3>--%>
 
+
 <c:choose>
     <c:when test="${!isEmpty}">
         <form action="/request/write" method="get">
@@ -46,6 +47,10 @@ ${reqDto}
                 <td><a href="/request/detail/${con.conNo}">${con.conContent}</a></td>
                 <td><a href="/request/detail/${con.conNo}">${con.conRequest}</a></td>
                 <td><a href="/request/detail/${con.conNo}">${con.conCondition}</a></td>
+<%--                                    <c:if test="${con.conCondition == '1'} ">--%>
+<%--<h1>끄아아아아ㅏㅏ</h1>--%>
+<%--                            </c:if>--%>
+<%--                todo jstl if문으로 처리하면 될 것 같은데 아니면 처음부터 상태로 받아버려도 되고 --%>
                 <td><a href="/request/detail/${con.conNo}">${con.conStartDay}</a></td>
                 <td><a href="/request/detail/${con.conNo}">${con.conEndDay}</a></td>
                 <td><a href="/request/detail/${con.conNo}">${con.conPrice}</a></td>
@@ -63,12 +68,66 @@ ${reqDto}
         </form>
     </c:otherwise>
 </c:choose>
+
+<ul class="pagination">
+    <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+        </a>
+    </li>
+
+    <c:forEach begin="${pageMaker.start}" end="${pageMaker.end}" var="num">
+        <li class="page-item"><a class="page-link" href="${num}">${num}</a></li>
+    </c:forEach>
+
+
+    <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+        </a>
+    </li>
+</ul>
+
+${pageMaker}
+<br/>
+<br/>
+${listDTO}
+
+<form class="actionForm" action="/request/list" method="get">
+    <input type="hidden" name="page" value="${listDTO.page}">
+    <input type="hidden" name="size" value="${listDTO.size}">
+    <input type="hidden" name="type" value="${listDTO.type == null?'':listDTO.type}">
+    <input type="hidden" name="keyword" value="${listDTO.keyword == null? '':listDTO.keyword}">
+</form>
+
+
+
 <%--/----------------------------------------------------%>
 <script>
+    const linkDiv = document.querySelector(".pagination")
+    const actionForm = document.querySelector(".actionForm")
 
 
+    linkDiv.addEventListener("click", (e) => {
+        e.stopPropagation()
+        e.preventDefault()
 
-//    ========================================================================================
+        const target = e.target
+
+        if(target.getAttribute("class") !== 'page-link'){
+            return
+        }
+
+        const pageNum = target.getAttribute("href")
+        actionForm.querySelector("input[name='page']").value = pageNum
+        actionForm.setAttribute("action","/request/list")
+        actionForm.submit()
+    //todo 현재 진짜 end 값이 안되는데 size를 넘기는 부분이
+        //reply보면 post로 되어있네 넘겨주는 부분이 필요해
+    },false)
+
+
+    //    ========================================================================================
 
 </script>
 
