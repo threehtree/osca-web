@@ -12,7 +12,7 @@
     <title>Request Detail</title>
 </head>
 <body>
-    ${reqDtoOne}
+
     <br/>
     <br/>
     <table
@@ -20,11 +20,10 @@
             width="50%"
             height="200"
             cellspacing="5">
-        <caption>표 제목</caption>
         <thead>
         <tr align="center" bgcolor="white">
             <td></td>
-            <th>사용자 개인정보</th>
+            <th>입찰 상세내용</th>
         </tr>
         </thead>
 
@@ -74,42 +73,78 @@
 
 <%--    너무 잦은 복붙의 폐해--%>
 <%--    <h1>${comDtoList[0]}</h1>--%>
+<br/>
+    <br/>
+<%--    <c:if test="${comDtoOne}">--%>
+<%--    todo sql구문 자체가 없을때는 틀어주지를 말아야하나  아닌데...--%>
+<%--    <table--%>
+<%--            border="1"--%>
+<%--            width="50%"--%>
+<%--            height="200"--%>
+<%--            cellspacing="5">--%>
 
-    <table>
-        <thead>
-        <tr>
-            <th scope="col">계약번호</th>
-            <th scope="col">계약명</th>
+<%--        <thead>--%>
+<%--        <tr align="center" bgcolor="white">--%>
+<%--            <td></td>--%>
+<%--            <th>입찰 시공사</th>--%>
+<%--        </tr>--%>
+<%--        </thead>--%>
 
-            <th scope="col">카테고리</th>
-            <th scope="col">공사주소</th>
 
-        </tr>
-        </thead>
-        <tbody class="tableValue">
-        <c:forEach items="${comDtoList.dtoList}" var="com" varStatus="modIdx">
-        <tr>
-            <th><a href="/request/detail/${com.conNo}">${com.conNo}</a></th>
-            <td><a href="/request/detail/${com.conNo}">${com.comID}</a></td>
-            <td><a href="/request/detail/${com.conNo}">${com.comName}</a></td>
-            <td><a href="/request/detail/${com.conNo}">${com.comPhone}</a></td>
-            <td><a href="/request/detail/${com.conNo}">${com.comEmail}</a></td>
-<%--            <td><a href="/request/detail/${com.conNo}">${com.comAddress}</a></td>--%>
-<%--            todo 이건 왜 오류가 뜨지 --%>
-            <td><a href="/request/detail/${com.conNo}">${com.businessNum}</a></td>
-            <td><a href="/request/detail/${com.conNo}">${com.comIntro}</a></td>
-            <td><a href="/request/detail/${com.conNo}">${com.comCategory}</a></td>
-<%--            <td><a href="/request/detail/${com.conNo}">${com.conNo}</a></td>--%>
-            <td><a href="/request/detail/${com.conNo}">${com.conProfile}</a></td>
+<%--&lt;%&ndash;        &ndash;%&gt;--%>
+<%--&lt;%&ndash;        &ndash;%&gt;--%>
+<%--&lt;%&ndash;        &ndash;%&gt;--%>
+<%--        <tbody>--%>
 
-            </c:forEach>
-        </tbody>
-    </table>
+<%--            <tr align="center" bgcolor="white">--%>
+<%--                <td>시공사</td>--%>
+<%--                <td><a href="/request/detail/${comDtoOne.conNo}">${comDtoOne.comName}</a> </td>--%>
+<%--            </tr>--%>
+<%--            <tr align="center" bgcolor="white">--%>
+<%--                <td>전화번호</td>--%>
+<%--                <td><a href="/request/detail/${comDtoOne.conNo}">${comDtoOne.comPhone}</a> </td>--%>
+<%--            </tr>--%>
+<%--            <tr align="center" bgcolor="white">--%>
+<%--                <td>E-mail</td>--%>
+<%--                <td><a href="/request/detail/${comDtoOne.conNo}">${comDtoOne.comEmail}</a> </td>--%>
+<%--            </tr>--%>
+<%--            <tr align="center" bgcolor="white">--%>
+<%--                <td>사업자번호</td>--%>
+<%--                <td><a href="/request/detail/${comDtoOne.conNo}">${comDtoOne.businessNum}</a> </td>--%>
+<%--            </tr>--%>
+<%--            <tr align="center" bgcolor="white">--%>
+<%--                <td>소개글</td>--%>
+<%--                <td><a href="/request/detail/${comDtoOne.conNo}">${comDtoOne.conProfile}</a> </td>--%>
+<%--            </tr>--%>
+
+
+<%--&lt;%&ndash;            <tr>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                <td><a href="/request/detail/${comDtoOne.conNo}">${comDtoOne.comName}</a> </td>&ndash;%&gt;--%>
+
+<%--&lt;%&ndash;                <td>${comDtoOne.comName}</td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                <td>${comDtoOne.comPhone}</td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                <td>${comDtoOne.comEmail}</td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                <td>${comDtoOne.businessNum}</td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                <td>${comDtoOne.conProfile}</td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;&lt;%&ndash;                todo 이거 con이아니라 com맞을까요?&ndash;%&gt;&ndash;%&gt;--%>
+<%--&lt;%&ndash;            </tr>&ndash;%&gt;--%>
+
+<%--            </tbody>--%>
+<%--    </table>--%>
+<%--    <button>계약하기</button>--%>
+<%--&lt;%&ndash;    이 버튼이 눌러지면 시공사와 계약의 상태가 바뀌는 update문이 필요 &ndash;%&gt;--%>
+<%--    <button>거부하기</button>--%>
+<%--&lt;%&ndash;    이 버튼이 눌러지면 시공사와 계약의 상태가 바뀌는 update문이 필요 &ndash;%&gt;--%>
+
+<%--&lt;%&ndash;    입찰금액은 입찰을 참여햇을때 &ndash;%&gt;--%>
+<%--&lt;%&ndash;    시공사의 현재상태?? &ndash;%&gt;--%>
+<%--&lt;%&ndash;    </c:if>&ndash;%&gt;--%>
 <br/>
 <br/>
-${listDTO}
+<%--    <h1><c:if test="${comDtoOne}">hi</c:if></h1>--%>
     <br/>
     <br/>
 ${pageMaker}
+    <h1>${checkDto}</h1>
 </body>
 </html>

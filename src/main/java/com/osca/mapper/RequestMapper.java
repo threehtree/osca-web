@@ -15,7 +15,7 @@ public interface RequestMapper {
     int getRequestTotal(ListDTO listDTO);
     Contract getRequestOne(Integer conNo);
 //
-    List<Company> selectCompanyList(@Param("listDTO") ListDTO listDTO, @Param("conNo") Integer conNo);
+    Company selectCompanyOne(Integer conNo);
     int getCompanyTotal(ListDTO listDTO);
 
 

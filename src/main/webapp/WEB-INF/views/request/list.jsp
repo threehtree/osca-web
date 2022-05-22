@@ -13,7 +13,7 @@
 
 </head>
 <body>
-${reqDto}
+
 <h3>list</h3>
 <h3>-----------------------------------------------</h3>
 <%--<h3>${isEmpty}</h3>--%>
@@ -27,36 +27,38 @@ ${reqDto}
         <table>
             <thead>
             <tr>
-                <th scope="col">No.</th>
+
                 <th scope="col">계약명</th>
 
                 <th scope="col">카테고리</th>
-                <th scope="col">공사주소</th>
+                <th scope="col">계약상태</th>
 
             </tr>
             </thead>
             <tbody class="tableValue">
             <c:forEach items="${reqDto}" var="con" varStatus="modIdx">
             <tr>
-                <th><a href="/request/detail/${con.conNo}">${con.conNo}</a></th>
-
                 <td><a href="/request/detail/${con.conNo}">${con.conName}</a></td>
-                <td><a href="/request/detail/${con.conNo}">${con.conCategory}</a></td>
-                <td><a href="/request/detail/${con.conNo}">${con.conLocation}</a></td>
-                <td><a href="/request/detail/${con.conNo}">${con.conSpace}</a></td>
-                <td><a href="/request/detail/${con.conNo}">${con.conContent}</a></td>
-                <td><a href="/request/detail/${con.conNo}">${con.conRequest}</a></td>
-                <td><a href="/request/detail/${con.conNo}">${con.conCondition}</a></td>
+                <td>${con.conCategory}</td>
+<%--                <td><a href="/request/detail/${con.conNo}">${con.conLocation}</a></td>--%>
+<%--                <td><a href="/request/detail/${con.conNo}">${con.conSpace}</a></td>--%>
+<%--                <td><a href="/request/detail/${con.conNo}">${con.conContent}</a></td>--%>
+<%--                <td><a href="/request/detail/${con.conNo}">${con.conRequest}</a></td>--%>
+                <td>${con.conCondition}</td>
+<%--                todo 계약상태는 시공사 입찰 등록때 insert할때 같이 하면 될듯, 다른상태들도 이벤트리스너로 처리해서
+                    그때마다 insert를 보내야할듯 --%>
+
+
 <%--                                    <c:if test="${con.conCondition == '1'} ">--%>
 <%--<h1>끄아아아아ㅏㅏ</h1>--%>
 <%--                            </c:if>--%>
 <%--                todo jstl if문으로 처리하면 될 것 같은데 아니면 처음부터 상태로 받아버려도 되고 --%>
-                <td><a href="/request/detail/${con.conNo}">${con.conStartDay}</a></td>
-                <td><a href="/request/detail/${con.conNo}">${con.conEndDay}</a></td>
-                <td><a href="/request/detail/${con.conNo}">${con.conPrice}</a></td>
-                <td><a href="/request/detail/${con.conNo}">${con.conDocument}</a></td>
-                <td><a href="/request/detail/${con.conNo}">${con.conImg}</a></td>
-
+<%--                <td><a href="/request/detail/${con.conNo}">${con.conStartDay}</a></td>--%>
+<%--                <td><a href="/request/detail/${con.conNo}">${con.conEndDay}</a></td>--%>
+<%--                <td><a href="/request/detail/${con.conNo}">${con.conPrice}</a></td>--%>
+<%--                <td><a href="/request/detail/${con.conNo}">${con.conDocument}</a></td>--%>
+<%--                <td><a href="/request/detail/${con.conNo}">${con.conImg}</a></td>--%>
+<%--todo 현재 오류나는 이유는 계약에 해당하는의뢰자가 없어서 그렇다 그럼 없을때를 생각해서 controller에서 미리 값을 확인하고 보내야하나?--%>
             </c:forEach>
             </tbody>
         </table>
@@ -88,10 +90,10 @@ ${reqDto}
     </li>
 </ul>
 
-${pageMaker}
-<br/>
-<br/>
-${listDTO}
+<%--${pageMaker}--%>
+<%--<br/>--%>
+<%--<br/>--%>
+<%--${listDTO}--%>
 
 <form class="actionForm" action="/request/list" method="get">
     <input type="hidden" name="page" value="${listDTO.page}">

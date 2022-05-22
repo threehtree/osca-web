@@ -67,17 +67,13 @@ public class RequestServiceImpl implements RequestService{
     }
 
     @Override
-    public ListResponseDTO<CompanyDTO> getCompanyList(ListDTO listDTO, Integer conNo) {
-        List<Company> companyList = requestMapper.selectCompanyList(listDTO, conNo);
+    public CompanyDTO selectCompanyOne(Integer conNo) {
+        Company company = requestMapper.selectCompanyOne(conNo);
+        CompanyDTO companyDTO = modelMapper.map(company, CompanyDTO.class);
 
-        List<CompanyDTO> dtoList = companyList.stream().map(company -> modelMapper.map(company, CompanyDTO.class))
-                .collect(Collectors.toList());
+        return companyDTO;
 
-        return ListResponseDTO.<CompanyDTO>builder()
-                .dtoList(dtoList)
-                .total(requestMapper.getCompanyTotal(listDTO))
-//                TODO 이거 아닌듯한데...
-                .build();
     }
+
 
 }

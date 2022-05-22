@@ -33,12 +33,11 @@
     </select>
 
 <!--TODO 이거 아닌것 같음-->
-    <select id="selectCompanyList" resultType="com.osca.domain.Company">
+    <select id="selectCompanyOne" resultType="com.osca.domain.Company">
         select *
         from tbl_company
         where conNo = #{conNo}
         order by comNo asc
-        limit #{listDTO.skip}, #{listDTO.size}
     </select>
 <!--일단 안되니까 limit 빼보자-->
 <!--    limit #{listDTO.skip}, #{listDTO.size}-->
@@ -46,5 +45,7 @@
         select count(comNo)
         from tbl_company
     </select>
+
+
 
 </mapper>

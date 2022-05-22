@@ -29,6 +29,7 @@ public class RequestController {
         model.addAttribute("reqDto", dtoList);
         model.addAttribute("isEmpty", dtoList.isEmpty());
         model.addAttribute("pageMaker",new PageMaker(listDTO.getPage(), contractDTOListResponseDTO.getTotal()));
+
     }
 
     @GetMapping("/write")
@@ -39,14 +40,20 @@ public class RequestController {
 
 
     @GetMapping("/detail/{conNo}")
-    public String reqDetail(@PathVariable ("conNo")Integer conNO, Model model, ListDTO listDTO){
+    public String reqDetail(@PathVariable ("conNo")Integer conNO, Model model){
 
-        ListResponseDTO<CompanyDTO> responseDTO = requestService.getCompanyList(listDTO,conNO);
+
+       CompanyDTO companyDTO = requestService.selectCompanyOne(conNO);
+
+        boolean checkDto = companyDTO == null;
         model.addAttribute("reqDtoOne",requestService.getRequestOne(conNO));
-        model.addAttribute("comDtoList",responseDTO);
-        int companyTotal = responseDTO.getTotal();
+        model.addAttribute("comDtoOne",companyDTO);
+        model.addAttribute("checkDto",checkDto);
 
-        model.addAttribute("pageMaker", new PageMaker(listDTO.getPage(),companyTotal));
+
+
+
+//        model.addAttribute("pageMaker", new PageMaker(listDTO.getPage(),companyTotal));
 //        TODO 조인 처리 해야 올바른 값이 나오나?? 이거 페이징 해줘야 할 것 같긴 한데
         return "/request/detail";
 

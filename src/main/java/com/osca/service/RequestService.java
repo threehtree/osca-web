@@ -9,8 +9,7 @@ public interface RequestService {
     void reqInsert(ContractDTO contractDTO);
     ListResponseDTO<ContractDTO> getContractList(ListDTO listDTO, String memberId);
     ContractDTO getRequestOne(Integer conNo);
-    //
-    ListResponseDTO<CompanyDTO> getCompanyList(ListDTO listDTO, Integer conNo);
+    CompanyDTO selectCompanyOne(Integer conNo);
 
 
 

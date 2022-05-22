@@ -38,10 +38,11 @@ public class RequestMapperTests {
 
     }
     @Test
-    public void testCompanyList(){
-        int conNo = 44;
-        requestMapper.selectCompanyList(new ListDTO(),conNo);
+    public void testCompanyOne(){
+        int conNo = 84;
+        requestMapper.selectCompanyOne(conNo);
 
     }
+
 
 }
