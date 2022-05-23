@@ -46,6 +46,10 @@
         from tbl_company
     </select>
 
+    <update id="reqUpdate">
+        update tbl_contract set comId = #{comId},conCondition = '계약중'  where conNo = #{conNo};
+    </update>
+
 
 
 </mapper>

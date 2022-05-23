@@ -15,4 +15,5 @@ public interface MemberMapper {
     List<Member> selectNoDeleteMemberList(ListDTO listDTO);
     Member selectMemberOne(Integer memNo);
     void memUpdate(Member member);
+
 }

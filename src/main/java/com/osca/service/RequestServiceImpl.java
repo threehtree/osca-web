@@ -81,5 +81,15 @@ public class RequestServiceImpl implements RequestService{
 
     }
 
+    @Override
+    public void reqUpdate(ContractDTO contractDTO) {
+
+        requestMapper.reqUpdate(Contract.builder()
+                        .comId(contractDTO.getComId())
+                        .conNo(contractDTO.getConNo())
+                        .build());
+
+    }
+
 
 }

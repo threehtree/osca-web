@@ -44,5 +44,15 @@ public class RequestMapperTests {
 
     }
 
+    @Test
+    public void testUpdate(){
+
+        Contract contract = Contract.builder()
+                .conNo(60)
+                .comId("김방")
+                .build();
+
+        requestMapper.reqUpdate(contract);
+    }
 
 }
