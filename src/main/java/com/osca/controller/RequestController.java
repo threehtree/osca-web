@@ -40,15 +40,28 @@ public class RequestController {
 
 
     @GetMapping("/detail/{conNo}")
-    public String reqDetail(@PathVariable ("conNo")Integer conNO, Model model){
+    public String reqDetail(@PathVariable ("conNo")Integer conNo, Model model){
+
+//        String asd = requestService.getRequestOne(conNo).getComId();
+//        boolean ch = asd.isEmpty();
+//        log.info(ch);
+//        log.info(asd);
+//        log.info(asd);
+//        log.info(asd);
+//        log.info(asd);
+//        log.info(asd);
+
+//        if(!CompanyDTO companyDTO =requestService.getRequestOne(conNo).getComId().isEmpty()) {
+
+            CompanyDTO companyDTO = requestService.selectCompanyOne(conNo);
+            if(companyDTO != null) {
+                model.addAttribute("comDtoOne", companyDTO);
+            } //
+//        }
+
+        model.addAttribute("reqDtoOne",requestService.getRequestOne(conNo));
 
 
-       CompanyDTO companyDTO = requestService.selectCompanyOne(conNO);
-
-        boolean checkDto = companyDTO == null;
-        model.addAttribute("reqDtoOne",requestService.getRequestOne(conNO));
-        model.addAttribute("comDtoOne",companyDTO);
-        model.addAttribute("checkDto",checkDto);
 
 
 
