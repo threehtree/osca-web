@@ -132,13 +132,21 @@
 
         </tbody>
             </table>
+
+        <form action="/request/contract" method="post">
+            <input type="hidden" name="conNo" value="${reqDtoOne.conNo}">
+            <input type="hidden" name="comId" value="${comDtoOne.comID}">
             <button>계약하기</button>
         <%--    이 버튼이 눌러지면 시공사와 계약의 상태가 바뀌는 update문이 필요 --%>
+        </form>
+        <form action="/request/delContract" method="post">
+            <input type="hidden" name="">
             <button>거부하기</button>
         <%--    이 버튼이 눌러지면 시공사와 계약의 상태가 바뀌는 update문이 필요 --%>
 
         <%--    입찰금액은 입찰을 참여햇을때 --%>
         <%--    시공사의 현재상태?? --%>
+        </form>
     </c:if>
 <br/>
 <br/>
