@@ -10,8 +10,8 @@ public interface RequestService {
     ListResponseDTO<ContractDTO> getContractList(ListDTO listDTO, String memberId);
     ContractDTO getRequestOne(Integer conNo);
     CompanyDTO selectCompanyOne(Integer conNo);
-    void reqUpdate(ContractDTO contractDTO);
-
+    void reqContract(ContractDTO contractDTO);
+    void reqDelContract(Integer conNo);
 
 
 }

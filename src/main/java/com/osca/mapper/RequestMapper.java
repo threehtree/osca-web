@@ -18,7 +18,8 @@ public interface RequestMapper {
     Company selectCompanyOne(Integer conNo);
     int getCompanyTotal(ListDTO listDTO);
 
-    void reqUpdate(Contract contract);
+    void reqContract(Contract contract);
+    void reqDelContract(Integer conNo);
 
 
 }

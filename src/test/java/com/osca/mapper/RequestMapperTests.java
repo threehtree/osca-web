@@ -52,7 +52,7 @@ public class RequestMapperTests {
                 .comId("김방")
                 .build();
 
-        requestMapper.reqUpdate(contract);
+        requestMapper.reqContract(contract);
     }
 
 }

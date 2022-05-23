@@ -82,12 +82,18 @@ public class RequestServiceImpl implements RequestService{
     }
 
     @Override
-    public void reqUpdate(ContractDTO contractDTO) {
+    public void reqContract(ContractDTO contractDTO) {
 
-        requestMapper.reqUpdate(Contract.builder()
+        requestMapper.reqContract(Contract.builder()
                         .comId(contractDTO.getComId())
                         .conNo(contractDTO.getConNo())
                         .build());
+
+    }
+
+    @Override
+    public void reqDelContract(Integer conNo) {
+        requestMapper.reqDelContract(conNo);
 
     }
 

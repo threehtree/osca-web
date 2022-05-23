@@ -81,9 +81,20 @@ public class RequestController {
     public String reqContract(Integer conNo, ContractDTO contractDTO, RedirectAttributes rttr){
         log.info("contract :"+ contractDTO);
 
-        requestService.reqUpdate(contractDTO);
+        requestService.reqContract(contractDTO);
 
         rttr.addFlashAttribute("result", "Constracting");
+
+        return "redirect:/request/list";
+
+    }
+    @PostMapping("/delContract")
+    public String reqDelContract(Integer conNo, RedirectAttributes rttr){
+
+
+        requestService.reqDelContract(conNo);
+
+        rttr.addFlashAttribute("result", "delConstracting");
 
         return "redirect:/request/list";
 

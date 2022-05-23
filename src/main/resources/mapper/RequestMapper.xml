@@ -46,8 +46,12 @@
         from tbl_company
     </select>
 
-    <update id="reqUpdate">
+    <update id="reqContract">
         update tbl_contract set comId = #{comId},conCondition = '계약중'  where conNo = #{conNo};
+    </update>
+    
+    <update id="reqDelContract">
+        update tbl_contract set comId = '',conCondition = '계약전'  where conNo = #{conNo};
     </update>
 
 

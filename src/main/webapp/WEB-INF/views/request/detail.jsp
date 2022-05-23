@@ -140,7 +140,7 @@
         <%--    이 버튼이 눌러지면 시공사와 계약의 상태가 바뀌는 update문이 필요 --%>
         </form>
         <form action="/request/delContract" method="post">
-            <input type="hidden" name="">
+            <input type="hidden" name="conNo" value="${reqDtoOne.conNo}">
             <button>거부하기</button>
         <%--    이 버튼이 눌러지면 시공사와 계약의 상태가 바뀌는 update문이 필요 --%>
 
