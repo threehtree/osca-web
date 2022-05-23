@@ -46,27 +46,19 @@ public class RequestController {
 
 //        String asd = requestService.getRequestOne(conNo).getComId();
 //        boolean ch = asd.isEmpty();
-//        log.info(ch);
-//        log.info(asd);
-//        log.info(asd);
-//        log.info(asd);
-//        log.info(asd);
-//        log.info(asd);
 
 //        if(!CompanyDTO companyDTO =requestService.getRequestOne(conNo).getComId().isEmpty()) {
+        ContractDTO requestOne = requestService.getRequestOne(conNo);
 
-            CompanyDTO companyDTO = requestService.selectCompanyOne(conNo);
+        if(requestOne.getComId() != null){
+//        todo getRequestOne 으로 조회했을때 comId가 null이면  if문처리 어때?
+        CompanyDTO companyDTO = requestService.selectCompanyOne(conNo);
             if(companyDTO != null) {
                 model.addAttribute("comDtoOne", companyDTO);
             } //
-//        }
+        }
 
-        model.addAttribute("reqDtoOne",requestService.getRequestOne(conNo));
-
-
-
-
-
+        model.addAttribute("reqDtoOne", requestOne);
 
 //        model.addAttribute("pageMaker", new PageMaker(listDTO.getPage(),companyTotal));
 //        TODO 조인 처리 해야 올바른 값이 나오나?? 이거 페이징 해줘야 할 것 같긴 한데
@@ -85,7 +77,7 @@ public class RequestController {
 
         rttr.addFlashAttribute("result", "Constracting");
 
-        return "redirect:/request/list";
+        return "redirect:/request/contract";
 
     }
     @PostMapping("/delContract")

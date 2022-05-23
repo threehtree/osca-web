@@ -12,7 +12,9 @@
     <title>Request Detail</title>
 </head>
 <body>
-
+<%--<c:if test="${reqDtoOne.comId != null}">--%>
+<h1>${reqDtoOne.comId}</h1>
+<%--</c:if>--%>
     <br/>
     <br/>
     <table
@@ -132,7 +134,7 @@
 
         </tbody>
             </table>
-
+        <c:if test="${reqDtoOne.comId != null}">
         <form action="/request/contract" method="post">
             <input type="hidden" name="conNo" value="${reqDtoOne.conNo}">
             <input type="hidden" name="comId" value="${comDtoOne.comID}">
@@ -142,11 +144,13 @@
         <form action="/request/delContract" method="post">
             <input type="hidden" name="conNo" value="${reqDtoOne.conNo}">
             <button>거부하기</button>
+<%--            todo 현재 null 거부 버튼시 '' 를 보내고 있는데 null로 바꿔야 하나 기본값을''로 해야하나 --%>
         <%--    이 버튼이 눌러지면 시공사와 계약의 상태가 바뀌는 update문이 필요 --%>
 
         <%--    입찰금액은 입찰을 참여햇을때 --%>
         <%--    시공사의 현재상태?? --%>
         </form>
+        </c:if>
     </c:if>
 <br/>
 <br/>
