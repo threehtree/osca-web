@@ -49,10 +49,11 @@ public class RequestController {
 
 //        if(!CompanyDTO companyDTO =requestService.getRequestOne(conNo).getComId().isEmpty()) {
         ContractDTO requestOne = requestService.getRequestOne(conNo);
+        String reqComId = requestOne.getComId();
 
         if(requestOne.getComId() != null){
 //        todo getRequestOne 으로 조회했을때 comId가 null이면  if문처리 어때?
-        CompanyDTO companyDTO = requestService.selectCompanyOne(conNo);
+        CompanyDTO companyDTO = requestService.selectReqCom(reqComId);
             if(companyDTO != null) {
                 model.addAttribute("comDtoOne", companyDTO);
             } //

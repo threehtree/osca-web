@@ -111,5 +111,28 @@ public class RequestServiceImpl implements RequestService{
         requestMapper.reqUpdate(contract);
     }
 
+    @Override
+    public void reqUpdateComId(ContractDTO contractDTO) {
+        Contract contract = Contract.builder()
+                .conNo(contractDTO.getConNo())
+                .comId(contractDTO.getComId())
+                .build();
+        requestMapper.reqUpdateComId(contract);
+
+    }
+
+    @Override
+    public CompanyDTO selectReqCom(String comId) {
+        Company company = requestMapper.selectReqCom(comId);
+        if(company == null) {
+            return null;
+//                sql결과가 없을때 DTO로 보내주긴 해야하나 보내줄 값이 없어 null을 보냄
+        }
+
+        return modelMapper.map(company, CompanyDTO.class);
+//            컨트롤러에서 요청을했을때 가져온 sql값이 null이였는데 mapper가 처리해줄 수는 없지
+
+    }
+
 
 }

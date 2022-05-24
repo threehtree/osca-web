@@ -39,6 +39,10 @@
         where conNo = #{conNo}
         order by comNo asc
     </select>
+
+
+
+
 <!--일단 안되니까 limit 빼보자-->
 <!--    limit #{listDTO.skip}, #{listDTO.size}-->
     <select id="getCompanyTotal" resultType="int">
@@ -59,5 +63,14 @@
                                 conCategory = #{conCategory}, conLocation = #{conLocation}, conLocation = #{conLocation},
                                 conSpace = #{conSpace}, conContent = #{conContent}, conRequest = #{conRequest}
     </update>
+    <update id="reqUpdateComId">
+        update tbl_contract set comId = #{comId} where conNo = #{conNo};
+    </update>
+    <select id="selectReqCom" resultType="com.osca.domain.Company">
+        select *
+        from tbl_company
+        where comId = #{comId}
+        order by comNo asc
+    </select>
 
 </mapper>

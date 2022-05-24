@@ -45,14 +45,19 @@ public class RequestRestController {
         return "redirect:/request/list";
 
     }
-//    @PostMapping("/modify/{conNo}")
-//    public String reqModify(@PathVariable("conNO")Integer conNo, ContractDTO contractDTO){
-//        contractDTO.setConNo(conNo);
-//        requestService.reqUpdate(contractDTO);
-//        return "redirect:/request/detail/${contractDTO.getConNo()}";
-//    }
-// todo 뭐가 문제일까ㅏㅏㅏㅏㅏ
+    @PostMapping("/modify")
+    public String reqModify(ContractDTO contractDTO){
 
+        requestService.reqUpdate(contractDTO);
+        log.info(contractDTO.getConNo());
+        return "redirect:/request/detail/"+contractDTO.getConNo();
+    }
+
+    @PostMapping("/comid")
+    public String reqComid(ContractDTO contractDTO){
+        requestService.reqUpdateComId(contractDTO);
+        return "redirect:/request/list";
+    }
 
 
 }
