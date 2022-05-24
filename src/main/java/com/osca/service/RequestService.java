@@ -12,6 +12,7 @@ public interface RequestService {
     CompanyDTO selectCompanyOne(Integer conNo);
     void reqContract(ContractDTO contractDTO);
     void reqDelContract(Integer conNo);
+    void reqUpdate(ContractDTO contractDTO);
 
 
 }

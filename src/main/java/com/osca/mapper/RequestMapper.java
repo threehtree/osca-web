@@ -20,6 +20,6 @@ public interface RequestMapper {
 
     void reqContract(Contract contract);
     void reqDelContract(Integer conNo);
-
+    void reqUpdate(Contract contract);
 
 }

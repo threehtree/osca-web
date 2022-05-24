@@ -16,4 +16,5 @@ public interface MemberMapper {
     Member selectMemberOne(Integer memNo);
     void memUpdate(Member member);
 
+
 }

@@ -44,6 +44,7 @@
 <%--                <td><a href="/request/detail/${con.conNo}">${con.conSpace}</a></td>--%>
 <%--                <td><a href="/request/detail/${con.conNo}">${con.conContent}</a></td>--%>
 <%--                <td><a href="/request/detail/${con.conNo}">${con.conRequest}</a></td>--%>
+
                 <td>${con.conCondition}</td>
 <%--                todo 계약상태는 시공사 입찰 등록때 insert할때 같이 하면 될듯, 다른상태들도 이벤트리스너로 처리해서
                     그때마다 insert를 보내야할듯 --%>
@@ -103,7 +104,7 @@
 </form>
 
 
-
+${pageMaker}}
 <%--/----------------------------------------------------%>
 <script>
     const linkDiv = document.querySelector(".pagination")

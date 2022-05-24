@@ -51,9 +51,13 @@
     </update>
     
     <update id="reqDelContract">
-        update tbl_contract set comId = '',conCondition = '계약전'  where conNo = #{conNo};
+        update tbl_contract set comId = null ,conCondition = '계약전'  where conNo = #{conNo};
     </update>
 
-
+    <update id="reqUpdate">
+        update tbl_contract set conName = #{conName},
+                                conCategory = #{conCategory}, conLocation = #{conLocation}, conLocation = #{conLocation},
+                                conSpace = #{conSpace}, conContent = #{conContent}, conRequest = #{conRequest}
+    </update>
 
 </mapper>

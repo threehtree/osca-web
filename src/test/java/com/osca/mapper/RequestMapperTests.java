@@ -3,6 +3,7 @@ package com.osca.mapper;
 import com.osca.domain.Contract;
 import com.osca.dto.ListDTO;
 import lombok.extern.log4j.Log4j2;
+import org.apache.ibatis.jdbc.Null;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,14 +46,23 @@ public class RequestMapperTests {
     }
 
     @Test
-    public void testUpdate(){
+    public void testContratUpdate(){
 
         Contract contract = Contract.builder()
                 .conNo(60)
-                .comId("김방")
+                .comId(null)
                 .build();
 
         requestMapper.reqContract(contract);
+    }
+    @Test
+    public void testReqUpdate(){
+        Contract contract2 = Contract.builder()
+                .conName("이제 되냐")
+                .conNo(60)
+                .comId(null)
+                .build();
+        requestMapper.reqUpdate(contract2);
     }
 
 }

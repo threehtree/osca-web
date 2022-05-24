@@ -69,29 +69,18 @@ public class RequestController {
     public void reqOn(@PathVariable ("reqId") Integer reqId){
 
     }
-    @PostMapping("/contract")
-    public String reqContract(Integer conNo, ContractDTO contractDTO, RedirectAttributes rttr){
-        log.info("contract :"+ contractDTO);
+    @GetMapping("/modify")
+    public String reqModifyGet(Integer conNo, Model model){
 
-        requestService.reqContract(contractDTO);
+        ContractDTO requestOne = requestService.getRequestOne(conNo);
 
-        rttr.addFlashAttribute("result", "Constracting");
+        model.addAttribute("reqDtoOne", requestOne);
 
-        return "redirect:/request/contract";
-
-    }
-    @PostMapping("/delContract")
-    public String reqDelContract(Integer conNo, RedirectAttributes rttr){
-
-
-        requestService.reqDelContract(conNo);
-
-        rttr.addFlashAttribute("result", "delConstracting");
-
-        return "redirect:/request/list";
+//        model.addAttribute("pageMaker", new PageMaker(listDTO.getPage(),companyTotal));
+//        TODO 조인 처리 해야 올바른 값이 나오나?? 이거 페이징 해줘야 할 것 같긴 한데
+        return "/request/modify";
 
     }
-
 
 
 }
