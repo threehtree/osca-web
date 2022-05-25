@@ -157,5 +157,26 @@ public class RequestServiceImpl implements RequestService{
         requestMapper.reqUpdateContracting(contract);
     }
 
+    @Override
+    public void reqUpdateBuild(ContractDTO contractDTO) {
+        Contract contract = Contract.builder()
+                .conNo(contractDTO.getConNo())
+                .comId(contractDTO.getComId())
+                .build();
+
+        requestMapper.reqUpdateBuild(contract);
+
+    }
+
+    @Override
+    public void reqUpdateBuildComplete(ContractDTO contractDTO) {
+        Contract contract = Contract.builder()
+                .conNo(contractDTO.getConNo())
+                .memId(contractDTO.getMemId())
+                .build();
+        requestMapper.reqUpdateBuildComplete(contract);
+
+    }
+
 
 }

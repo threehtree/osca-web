@@ -25,5 +25,7 @@ public interface RequestMapper {
     Company selectReqCom(String comId);
     void reqUpdateContract(Contract contract);
     void reqUpdateContracting(Contract contract);
+    void reqUpdateBuild(Contract contract);
+    void reqUpdateBuildComplete(Contract contract);
 
 }

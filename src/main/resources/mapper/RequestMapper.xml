@@ -79,5 +79,10 @@
     <update id="reqUpdateContracting">
         update tbl_contract set conCondition = 4 where conNo = #{conNo} and memId = #{memId};
     </update>
-
+    <update id="reqUpdateBuild">
+        update tbl_contract set conCondition = 5 where conNo = #{conNo} and comId = #{comId};
+    </update>
+    <update id="reqUpdateBuildComplete">
+        update tbl_contract set conCondition = 6 where conNo = #{conNo} and memId = #{memId};
+    </update>
 </mapper>

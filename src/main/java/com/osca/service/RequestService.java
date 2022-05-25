@@ -18,4 +18,6 @@ public interface RequestService {
     CompanyDTO selectReqCom(String comId);
     void reqUpdateContract(ContractDTO contractDTO);
     void reqUpdateContracting(ContractDTO contractDTO);
+    void reqUpdateBuild(ContractDTO contractDTO);
+    void reqUpdateBuildComplete(ContractDTO contractDTO);
 }

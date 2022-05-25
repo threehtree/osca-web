@@ -189,20 +189,40 @@
                     <%--                    여기에도 insert 를 해야할 것 같긴한데 뭘 insert하지?? 컬럼 한칸에 그냥 conNo넣으면 되나 ? --%>
             </form>
         </c:if>
+        <c:if test="${reqDtoOne.conCondition == 4 }">
+            <form action="/request/contract" method="post">
+                <input type="hidden" name="conNo" value="${reqDtoOne.conNo}">
+                <input type="hidden" name="comId" value="${comDTOOne.comID}">
+                <input type="hidden" name="conCondition" value="${reqDtoOne.conCondition}">
+                <button >시공완료</button>
+                    <%--                    여기에도 insert 를 해야할 것 같긴한데 뭘 insert하지?? 컬럼 한칸에 그냥 conNo넣으면 되나 ? --%>
+            </form>
+        </c:if>
+        <c:if test="${reqDtoOne.conCondition == 5 }">
+            <form action="/request/contract" method="post">
+                <input type="hidden" name="conNo" value="${reqDtoOne.conNo}">
+                <input type="hidden" name="memId" value="${reqDtoOne.memId}">
+                <input type="hidden" name="conCondition" value="${reqDtoOne.conCondition}">
+                <button >의뢰성사</button>
+                    <%--                    여기에도 insert 를 해야할 것 같긴한데 뭘 insert하지?? 컬럼 한칸에 그냥 conNo넣으면 되나 ? --%>
+            </form>
+        </c:if>
 
 <%--        todo 계약단계가  계약전, 계약중, 시공완료, 계약완료  --%>
 <%--        현재 varchar로 잡혀있는데 int로 바꾸던지 해야할듯 --%>
 
+        <c:if test="${reqDtoOne.conCondition != 6 }">
+            <form action="/request/delContract" method="post">
+                <input type="hidden" name="conNo" value="${reqDtoOne.conNo}">
+                <button>거부하기</button>
+                    <%--            todo 현재 null 거부 버튼시 '' 를 보내고 있는데 null로 바꿔야 하나 기본값을''로 해야하나 --%>
+                    <%--    이 버튼이 눌러지면 시공사와 계약의 상태가 바뀌는 update문이 필요 --%>
 
-        <form action="/request/delContract" method="post">
-            <input type="hidden" name="conNo" value="${reqDtoOne.conNo}">
-            <button>거부하기</button>
-                <%--            todo 현재 null 거부 버튼시 '' 를 보내고 있는데 null로 바꿔야 하나 기본값을''로 해야하나 --%>
-                <%--    이 버튼이 눌러지면 시공사와 계약의 상태가 바뀌는 update문이 필요 --%>
+                    <%--    입찰금액은 입찰을 참여햇을때 --%>
+                    <%--    시공사의 현재상태?? --%>
+            </form>
+        </c:if>
 
-                <%--    입찰금액은 입찰을 참여햇을때 --%>
-                <%--    시공사의 현재상태?? --%>
-        </form>
     </c:if>
 
 </c:if>

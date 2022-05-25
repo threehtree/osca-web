@@ -31,6 +31,12 @@ public class RequestRestController {
         }else if(contractDTO.getConCondition() == 3){
             requestService.reqUpdateContracting(contractDTO);
             return "redirect:/request/list";
+        }else if(contractDTO.getConCondition() == 4){
+            requestService.reqUpdateBuild(contractDTO);
+            return "redirect:/request/list";
+        }else if(contractDTO.getConCondition() == 5){
+            requestService.reqUpdateBuildComplete(contractDTO);
+            return "redirect:/request/list";
         }
 
 
