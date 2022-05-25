@@ -86,6 +86,7 @@ public class RequestServiceImpl implements RequestService{
 
         requestMapper.reqContract(Contract.builder()
                         .comId(contractDTO.getComId())
+                        .memId(contractDTO.getMemId())
                         .conNo(contractDTO.getConNo())
                         .conPrice(contractDTO.getConPrice())
                         .build());
@@ -139,12 +140,21 @@ public class RequestServiceImpl implements RequestService{
     @Override
     public void reqUpdateContract(ContractDTO contractDTO) {
         Contract contract = Contract.builder()
-                .conPrice(contractDTO.getConPrice())
+                .conNo(contractDTO.getConNo())
+                .comId(contractDTO.getComId())
+                .build();
+
+        requestMapper.reqUpdateContract(contract);
+    }
+
+    @Override
+    public void reqUpdateContracting(ContractDTO contractDTO) {
+        Contract contract = Contract.builder()
                 .conNo(contractDTO.getConNo())
                 .memId(contractDTO.getMemId())
                 .build();
 
-        requestMapper.reqUpdateContract(contract);
+        requestMapper.reqUpdateContracting(contract);
     }
 
 

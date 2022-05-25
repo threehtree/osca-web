@@ -17,5 +17,5 @@ public interface RequestService {
     void reqUpdateComId(ContractDTO contractDTO);
     CompanyDTO selectReqCom(String comId);
     void reqUpdateContract(ContractDTO contractDTO);
-
+    void reqUpdateContracting(ContractDTO contractDTO);
 }

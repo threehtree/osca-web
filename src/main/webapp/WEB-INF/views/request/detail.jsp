@@ -155,27 +155,40 @@
 
 
     <c:if test="${reqDtoOne.comId != null}">
-        <c:if test="${reqDtoOne.conCondition != 0 }">
+        <c:if test="${reqDtoOne.conCondition == 1 }">
             <form action="/request/contract" method="post">
                 <input type="hidden" name="conNo" value="${reqDtoOne.conNo}">
                 <input type="hidden" name="comId" value="${comDTOOne.comID}">
+                <input type="hidden" name="memId" value="${reqDtoOne.memId}">
+
                 <p>계약금을 정해주세요</p>
                 <input type="text" name="conPrice" >
                 <button>계약하기</button>
                     <%--    이 버튼이 눌러지면 시공사와 계약의 상태가 바뀌는 update문이 필요 --%>
+<%--                todo 25 11:13 원래 시큐리티에서 id값 가져와야함 --%>
             </form>
         </c:if>
 
 
-            <c:if test="${reqDtoOne.conCondition == 0 }">
+            <c:if test="${reqDtoOne.conCondition == 2 }">
                 <form action="/request/contract" method="post">
                     <input type="hidden" name="conNo" value="${reqDtoOne.conNo}">
                     <input type="hidden" name="comId" value="${comDTOOne.comID}">
                     <input type="hidden" name="conCondition" value="${reqDtoOne.conCondition}">
-                    <button type="button">승인하기</button>
+                    <button >승인하기</button>
 <%--                    여기에도 insert 를 해야할 것 같긴한데 뭘 insert하지?? 컬럼 한칸에 그냥 conNo넣으면 되나 ? --%>
                 </form>
             </c:if>
+
+        <c:if test="${reqDtoOne.conCondition == 3 }">
+            <form action="/request/contract" method="post">
+                <input type="hidden" name="conNo" value="${reqDtoOne.conNo}">
+                <input type="hidden" name="memId" value="${reqDtoOne.memId}">
+                <input type="hidden" name="conCondition" value="${reqDtoOne.conCondition}">
+                <button >입금하기</button>
+                    <%--                    여기에도 insert 를 해야할 것 같긴한데 뭘 insert하지?? 컬럼 한칸에 그냥 conNo넣으면 되나 ? --%>
+            </form>
+        </c:if>
 
 <%--        todo 계약단계가  계약전, 계약중, 시공완료, 계약완료  --%>
 <%--        현재 varchar로 잡혀있는데 int로 바꾸던지 해야할듯 --%>

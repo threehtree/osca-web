@@ -25,6 +25,16 @@ public class RequestRestController {
     }
     @PostMapping("/contract")
     public String reqContract(ContractDTO contractDTO, RedirectAttributes rttr){
+        if(contractDTO.getConCondition() == 2){
+            requestService.reqUpdateContract(contractDTO);
+            return "redirect:/request/list";
+        }else if(contractDTO.getConCondition() == 3){
+            requestService.reqUpdateContracting(contractDTO);
+            return "redirect:/request/list";
+        }
+
+
+
         log.info("contract :"+ contractDTO);
 
         requestService.reqContract(contractDTO);
@@ -55,10 +65,6 @@ public class RequestRestController {
 
     @PostMapping("/comid")
     public String reqComid(ContractDTO contractDTO){
-        if (contractDTO.getConCondition() == 1){
-
-            return "redirect:/request/detail/"+contractDTO.getConNo();
-        }
 
         requestService.reqUpdateComId(contractDTO);
         return "redirect:/request/detail/"+contractDTO.getConNo();
