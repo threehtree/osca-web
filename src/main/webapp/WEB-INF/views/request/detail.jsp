@@ -156,7 +156,8 @@
                 <form action="" method="post">
                     <input type="hidden" name="conNo" value="${reqDtoOne.conNo}">
                     <input type="hidden" name="comId" value="${comDtoOne.comID}">
-                    <button>승인하기</button>
+                    <button type="button">승인하기</button>
+                </form>
             </c:if>
 
 <%--        todo 계약단계가  계약전, 계약중, 시공완료, 계약완료  --%>
@@ -176,17 +177,19 @@
 
 </c:if>
 
-<%--<c:if test="${reqDtoOne.comId == null}">--%>
-<%--<form action="/request/modify" method="get">--%>
-<%--    <input type="hidden" name="conNo" value="${reqDtoOne.conNo}">--%>
-<%--    <button>수정하기</button>--%>
-<%--    </c:if>--%>
+<c:if test="${reqDtoOne.comId == null}">
+<form action="/request/modify" method="get">
+    <input type="hidden" name="conNo" value="${reqDtoOne.conNo}">
+    <button class="modBtn" type="submit">수정하기</button>
+</form>
+    </c:if>
 
     <c:if test="${reqDtoOne.comId == null}">
     <form action="/request/comid" method="post">
         <input type="hidden" name="conNo" value="${reqDtoOne.conNo}">
         <input type="text" name="comId" placeholder="시공사의 ID를 입력해주세요">
-        <button type="submit">입찰하기</button>
+        <button class="conBtn" type="submit">입찰하기</button>
+    </form>
 <%--//todo 5.25 지금 처리 안된게 위의 버튼 누르면 post로 전달되는게 get까지 되는것과, 입찰페이지에 임의로 시공사 id넣게 되어있는데 그거 서로 안맞아서 안보이는 문제 --%>
     </c:if>
 <%--    계약전이면 수정가능해야겟지..--%>
@@ -198,5 +201,16 @@
 <br/>
 ${pageMaker}
 <h1>${checkDto}</h1>
+
+
+
+        <script>
+            //======================================================================================================
+
+
+            //==============================================================================================
+
+        </script>
+
 </body>
 </html>

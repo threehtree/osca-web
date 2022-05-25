@@ -41,7 +41,7 @@ public class RequestRestController {
         requestService.reqDelContract(conNo);
 
         rttr.addFlashAttribute("result", "delConstracting");
-
+        log.info("==============================================d=======================================");
         return "redirect:/request/list";
 
     }

@@ -17,7 +17,7 @@
         select *
         from tbl_contract
         where memId = #{memberId}
-        order by conNo asc
+        order by conNo desc
             limit #{listDTO.skip}, #{listDTO.size}
     </select>
 
@@ -64,7 +64,7 @@
                                 conSpace = #{conSpace}, conContent = #{conContent}, conRequest = #{conRequest}
     </update>
     <update id="reqUpdateComId">
-        update tbl_contract set comId = #{comId} where conNo = #{conNo};
+        update tbl_contract set comId = #{comId}, conCondition = "계약중" where conNo = #{conNo};
     </update>
     <select id="selectReqCom" resultType="com.osca.domain.Company">
         select *
