@@ -16,4 +16,10 @@ public class LoginController {
         return "login";
     }
 
+    @GetMapping("/register")
+    public void register(){
+
+
+    }
+
 }

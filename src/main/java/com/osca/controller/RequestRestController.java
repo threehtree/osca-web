@@ -55,8 +55,13 @@ public class RequestRestController {
 
     @PostMapping("/comid")
     public String reqComid(ContractDTO contractDTO){
+        if (contractDTO.getConCondition() == 1){
+
+            return "redirect:/request/detail/"+contractDTO.getConNo();
+        }
+
         requestService.reqUpdateComId(contractDTO);
-        return "redirect:/request/list";
+        return "redirect:/request/detail/"+contractDTO.getConNo();
     }
 
 

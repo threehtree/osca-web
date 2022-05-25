@@ -13,7 +13,7 @@ public class ContractDTO {
     private String conSpace;
     private String conContent;
     private String conRequest;
-    private String conCondition;
+    private int conCondition;
     private String conStartDay;
     private String conEndDay;
     private String conPrice;
@@ -26,4 +26,5 @@ public class ContractDTO {
     private LocalDate regDate;
     private LocalDate updateDate;
     private int delFlag;
+    private String beforePrice;
 }

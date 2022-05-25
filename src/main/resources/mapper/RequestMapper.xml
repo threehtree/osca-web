@@ -51,11 +51,11 @@
     </select>
 
     <update id="reqContract">
-        update tbl_contract set comId = #{comId},conCondition = '계약중'  where conNo = #{conNo};
+        update tbl_contract set comId = #{comId},conCondition = 2  where conNo = #{conNo};
     </update>
-    
+<!--    todo 25 7:16-->
     <update id="reqDelContract">
-        update tbl_contract set comId = null ,conCondition = '계약전'  where conNo = #{conNo};
+        update tbl_contract set comId = null ,conCondition = 0  where conNo = #{conNo};
     </update>
 
     <update id="reqUpdate">
@@ -64,7 +64,7 @@
                                 conSpace = #{conSpace}, conContent = #{conContent}, conRequest = #{conRequest}
     </update>
     <update id="reqUpdateComId">
-        update tbl_contract set comId = #{comId}, conCondition = "계약중" where conNo = #{conNo};
+        update tbl_contract set comId = #{comId}, conCondition = 1, beforePrice = #{beforePrice} where conNo = #{conNo};
     </update>
     <select id="selectReqCom" resultType="com.osca.domain.Company">
         select *
@@ -72,5 +72,9 @@
         where comId = #{comId}
         order by comNo asc
     </select>
+    <update id="reqUpdateContract">
+        update tbl_contract set conCondition = 2, conPrice = #{conPrice} where conNo = #{conNo} and memId = ${memId} ;
+    </update>
+<!--todo 25 7:16-->
 
 </mapper>

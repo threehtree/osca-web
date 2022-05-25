@@ -46,8 +46,15 @@
 <%--                <td><a href="/request/detail/${con.conNo}">${con.conSpace}</a></td>--%>
 <%--                <td><a href="/request/detail/${con.conNo}">${con.conContent}</a></td>--%>
 <%--                <td><a href="/request/detail/${con.conNo}">${con.conRequest}</a></td>--%>
-
-                <td>${con.conCondition}</td>
+               <c:choose>
+                <c:when test="${con.conCondition == 0}"> <td>입찰전</td></c:when>
+                <c:when test="${con.conCondition == 1}"> <td>입찰중</td></c:when>
+                <c:when test="${con.conCondition == 2}"> <td>계약전</td></c:when>
+                <c:when test="${con.conCondition == 3}"> <td>계약 진행중</td></c:when>
+                <c:when test="${con.conCondition == 4}"> <td>입금요청</td></c:when>
+                <c:when test="${con.conCondition == 5}"> <td>계약완료</td></c:when>
+                <c:otherwise><td>${con.conCondition}</td></c:otherwise>
+                </c:choose>
 <%--                todo 계약상태는 시공사 입찰 등록때 insert할때 같이 하면 될듯, 다른상태들도 이벤트리스너로 처리해서
                     그때마다 insert를 보내야할듯 --%>
                 <td>${con.comId}</td>

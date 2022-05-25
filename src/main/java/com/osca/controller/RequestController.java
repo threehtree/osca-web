@@ -55,7 +55,7 @@ public class RequestController {
 //        todo getRequestOne 으로 조회했을때 comId가 null이면  if문처리 어때?
         CompanyDTO companyDTO = requestService.selectReqCom(reqComId);
             if(companyDTO != null) {
-                model.addAttribute("comDtoOne", companyDTO);
+                model.addAttribute("comDTOOne", companyDTO);
             } //
         }
 

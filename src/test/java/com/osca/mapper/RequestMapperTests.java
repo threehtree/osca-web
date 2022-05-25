@@ -68,7 +68,8 @@ public class RequestMapperTests {
     @Test
     public void testReqCom(){
         Contract contract2 = Contract.builder()
-                .conNo(39)
+                .conNo(61)
+                .beforePrice("156165165")
                 .comId("ㅋㅋㅋㅋㅋ")
                 .build();
         requestMapper.reqUpdateComId(contract2);

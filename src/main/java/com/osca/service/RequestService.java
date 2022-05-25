@@ -1,5 +1,6 @@
 package com.osca.service;
 
+import com.osca.domain.Contract;
 import com.osca.dto.CompanyDTO;
 import com.osca.dto.ContractDTO;
 import com.osca.dto.ListDTO;
@@ -15,6 +16,6 @@ public interface RequestService {
     void reqUpdate(ContractDTO contractDTO);
     void reqUpdateComId(ContractDTO contractDTO);
     CompanyDTO selectReqCom(String comId);
-
+    void reqUpdateContract(ContractDTO contractDTO);
 
 }

@@ -116,6 +116,7 @@ public class RequestServiceImpl implements RequestService{
         Contract contract = Contract.builder()
                 .conNo(contractDTO.getConNo())
                 .comId(contractDTO.getComId())
+                .beforePrice(contractDTO.getBeforePrice())
                 .build();
         requestMapper.reqUpdateComId(contract);
 
@@ -132,6 +133,17 @@ public class RequestServiceImpl implements RequestService{
         return modelMapper.map(company, CompanyDTO.class);
 //            컨트롤러에서 요청을했을때 가져온 sql값이 null이였는데 mapper가 처리해줄 수는 없지
 
+    }
+
+    @Override
+    public void reqUpdateContract(ContractDTO contractDTO) {
+        Contract contract = Contract.builder()
+                .conPrice(contractDTO.getConPrice())
+                .conNo(contractDTO.getConNo())
+                .memId(contractDTO.getMemId())
+                .build();
+
+        requestMapper.reqUpdateContract(contract);
     }
 
 
