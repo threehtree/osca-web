@@ -22,7 +22,7 @@
     <input type="text" name="conSpace" value="공사 범위">
     <input type="text" name="conContent" value="공사 내용">
     <input type="text" name="conRequest" value="요청 사항">
-    <input type="hidden" name="conCondition" value="계약 전">
+    <input type="hidden" name="conCondition" value=0>
     <input type="text" name="conStartDay" value="공사 시작">
     <input type="text" name="conEndDay" value="공사 종료">
     <input type="text" name="conPrice" value="계약 가격">

@@ -51,7 +51,7 @@
     </select>
 
     <update id="reqContract">
-        update tbl_contract set comId = #{comId},conCondition = 2  where conNo = #{conNo};
+        update tbl_contract set comId = #{comId},conCondition = 2, conPrice =#{conPrice}  where conNo = #{conNo};
     </update>
 <!--    todo 25 7:16-->
     <update id="reqDelContract">

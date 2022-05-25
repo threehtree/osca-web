@@ -87,6 +87,7 @@ public class RequestServiceImpl implements RequestService{
         requestMapper.reqContract(Contract.builder()
                         .comId(contractDTO.getComId())
                         .conNo(contractDTO.getConNo())
+                        .conPrice(contractDTO.getConPrice())
                         .build());
 
     }

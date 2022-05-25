@@ -71,6 +71,11 @@
 
     </tr>
 
+    <tr align="center" bgcolor="white">
+        <td>계약금액</td>
+        <td>${reqDtoOne.conPrice}</td>
+
+    </tr>
     </tbody>
 </table>
 
@@ -154,7 +159,8 @@
             <form action="/request/contract" method="post">
                 <input type="hidden" name="conNo" value="${reqDtoOne.conNo}">
                 <input type="hidden" name="comId" value="${comDTOOne.comID}">
-
+                <p>계약금을 정해주세요</p>
+                <input type="text" name="conPrice" >
                 <button>계약하기</button>
                     <%--    이 버튼이 눌러지면 시공사와 계약의 상태가 바뀌는 update문이 필요 --%>
             </form>
