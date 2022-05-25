@@ -65,12 +65,12 @@ public class RequestMapperTests {
         requestMapper.reqUpdate(contract2);
     }
 //
-//    @Test
-//    public void testReqCom(){
-//        Contract contract2 = Contract.builder()
-//                .conNo(39)
-//                .comId("ㅋㅋㅋㅋㅋ")
-//                .build();
-//        requestMapper.reqUpdateComId(contract2);
-//    }
+    @Test
+    public void testReqCom(){
+        Contract contract2 = Contract.builder()
+                .conNo(39)
+                .comId("ㅋㅋㅋㅋㅋ")
+                .build();
+        requestMapper.reqUpdateComId(contract2);
+    }
 }

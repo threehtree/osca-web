@@ -185,7 +185,7 @@
     <c:if test="${reqDtoOne.comId == null}">
     <form action="/request/comid" method="post">
         <input type="hidden" name="conNo" value="${reqDtoOne.conNo}">
-        <input type="text" name="comId" value="시공사의 ID를 입력해주세요">
+        <input type="text" name="comId" placeholder="시공사의 ID를 입력해주세요">
         <button type="submit">입찰하기</button>
 <%--//todo 5.25 지금 처리 안된게 위의 버튼 누르면 post로 전달되는게 get까지 되는것과, 입찰페이지에 임의로 시공사 id넣게 되어있는데 그거 서로 안맞아서 안보이는 문제 --%>
     </c:if>

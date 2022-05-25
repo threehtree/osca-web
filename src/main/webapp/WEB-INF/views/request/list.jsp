@@ -27,17 +27,19 @@
         <table>
             <thead>
             <tr>
-
+                <th scope="col">NO</th>
                 <th scope="col">계약명</th>
 
                 <th scope="col">카테고리</th>
                 <th scope="col">계약상태</th>
+                <th scope="col">시공사</th>
 
             </tr>
             </thead>
             <tbody class="tableValue">
             <c:forEach items="${reqDto}" var="con" varStatus="modIdx">
             <tr>
+                <td>${con.conNo}</td>
                 <td><a href="/request/detail/${con.conNo}">${con.conName}</a></td>
                 <td>${con.conCategory}</td>
 <%--                <td><a href="/request/detail/${con.conNo}">${con.conLocation}</a></td>--%>
@@ -48,7 +50,7 @@
                 <td>${con.conCondition}</td>
 <%--                todo 계약상태는 시공사 입찰 등록때 insert할때 같이 하면 될듯, 다른상태들도 이벤트리스너로 처리해서
                     그때마다 insert를 보내야할듯 --%>
-
+                <td>${con.comId}</td>
 
 <%--                                    <c:if test="${con.conCondition == '1'} ">--%>
 <%--<h1>끄아아아아ㅏㅏ</h1>--%>
