@@ -71,11 +71,15 @@
 
     </tr>
 
+
+<c:if test="${reqDtoOne.conPrice != null}">
     <tr align="center" bgcolor="white">
         <td>계약금액</td>
         <td>${reqDtoOne.conPrice}</td>
-
     </tr>
+</c:if>
+
+
     </tbody>
 </table>
 
@@ -153,7 +157,7 @@
         </tbody>
     </table>
 
-
+<%--    <c:choose>--%>
     <c:if test="${reqDtoOne.comId != null}">
         <c:if test="${reqDtoOne.conCondition == 1 }">
             <form action="/request/contract" method="post">
@@ -224,6 +228,9 @@
         </c:if>
 
     </c:if>
+<%--    </c:choose>--%>
+
+
 
 </c:if>
 

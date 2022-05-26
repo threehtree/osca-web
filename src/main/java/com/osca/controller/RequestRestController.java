@@ -25,7 +25,12 @@ public class RequestRestController {
     }
     @PostMapping("/contract")
     public String reqContract(ContractDTO contractDTO, RedirectAttributes rttr){
-        if(contractDTO.getConCondition() == 2){
+
+
+        if(contractDTO.getConCondition() == 1) {
+            requestService.reqContract(contractDTO);
+            return "redirect:/request/list";
+        }else if(contractDTO.getConCondition() == 2){
             requestService.reqUpdateContract(contractDTO);
             return "redirect:/request/list";
         }else if(contractDTO.getConCondition() == 3){
@@ -40,10 +45,6 @@ public class RequestRestController {
         }
 
 
-
-        log.info("contract :"+ contractDTO);
-
-        requestService.reqContract(contractDTO);
 
         rttr.addFlashAttribute("result", "Constracting");
 

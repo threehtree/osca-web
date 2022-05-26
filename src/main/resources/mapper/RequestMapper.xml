@@ -5,6 +5,8 @@
 
 <mapper namespace="com.osca.mapper.RequestMapper">
 
+<!--    의뢰           -->
+<!--    의뢰 등록-->
     <insert id="reqInsert">
         <selectKey resultType="int" keyProperty="conNo" order="AFTER">
             select last_insert_id()
@@ -12,8 +14,34 @@
         insert into tbl_contract (conName, conCategory, conLocation, conSpace, memId, conContent, conRequest, conCondition, conStartDay, conEndDay, conPrice, conDocument, conImg )
         values (#{conName}, #{conCategory}, #{conLocation}, #{conSpace}, #{memId}, #{conContent}, #{conRequest}, #{conCondition},#{conStartDay}, #{conEndDay}, #{conPrice}, #{conDocument}, #{conImg})
     </insert>
+    <!-- 간소화된 계약 업데이트-->
+    <update id="reqUpdate">
+        update tbl_contract set conName = #{conName}
+        where conNo = #{conNo}
+    </update>
+    <!--    업데이트를 통한 삭제 처리 -->
+    <update id="reqDelContract">
+        update tbl_contract set conName = 'Delete', conContent = 'Delete'  where conNo = #{conNo};
+    </update>
 
-    <select id="selectRequestList" resultType="com.osca.domain.Contract">
+    <!--특정 의뢰[ -->
+    <select id="getRequestOne" resultType="com.osca.domain.Contract">
+        select *
+        from tbl_contract
+        where conNo = #{conNo}
+    </select>
+    <!--총 의뢰 글 개수-->
+    <select id="getRequestTotal" resultType="int">
+        select count(conNo)
+        from tbl_contract
+    </select>
+
+
+    <!--                  회원         -->
+
+
+    <!--회원의 의뢰 +계약 목록-->
+    <select id="reqMemList" resultType="com.osca.domain.Contract">
         select *
         from tbl_contract
         where memId = #{memberId}
@@ -21,18 +49,10 @@
             limit #{listDTO.skip}, #{listDTO.size}
     </select>
 
-    <select id="getRequestOne" resultType="com.osca.domain.Contract">
-        select *
-        from tbl_contract
-        where conNo = #{conNo}
-    </select>
 
-    <select id="getRequestTotal" resultType="int">
-        select count(conNo)
-        from tbl_contract
-    </select>
+<!--    시공사        -->
 
-<!--TODO 이거 아닌것 같음-->
+<!--특정 시공사 -->
     <select id="selectCompanyOne" resultType="com.osca.domain.Company">
         select *
         from tbl_company
@@ -40,38 +60,37 @@
         order by comNo asc
     </select>
 
-
-
-
-<!--일단 안되니까 limit 빼보자-->
-<!--    limit #{listDTO.skip}, #{listDTO.size}-->
-    <select id="getCompanyTotal" resultType="int">
-        select count(comNo)
-        from tbl_company
-    </select>
-
-    <update id="reqContract">
-        update tbl_contract set comId = #{comId},conCondition = 2, conPrice =#{conPrice}  where conNo = #{conNo} and memId = ${memId} ;
-    </update>
-<!--    todo 25 7:16-->
-    <update id="reqDelContract">
-        update tbl_contract set comId = null ,conCondition = 0,beforePrice = null , conPrice = null where conNo = #{conNo};
-    </update>
-
-    <update id="reqUpdate">
-        update tbl_contract set conName = #{conName},
-                                conCategory = #{conCategory}, conLocation = #{conLocation}, conLocation = #{conLocation},
-                                conSpace = #{conSpace}, conContent = #{conContent}, conRequest = #{conRequest}
-    </update>
-    <update id="reqUpdateComId">
-        update tbl_contract set comId = #{comId}, conCondition = 1, beforePrice = #{beforePrice} where conNo = #{conNo};
-    </update>
+    <!--특정 시공사 ?? 쿼리 이상한듯-->
     <select id="selectReqCom" resultType="com.osca.domain.Company">
         select *
         from tbl_company
         where comId = #{comId}
         order by comNo asc
     </select>
+
+
+
+<!-- 시공사 총 작성글 -->
+    <select id="getCompanyTotal" resultType="int">
+        select count(comNo)
+        from tbl_company
+    </select>
+
+
+<!--    todo 25 7:16-->
+
+
+
+
+
+
+<!--    // 계약 권한 상태 -->
+    <update id="reqUpdateComId">
+        update tbl_contract set comId = #{comId}, conCondition = 1, beforePrice = #{beforePrice} where conNo = #{conNo};
+    </update>
+    <update id="reqContract">
+        update tbl_contract set comId = #{comId},conCondition = 2, conPrice =#{conPrice}  where conNo = #{conNo} and memId = ${memId} ;
+    </update>
     <update id="reqUpdateContract">
         update tbl_contract set conCondition = 3 where conNo = #{conNo} and comId = #{comId};
     </update>
@@ -85,4 +104,10 @@
     <update id="reqUpdateBuildComplete">
         update tbl_contract set conCondition = 6 where conNo = #{conNo} and memId = #{memId};
     </update>
+
+<!--    ========================================================================================-->
+
+
+
+
 </mapper>

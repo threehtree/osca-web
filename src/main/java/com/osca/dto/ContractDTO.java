@@ -3,6 +3,8 @@ package com.osca.dto;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 public class ContractDTO {
@@ -27,4 +29,6 @@ public class ContractDTO {
     private LocalDate updateDate;
     private int delFlag;
     private String beforePrice;
+
+
 }

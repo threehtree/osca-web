@@ -1,5 +1,6 @@
 package com.osca.controller;
 
+import com.osca.domain.Contract;
 import com.osca.dto.*;
 import com.osca.service.RequestService;
 import lombok.RequiredArgsConstructor;
@@ -23,10 +24,10 @@ public class RequestController {
 
 
     @GetMapping("/list")
-    public void reqList(ListDTO listDTO, Model model){
+    public void reqMemList(ListDTO listDTO, Model model){
         // MemberDTO - 나중에 시큐리티에서 가져옴
         String memberId = "123"; // TODO 구글 로그인에서 받아온 이메일로 멤버테이블에서 멤버DTO를 가져오고 그 멤버 DTO에서 멤버ID를가져옴
-        ListResponseDTO<ContractDTO> contractDTOListResponseDTO = requestService.getContractList(listDTO, memberId);
+        ListResponseDTO<ContractDTO> contractDTOListResponseDTO = requestService.reqMemList(listDTO, memberId);
         List<ContractDTO> dtoList = contractDTOListResponseDTO.getDtoList();
         model.addAttribute("reqDto", dtoList);
         model.addAttribute("isEmpty", dtoList.isEmpty());

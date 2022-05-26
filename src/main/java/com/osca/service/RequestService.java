@@ -7,15 +7,23 @@ import com.osca.dto.ListDTO;
 import com.osca.dto.ListResponseDTO;
 
 public interface RequestService {
+//    의뢰
     void reqInsert(ContractDTO contractDTO);
-    ListResponseDTO<ContractDTO> getContractList(ListDTO listDTO, String memberId);
-    ContractDTO getRequestOne(Integer conNo);
-    CompanyDTO selectCompanyOne(Integer conNo);
-    void reqContract(ContractDTO contractDTO);
-    void reqDelContract(Integer conNo);
     void reqUpdate(ContractDTO contractDTO);
-    void reqUpdateComId(ContractDTO contractDTO);
+    void reqDelContract(Integer conNo);
+
+    ContractDTO getRequestOne(Integer conNo);
+
+//    회원
+    ListResponseDTO<ContractDTO> reqMemList(ListDTO listDTO, String memberId);
+
+//    시공사
+    CompanyDTO selectCompanyOne(Integer conNo);
     CompanyDTO selectReqCom(String comId);
+
+//    계약 권한 상태
+    void reqUpdateComId(ContractDTO contractDTO);
+    void reqContract(ContractDTO contractDTO);
     void reqUpdateContract(ContractDTO contractDTO);
     void reqUpdateContracting(ContractDTO contractDTO);
     void reqUpdateBuild(ContractDTO contractDTO);

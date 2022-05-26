@@ -19,6 +19,7 @@ public class RequestMapperTests {
     @Autowired(required = false)
     private RequestMapper requestMapper;
 
+
     @Test
     public void testReqInsert(){
         Contract contract = Contract.builder()
@@ -45,16 +46,16 @@ public class RequestMapperTests {
 
     }
 
-    @Test
-    public void testContratUpdate(){
-
-        Contract contract = Contract.builder()
-                .conNo(60)
-                .comId(null)
-                .build();
-
-        requestMapper.reqContract(contract);
-    }
+//    @Test
+//    public void testContratUpdate(){
+//
+//        Contract contract = Contract.builder()
+//                .conNo(60)
+//                .comId(null)
+//                .build();
+//
+//        requestMapper.reqContract(contract);
+//    }
     @Test
     public void testReqUpdate(){
         Contract contract2 = Contract.builder()
@@ -74,4 +75,5 @@ public class RequestMapperTests {
                 .build();
         requestMapper.reqUpdateComId(contract2);
     }
+
 }

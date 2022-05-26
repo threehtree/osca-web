@@ -9,5 +9,11 @@
     <button>login</button>
 </form>
 
+<form action="/memRegister" method="get">
+    <button>회원가입</button>
+</form>
+
+
+
 </body>
 </html>

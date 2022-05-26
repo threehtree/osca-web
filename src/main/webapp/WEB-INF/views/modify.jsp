@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/includes/listheader.jsp" %>
 
@@ -12,16 +11,16 @@
                         <div class="card shadow-lg border-0 rounded-lg mt-5">
                             <div class="card-header"><h3 class="text-center font-weight-light my-4">의뢰 작성</h3></div>
                             <div class="card-body">
-                                <form class="reqForm" action="/register" method="post" >
+                                <form class="reqForm" action="/modify/${reqDTO.conNo}" method="post" >
 
                                     <div class="mb-3">
                                         <label>의뢰명</label>
-                                        <input class="form-control" name="conName" type="text" />
+                                        <input class="form-control" name="conName" type="text" value="${reqDTO.conName}" />
 
                                     </div>
                                     <div class="mb-3">
                                         <label>의뢰내용</label>
-                                        <textarea class="form-control" name="conContent" rows="3" required></textarea>
+                                        <textarea class="form-control" name="conContent" rows="3" required>${reqDTO.conContent}</textarea>
                                     </div>
 
                                     <div class="mt-4 mb-0">
@@ -56,26 +55,11 @@
     <script>
 
 
-        function register(){
-            const reqForm = document.getElementsByClassName(".reqForm")
-            reqForm.submit()
-        }
 
         //=========================================================
 
 
     </script>
 
-    </div>
-    </html>
-
-
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-
-
-
-
-
-</body>
+</div>
 </html>
