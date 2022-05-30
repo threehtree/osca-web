@@ -85,13 +85,13 @@ public class LoginController {
     public void memMypage(){
 
     }
-//    @PostMapping("/delete")
-//    public String memConDel(Integer conNo, RedirectAttributes rttr){
-//        requestService.reqDelContract(conNo);
-//        rttr.addFlashAttribute("result", "delMemCon");
-//        return "redirect:/list";
-//    }
-    //현재 uploadController와 경로 겹쳐서 막음음
+    @PostMapping("/delete")
+    public String memConDel(Integer conNo, RedirectAttributes rttr){
+        requestService.reqDelContract(conNo);
+        rttr.addFlashAttribute("result", "delMemCon");
+        return "redirect:/list";
+    }
+//    현재 uploadController와 경로 겹쳐서 막음음
     @GetMapping("/memRegister")
     public void memRegister(){
 

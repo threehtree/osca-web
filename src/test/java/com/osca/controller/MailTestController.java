@@ -30,8 +30,8 @@ public class MailTestController {
     public void mailSendTest() throws Exception {
 
 
-        String subject = "진짜 되는 메일이내";
-        String content = "애요요요요요요요" + "<img src=\"https://bnetcmsus-a.akamaihd.net/cms/gallery/lc/LCM5AEMCWS2V1622683916493.png\">";
+        String subject = "5-30";
+        String content = "ㄹㄴㅇㄹㄹ" + "<img src=\"https://bnetcmsus-a.akamaihd.net/cms/gallery/lc/LCM5AEMCWS2V1622683916493.png\">";
         String from = "ehdwnswjsdyd@gmail.com";
         String to = "ehdwnswjsdyd@naver.com";
 

@@ -32,9 +32,9 @@
 
         <multipart-config>
             <location>C:\\upload\\temp</location>
-            <max-file-size>20971520</max-file-size> <!--1MB * 20 -->
-            <max-request-size>41943040</max-request-size><!-- 40MB -->
-            <file-size-threshold>20971520</file-size-threshold> <!-- 20MB -->
+            <max-file-size>20971520</max-file-size> <!--1MB * 20, 단일 최대파일 -->
+            <max-request-size>41943040</max-request-size><!-- 40MB, 동시에 최대 파일 -->
+            <file-size-threshold>20971520</file-size-threshold> <!-- 20MB, 단일 최대 넘으면 파일로 받음음-->
         </multipart-config>
 
 
