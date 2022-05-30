@@ -134,6 +134,10 @@
                             <input type="hidden" name="conNo" value="${reqDTO.conNo}">
                         <button type="submit" class="delBtn btn btn-secondary btn-sm">삭제하기</button>
                         </form>
+
+
+
+
                     </div>
                 </div>
             </div>
@@ -153,6 +157,10 @@
     </div>
 </div>
 
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="/resources/js/scripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
@@ -170,6 +178,19 @@
 
 
 <script>
+    async function getReplyList(conNo){
+
+        const res = await axios.get(`/replies/list/${conNo}`)
+
+        const data = res.data
+        return data
+
+    }
+
+    const conNo = ${reqDTO.conNo}
+    getReplyList(conNo).then(
+        data => console.log(data)
+    )
 
 </script>
 
