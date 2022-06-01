@@ -114,7 +114,7 @@
 </form>
 
 
-${pageMaker}}
+
 <%--/----------------------------------------------------%>
 <script>
     const linkDiv = document.querySelector(".pagination")

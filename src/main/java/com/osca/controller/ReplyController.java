@@ -3,6 +3,7 @@ package com.osca.controller;
 
 import com.osca.dto.ReplyDTO;
 import com.osca.service.ReplyService;
+import com.osca.service.RequestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
@@ -23,6 +24,8 @@ public class ReplyController {
     private final ReplyService replyService;
     private final ModelMapper modelMapper;
 
+    private final RequestService requestService;
+
     @GetMapping("/test")
     public String[] get1(){
         return new String[]{"AAA","BBB","CCC"};
@@ -34,4 +37,7 @@ public class ReplyController {
 
         return replyService.getListOfContract(conNo);
     }
+
+    
+
 }

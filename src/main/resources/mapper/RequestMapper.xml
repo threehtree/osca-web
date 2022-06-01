@@ -48,6 +48,8 @@
         order by conNo desc
             limit #{listDTO.skip}, #{listDTO.size}
     </select>
+<!--    특정 회원의 -->
+
 
 
 <!--    시공사        -->

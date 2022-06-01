@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.osca.mapper.QaBoardMapper">
+
+<!--    void qaInsert(Reply reply);-->
+<!--    void getOneOfQaBoard();-->
+<!--    void qaUpdate(Reply reply);-->
+<!--    void qaDelete(Integer conNo);-->
+
+<!--    int qaGetTotal(ListDTO listDTO);-->
+
+
+<!--    List<QaBoard> getListOfQaBoard(Integer qaNo);-->
+
+
+
+
+
+
+
+
+
+
+<!--crud-->
+    <insert id="qaInsert">
+        insert into tbl_qaboard (qaWriter, qaTitle, qaContent)
+        VALUES (#{qaWriter},#{qaTitle},#{qaContent});
+    </insert>
+
+    <select id="getOneOfQaBoard" resultType="com.osca.domain.QaBoard">
+        select * from tbl_qaboard where qaNo = #{qaNo}
+    </select>
+
+    <update id="qaUpdate">
+        update tbl_qaboard set  qaTitle =#{qaTitle}, qaContent = #{qaContent}
+    </update>
+
+
+<!--    -->
+    <select id="getListOfQaBoard" resultType="com.osca.domain.QaBoard">
+        select *
+        from tbl_qaboard
+        where qaDelFlag != 1
+        order by qaNo desc
+        limit #{skip}, #{size}
+    </select>
+
+    <select id="qaGetTotal" resultType="int">
+        select count(*) from tbl_qaboard where qaDelFlag != 1
+    </select>
+
+
+
+</mapper>
