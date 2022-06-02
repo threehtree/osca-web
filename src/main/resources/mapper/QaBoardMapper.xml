@@ -52,6 +52,10 @@
         select count(*) from tbl_qaboard where qaDelFlag != 1
     </select>
 
+<!--    댓글 추가시 댓글갯수 수정-->
+    <update id="updateReplyCount">
+        update tbl_qaboard set replyCount = replyCount + #{amount} where qaNo =#{qaNo}
+    </update>
 
 
 </mapper>

@@ -179,6 +179,25 @@
                                 </div><!-- end col-->
                             </div><!-- end row-->
 
+                                <di>
+                                    <div>
+                                        <input type="text" name="replyText" value="샘플댓글">
+                                    </div>
+                                    <div>
+                                        <input type="text" name="replyer" value="testUser00">
+                                    </div>
+                                    <div>
+                                        <button class="addReplyBtn">댓글 추가</button>
+                                    </div>
+                                </di>
+
+
+
+                                <div>
+                                    <ul class="replyUL">
+
+                                    </ul>
+                                </div>
 
                         <%--                        <c:if test=""> todo 나중에 작성자만 보이게 해줘야ㅈ --%>
 
@@ -221,51 +240,58 @@
 
 <script>
 
-    const qaBoardList = document.querySelector(".qaBoardList")
-    const linkDiv = document.querySelector(".pagination")
+
     const actionForm = document.querySelector(".actionForm")
-
-
+    const addReplyBtn =document.querySelector(".addReplyBtn")
+    const qaNo = ${qaDTO.qaNo}
     //=========================================================
+        addReplyBtn.addEventListener("click", (e) =>{
+            const replyTextInput = document.querySelector("input[name='replyText']")
+            const replyerInput = document.querySelector("input[name='replyer']")
 
-    qaBoardList.addEventListener("click", (e)=> {
-        e.preventDefault()
-        e.stopPropagation()
+            const replyText = replyTextInput.value
+            const replyer = replyerInput.value
 
+            const reply = {qaNo, replyText, replyer}
+        //    객체 리터럴 .
 
-        if (e.target.getAttribute("class").indexOf('qa-link') < 0) {
-            return
-        }
-        const qNo = e.target.getAttribute("data-qaNo")
-        actionForm.setAttribute("action", qNo)
-        actionForm.submit() //
-    },false)
-    //================================================================
-
-
-
-
-
-    linkDiv.addEventListener("click", (e) => {
-        e.stopPropagation()
-        e.preventDefault()
-
-        const target = e.target
-
-        if(target.getAttribute("class") !== 'page-link'){
-            return
-        }
-
-        const pageNum = target.getAttribute("href")
-        actionForm.querySelector("input[name='page']").value = pageNum
-        actionForm.setAttribute("action","/qa/list")
-        actionForm.submit()
-        //todo 현재 진짜 end 값이 안되는데 size를 넘기는 부분이
-        //reply보면 post로 되어있네 넘겨주는 부분이 필요해
-    },false)
-
+            console.log(reply)
+            sendPost(reply)
+        },false)
 
     //    ========================================================================================
+
+
+    getReplyList(qaNo)
+        .then(arr => {
+            console.log(arr)
+            const liStr = arr.map(replyDTO => `<li>\${replyDTO.rno}---- \${replyDTO.replyText}</li>`).join(" ")
+            document.querySelector(".replyUL").innerHTML =liStr
+        })
+        .catch(err => console.log(err))
+
+
+    //======================================================================================================
+    async function sendPost(reply){
+
+        const res = await axios.post(`/replies/`, reply)
+
+        console.log(res)
+        //이렇게 하면 댓글은 잘 보내지긴하는데 아직 ajax로 원하는 모습이 안보이고 새로고침해야 보인다
+    }
+
+    async function getReplyList(qaNo){//async안쓰면 js객체가 이미 지나가서 타입을 못 찾을 수가 있으니 주의
+
+        try {
+            const res = await axios.get(`/replies/list/${qaNo}`) //게시글에 들어갈때 작동시킴, 여기 read페이지임
+            const data = res.data
+            return data
+        }catch (err) {
+            return err //비동기는 결과가 어떻게 될지 모르기에 catch문을 통해 에러 확인할 생각해야함
+        }
+    }
+
+
 
 
 

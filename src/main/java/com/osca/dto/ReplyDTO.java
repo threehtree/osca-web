@@ -9,13 +9,13 @@ import java.time.LocalDateTime;
 public class ReplyDTO {
 
     private Integer rno;
-    private Integer bno;
+    private Integer qaNo;
     private String replyText;
     private String replyer;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd kk:mm:ss")
     //todo 30 이거 원래 오류떠야하는데 위의     @DateTimeFormat(pattern = "yyyy-MM-dd kk:mm:ss")  없이도 잘나오네
-    //라이브러리에 넣어둔게 뭐가 처리햇나봐 
+    //라이브러리에 넣어둔게 뭐가 처리햇나봐 //아마 젝슨시리즈중 하나겟지 jsr310 맞네
     private LocalDateTime regDate;
     @DateTimeFormat(pattern = "yyyy-MM-dd kk:mm:ss")
     private LocalDateTime updateDate;

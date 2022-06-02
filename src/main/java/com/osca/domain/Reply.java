@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class Reply {
 
     private Integer rno;
-    private Integer bno;
+    private Integer qaNo;
     private String replyText;
     private String replyer;
     private LocalDateTime regDate;

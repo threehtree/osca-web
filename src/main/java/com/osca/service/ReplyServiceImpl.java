@@ -1,7 +1,9 @@
 package com.osca.service;
 
 import com.osca.domain.Reply;
+import com.osca.dto.QaBoardDTO;
 import com.osca.dto.ReplyDTO;
+import com.osca.mapper.QaBoardMapper;
 import com.osca.mapper.ReplyMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -18,6 +20,7 @@ public class ReplyServiceImpl implements ReplyService {
 
     private final ReplyMapper replyMapper;
     private final ModelMapper modelMapper;
+    private final QaBoardMapper qaBoardMapper;
 
     @Override
     public List<ReplyDTO> getListOfContract(Integer conNo) {
@@ -28,6 +31,16 @@ public class ReplyServiceImpl implements ReplyService {
                 .collect(Collectors.toList());
 
         return dtoList;
+    }
+
+    @Override
+    public void register(ReplyDTO replyDTO) {
+
+        Reply reply= modelMapper.map(replyDTO, Reply.class);
+
+        replyMapper.insert(reply); //댓글이 추가됫다. +1
+        qaBoardMapper.updateReplyCount(replyDTO.getQaNo(), 1);
+
     }
 
 }

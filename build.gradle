@@ -48,7 +48,9 @@ dependencies {
     implementation 'org.springframework:spring-test:5.3.19'
     implementation 'org.springframework:spring-context:5.3.19'
     implementation 'org.springframework:spring-jdbc:5.3.19'
+
     implementation 'org.springframework:spring-tx:5.3.19'
+    //AOP 작업할때 이미 등록해놓음 [트랜젝션]
     implementation 'org.springframework:spring-webmvc:5.3.19'
 
     //log4j2
@@ -84,7 +86,7 @@ dependencies {
     // https://mvnrepository.com/artifact/org.aspectj/aspectjrt
     implementation 'org.aspectj:aspectjrt:1.9.9.1'
 
-    //aspectj-weaver
+    //aspectj 어쩌구 하는애들은 AOP[트렌젝션] 을 위해. 그리고 run~ 를 imple~로 바꿔줘야 컴파일때도 사용가능
     // https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
     implementation 'org.aspectj:aspectjweaver:1.9.9.1'
 
