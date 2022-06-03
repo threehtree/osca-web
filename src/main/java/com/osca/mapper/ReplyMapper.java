@@ -2,6 +2,7 @@ package com.osca.mapper;
 
 import com.osca.domain.Reply;
 import com.osca.dto.ListDTO;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface ReplyMapper {
     Reply selectOne(Integer conNo);
 
 //    특정글에 댓글목록 
-    List<Reply> selectListOfContract(Integer conNo);
+    List<Reply> selectListOfContract(@Param("qaNo") Integer qaNo, @Param("listDTO") ListDTO listDTO);
 
 
 

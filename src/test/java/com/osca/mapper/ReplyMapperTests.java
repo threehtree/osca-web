@@ -1,5 +1,6 @@
 package com.osca.mapper;
 
+import com.osca.dto.ListDTO;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,7 +21,11 @@ public class ReplyMapperTests {
 
           Integer qaNo = 100;
 
-          mapper.selectListOfContract(qaNo).forEach(reply -> log.info(reply));
+          ListDTO listDTO = new ListDTO();
+          listDTO.setPage(2);
+          listDTO.setSize(10);
+
+          mapper.selectListOfContract(qaNo,listDTO).forEach(reply -> log.info(reply));
       }
 
 

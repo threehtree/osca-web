@@ -247,11 +247,14 @@
 
     const qaNo = ${qaDTO.qaNo}
     const replyUL = qs(".replyUL")
-    const replyCount =  ${qaDTO.replyCount} //댓글의 갯수가 잇다면 댓글페이징 + 마지막페이지 가능능
+    const replyCount =  ${qaDTO.replyCount} //댓글의 갯수가 잇다면 댓글페이징 + 마지막페이지 가능
+
+    const pageNum = 1
+    const pageSize = 10
 
     //========================================================
-    function getServerList() {
-        replyService.getList({qaNo}, (replyArr) => {
+    function getServerList(param) {
+        replyService.getList(param, (replyArr) => {
             const liArr = replyArr.map(reply => `<li>\${reply.rno}</li>`)
             replyUL.innerHTML = liArr.join(" ")
         })
@@ -270,6 +273,10 @@
     qsAddEvent(".addReplyBtn","click",addServerReply)
 
 
+    const pageParam = Math.ceil(replyCount/pageSize)
+    console.log(pageParam)
+    //after loading
+    getServerList({qaNo:qaNo, page:pageParam, size:pageSize}) // 페이지 호출되자마자 틀게
 
 
 

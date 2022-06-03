@@ -10,7 +10,7 @@ const replyService = (function(){
     }
 
     const getList = async function({qaNo,page,size}, callback){
-        console.log("getList.......")
+        console.log("getList.......",qaNo, page, size)
 
 
         const parameter = { page:page||1, size:size||10 } //Js 에서 or 연산자임, null일때 생각

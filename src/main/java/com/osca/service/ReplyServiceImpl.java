@@ -1,6 +1,7 @@
 package com.osca.service;
 
 import com.osca.domain.Reply;
+import com.osca.dto.ListDTO;
 import com.osca.dto.QaBoardDTO;
 import com.osca.dto.ReplyDTO;
 import com.osca.mapper.QaBoardMapper;
@@ -23,9 +24,9 @@ public class ReplyServiceImpl implements ReplyService {
     private final QaBoardMapper qaBoardMapper;
 
     @Override
-    public List<ReplyDTO> getListOfContract(Integer conNo) {
+    public List<ReplyDTO> getListOfContract(Integer qaNo, ListDTO listDTO) {
 
-        List<Reply> replyList = replyMapper.selectListOfContract(conNo);
+        List<Reply> replyList = replyMapper.selectListOfContract(qaNo, listDTO);
 
         List<ReplyDTO> dtoList = replyList.stream().map(reply -> modelMapper.map(reply, ReplyDTO.class))
                 .collect(Collectors.toList());

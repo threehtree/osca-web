@@ -1,5 +1,6 @@
 package com.osca.service;
 
+import com.osca.dto.ListDTO;
 import com.osca.dto.QaBoardDTO;
 import com.osca.dto.ReplyDTO;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import java.util.List;
 @Transactional
 public interface ReplyService {
 
-    List<ReplyDTO>  getListOfContract(Integer conNo);
+    List<ReplyDTO>  getListOfContract(Integer qaNo, ListDTO listDTO);
 
     void register(ReplyDTO replyDTO);
 

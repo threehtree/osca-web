@@ -44,8 +44,8 @@ public class ReplyController {
     public List<ReplyDTO> getListOfConst(@PathVariable ("qaNo") Integer qaNo, ListDTO listDTO){
 
         log.info("reply list.." + listDTO);
-        
-        return replyService.getListOfContract(qaNo);
+
+        return replyService.getListOfContract(qaNo, listDTO);
     }
 
     

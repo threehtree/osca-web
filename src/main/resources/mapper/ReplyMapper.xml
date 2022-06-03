@@ -6,12 +6,14 @@
 <mapper namespace="com.osca.mapper.ReplyMapper">
 
     <select id="selectListOfContract" resultType="com.osca.domain.Reply">
-        select * from tbl_reply where qaNo = #{qaNo} and rno > 0 order by rno asc
+        select * from tbl_reply where qaNo = #{qaNo} and rno > 0 order by rno asc limit #{listDTO.skip}, #{listDTO.size}
     </select>
 
     <insert id="insert">
         insert into tbl_reply (qaNo, replyText, replyer)
         VALUES(#{qaNo},#{replyText},#{replyer})
     </insert>
+
+
 
 </mapper>
