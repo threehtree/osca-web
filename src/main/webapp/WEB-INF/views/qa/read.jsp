@@ -227,6 +227,8 @@
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 <script src="/resources/js/datatables-simple-demo.js"></script>
 
+<script src="/resources/js/reply.js"></script>
+
 
 <form class="actionForm" action="/list" method="get">
     <input type="hidden" name="page" value="${listDTO.page}">
@@ -242,55 +244,36 @@
 
 
     const actionForm = document.querySelector(".actionForm")
-    const addReplyBtn =document.querySelector(".addReplyBtn")
+
     const qaNo = ${qaDTO.qaNo}
-    //=========================================================
-        addReplyBtn.addEventListener("click", (e) =>{
-            const replyTextInput = document.querySelector("input[name='replyText']")
-            const replyerInput = document.querySelector("input[name='replyer']")
+    const replyUL = qs(".replyUL")
+    const replyCount =  ${qaDTO.replyCount} //댓글의 갯수가 잇다면 댓글페이징 + 마지막페이지 가능능
 
-            const replyText = replyTextInput.value
-            const replyer = replyerInput.value
+    //========================================================
+    function getServerList() {
+        replyService.getList({qaNo}, (replyArr) => {
+            const liArr = replyArr.map(reply => `<li>\${reply.rno}</li>`)
+            replyUL.innerHTML = liArr.join(" ")
+        })
+    }
 
-            const reply = {qaNo, replyText, replyer}
-        //    객체 리터럴 .
+    function addServerReply(){
+        replyService.addReply(
+            {   qaNo:qaNo,
+                replyText: qs("input[name='replyText']").value,
+                replyer:qs("input[name='replyer']").value},
+            ()=>{
+                getServerList()
+            })
+    }
 
-            console.log(reply)
-            sendPost(reply)
-        },false)
+    qsAddEvent(".addReplyBtn","click",addServerReply)
+
+
+
+
 
     //    ========================================================================================
-
-
-    getReplyList(qaNo)
-        .then(arr => {
-            console.log(arr)
-            const liStr = arr.map(replyDTO => `<li>\${replyDTO.rno}---- \${replyDTO.replyText}</li>`).join(" ")
-            document.querySelector(".replyUL").innerHTML =liStr
-        })
-        .catch(err => console.log(err))
-
-
-    //======================================================================================================
-    async function sendPost(reply){
-
-        const res = await axios.post(`/replies/`, reply)
-
-        console.log(res)
-        //이렇게 하면 댓글은 잘 보내지긴하는데 아직 ajax로 원하는 모습이 안보이고 새로고침해야 보인다
-    }
-
-    async function getReplyList(qaNo){//async안쓰면 js객체가 이미 지나가서 타입을 못 찾을 수가 있으니 주의
-
-        try {
-            const res = await axios.get(`/replies/list/${qaNo}`) //게시글에 들어갈때 작동시킴, 여기 read페이지임
-            const data = res.data
-            return data
-        }catch (err) {
-            return err //비동기는 결과가 어떻게 될지 모르기에 catch문을 통해 에러 확인할 생각해야함
-        }
-    }
-
 
 
 

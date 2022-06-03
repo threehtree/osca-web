@@ -14,10 +14,9 @@ public class QaBoardDTO {
     private String qaFile;
     private String qaAnswer;
 
-
     private int qaAnswerFlag;
     private String qaReply;
     private LocalDate regDate;
     private int qaDelFlag;
-
+    private int replyCount;
 }

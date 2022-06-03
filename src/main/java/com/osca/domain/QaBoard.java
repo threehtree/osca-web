@@ -23,4 +23,5 @@ public class QaBoard {
     private String qaReply;
     private LocalDate regDate;
     private int qaDelFlag;
+    private int replyCount;
  }

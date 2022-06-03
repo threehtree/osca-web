@@ -1,6 +1,7 @@
 package com.osca.controller;
 
 
+import com.osca.dto.ListDTO;
 import com.osca.dto.ReplyDTO;
 import com.osca.service.ReplyService;
 import com.osca.service.RequestService;
@@ -40,8 +41,10 @@ public class ReplyController {
     }
 
     @GetMapping(value = "/list/{qaNo}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<ReplyDTO> getListOfConst(@PathVariable ("qaNo") Integer qaNo){
+    public List<ReplyDTO> getListOfConst(@PathVariable ("qaNo") Integer qaNo, ListDTO listDTO){
 
+        log.info("reply list.." + listDTO);
+        
         return replyService.getListOfContract(qaNo);
     }
 

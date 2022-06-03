@@ -123,6 +123,7 @@
                                 <th>제목</th>
                                 <th>글쓴이</th>
                                 <th>등록일자</th>
+                                <th>댓글수</th>
                                 <th>답변유무</th>
                             </tr>
                             </thead>
@@ -136,8 +137,8 @@
                                 <td data-qaNo = "/qa/read/${qaDTO.qaNo}" class="qa-link">${qaDTO.qaTitle}</td>
                                 <td data-qaNo = "/qa/read/${qaDTO.qaNo}" class="qa-link">${qaDTO.qaWriter}</td>
                                 <td data-qaNo = "/qa/read/${qaDTO.qaNo}" class="qa-link">${qaDTO.regDate}</td>
+                                <td data-qaNo = "/qa/read/${qaDTO.qaNo}" class="qa-link">${qaDTO.replyCount}</td>
                                 <td data-qaNo = "/qa/read/${qaDTO.qaNo}" class="qa-link">${qaDTO.qaDelFlag}</td>
-
                             </tr>
                             </c:forEach>
                             </tbody>
