@@ -16,6 +16,6 @@ public interface ReplyService {
 
     List<ReplyDTO>  getListOfContract(Integer qaNo, ListDTO listDTO);
 
-    void register(ReplyDTO replyDTO);
+    int register(ReplyDTO replyDTO);
 
 }

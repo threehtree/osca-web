@@ -16,11 +16,12 @@ public interface ReplyMapper {
 
 
 //??????????????
-    Reply selectOne(Integer conNo);
+    Reply selectOne(Integer qaNo);
 
 //    특정글에 댓글목록 
     List<Reply> selectListOfContract(@Param("qaNo") Integer qaNo, @Param("listDTO") ListDTO listDTO);
-
+//  특정글의 총 댓글수
+    int selectTotalOfBoard(Integer qaNo);
 
 
 

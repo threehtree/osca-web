@@ -266,14 +266,14 @@
                 replyText: qs("input[name='replyText']").value,
                 replyer:qs("input[name='replyer']").value},
             ()=>{
-                getServerList()
+                getServerList()//추가하면 댓글리스트를 다시 뽑아와야지
             })
     }
 
     qsAddEvent(".addReplyBtn","click",addServerReply)
 
 
-    const pageParam = Math.ceil(replyCount/pageSize)
+    const pageParam = Math.ceil(replyCount/pageSize)// 총 페이지 수
     console.log(pageParam)
     //after loading
     getServerList({qaNo:qaNo, page:pageParam, size:pageSize}) // 페이지 호출되자마자 틀게

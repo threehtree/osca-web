@@ -26,12 +26,12 @@ public class ReplyController {
     private final RequestService requestService;
 
     @PostMapping("/")
-    public Map<String, String> qaBoardRegister(@RequestBody ReplyDTO replyDTO){
+    public Map<String, Integer> qaBoardRegister(@RequestBody ReplyDTO replyDTO){
         log.info("==========================================");
         log.info(replyDTO);
 
-        replyService.register(replyDTO);
-        return Map.of("result", "success");
+        int totalCount = replyService.register(replyDTO);
+        return Map.of("result", totalCount);// 댓글 수도 반환해야지
     }
 
     @GetMapping("/test")

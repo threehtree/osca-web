@@ -35,13 +35,16 @@ public class ReplyServiceImpl implements ReplyService {
     }
 
     @Override
-    public void register(ReplyDTO replyDTO) {
+    public int register(ReplyDTO replyDTO) {
 
         Reply reply= modelMapper.map(replyDTO, Reply.class);
 
         replyMapper.insert(reply); //댓글이 추가됫다. +1
+
         qaBoardMapper.updateReplyCount(replyDTO.getQaNo(), 1);
 
+        return replyMapper.selectTotalOfBoard(replyDTO.getQaNo());
+        //댓글을 추가한 후 페이징을 위해 다시한번 총 댓글수 반환
     }
 
 }

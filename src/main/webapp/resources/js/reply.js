@@ -15,7 +15,7 @@ const replyService = (function(){
 
         const parameter = { page:page||1, size:size||10 } //Js 에서 or 연산자임, null일때 생각
 
-        const res = await axios.get(`/replies/list/${qaNo}`,{params:parameter})
+        const res = await axios.get(`/replies/list/${qaNo}`,{params:parameter}) //axios 로 쿼리스트링 넘길때는 이렇게
         // console.log(res.data)
 
         callback(res.data)
