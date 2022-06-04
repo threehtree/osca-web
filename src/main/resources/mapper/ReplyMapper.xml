@@ -23,6 +23,9 @@
     <select id="selectOneReply" resultType="com.osca.domain.Reply">
         select * from tbl_reply where rno = #{rno}
     </select>
-
+<!--댓글 수정-->
+    <update id="updateReply">
+        update tbl_reply set replyText = #{replyText} where rno =#{rno}
+    </update>
 
 </mapper>

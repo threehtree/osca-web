@@ -24,7 +24,8 @@ public interface ReplyMapper {
     int selectTotalOfBoard(Integer qaNo);
 //    특정글의 댓글 한가지
     Reply selectOneReply(Integer rno);
-
+//    특정글의 댓글 수정
+    void updateReply(Reply reply);
 
 
 }

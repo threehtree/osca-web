@@ -55,4 +55,13 @@ public class ReplyServiceImpl implements ReplyService {
         return replyDTO;
     }
 
+    @Override
+    public void updateReply(ReplyDTO replyDTO) {
+        Reply reply = Reply.builder()
+                .rno(replyDTO.getRno())
+                .replyText(replyDTO.getReplyText())
+                .build();
+        replyMapper.updateReply(reply);
+    }
+
 }

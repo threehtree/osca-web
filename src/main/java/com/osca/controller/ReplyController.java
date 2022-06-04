@@ -11,6 +11,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -55,6 +56,20 @@ public class ReplyController {
         return replyDTO;
     }
 
+    @PutMapping(value = "/{rno}")
+    public Map<String, Integer> modify (@PathVariable ("rno")Integer rno, @RequestBody ReplyDTO replyDTO ){
+
+        replyDTO.setRno(rno); //번호를 일치시킴
+
+        replyService.updateReply(replyDTO);
+
+        Map<String, Integer> resultMap = new HashMap<>();
+
+        resultMap.put("rno", rno);
+
+        return resultMap;
+
+    }
     
 
 }

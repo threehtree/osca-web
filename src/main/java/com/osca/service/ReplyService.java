@@ -20,4 +20,6 @@ public interface ReplyService {
 
     ReplyDTO selectOneReply(Integer rno);
 
+    void updateReply(ReplyDTO replyDTO);
+
 }

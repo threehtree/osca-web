@@ -394,6 +394,22 @@
         })
 
     },"li")
+    qsAddEvent(".modifyBtn","click",()=>{
+        const replyObj = {
+            qaNo:qaNo,
+            rno:replyHeader.innerHTML,
+            replyText:modifyText.value}
+
+        modifyReply(replyObj).then(result => {
+            alert(result.rno+' 댓글이 수정되었습니다.')
+            // replyText.value = '' //이건 용도가 어떻게 되는거지???? todo
+            modifyModal.hide()
+            getServerList({qaNo:qaNo, page:pageNum, size:pageSize})
+
+        }).catch(e => {
+            console.log(e)
+        })
+    },"button")
 
     qsAddEvent(".addReplyBtn","click",addServerReply)
     qsAddEvent(".pageUL","click",(evt, realtarget) =>{
