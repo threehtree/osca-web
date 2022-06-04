@@ -1,5 +1,10 @@
 const replyService = (function(){
 
+    let replyCountFn;
+
+    const setReplyCount = function (fn){
+        replyCountFn = fn
+    }
 
     const addReply = async function(replyObj,size, callback){
 
@@ -8,6 +13,11 @@ const replyService = (function(){
         const res = await axios.post("/replies/", replyObj)
 
         const replyCount = parseInt(res.data.result)
+
+        console.log("reply.js")
+        console.log(replyCount)
+        replyCountFn(replyCount)
+
         //json은 문자열입니다
         const qaNo = replyObj.qaNo
         const page = Math.ceil(replyCount/size)
@@ -29,7 +39,7 @@ const replyService = (function(){
 
     }
 
-    return {addReply, getList} //js파일을 가져다 사용할때 replyService.addReply  이런식으로 실행할수 있음
+    return {addReply, getList, setReplyCount} //js파일을 가져다 사용할때 replyService.addReply  이런식으로 실행할수 있음
 
 })() //모듈패턴, 즉시실행
 
@@ -38,7 +48,20 @@ const qs = function (str){
     return document.querySelector(str)
 }//document.querySelector() 간소화
 
-const qsAddEvent = function (selector, type, callback){
+const qsAddEvent = function (selector, type, callback, tagName){//js는 파라미터 상관없이 작동은 된다
     const target = document.querySelector(selector)
+    if(!tagName){
     target.addEventListener(type, callback, false)
+    }else {
+        target.addEventListener(type, (e)=> {
+
+            const realTarget = e.target
+            if(realTarget.tagName !== tagName.toUpperCase()){//tagName은 대문자로 반환된다
+                return
+            }
+            callback(e,realTarget)
+
+        },false )
+    }
 }//document.querySelector().addEventListener 간소화
+

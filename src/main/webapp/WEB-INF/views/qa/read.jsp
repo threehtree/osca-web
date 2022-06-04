@@ -194,7 +194,25 @@
 
 
                                 <div>
+                                    <h2 class="replyCountShow"></h2>
                                     <ul class="replyUL">
+
+                                    </ul>
+                                    <style>
+                                        .pageUL {
+                                            display: flex;
+
+                                        }
+                                        .pageUL li {
+                                            list-style: none;
+                                            margin: 0.1em;
+                                            border: 1px solid blue;
+                                        }
+                                        .pageUL .current {
+                                            background-color: blue;
+                                        }
+                                    </style>
+                                    <ul class="pageUL">
 
                                     </ul>
                                 </div>
@@ -244,19 +262,70 @@
 
 
     const actionForm = document.querySelector(".actionForm")
+    const pageUL = qs(".pageUL")
 
     const qaNo = ${qaDTO.qaNo}
     const replyUL = qs(".replyUL")
-    const replyCount =  ${qaDTO.replyCount} //댓글의 갯수가 잇다면 댓글페이징 + 마지막페이지 가능
+    let replyCount =  ${qaDTO.replyCount} //댓글의 갯수가 잇다면 댓글페이징 + 마지막페이지 가능
+
+    replyService.setReplyCount (function  (num){
+        console.log("set---------------- "+num)
+        replyCount =num
+        qs(".replyCountShow").innerHTML = replyCount
+        printPage()//replycount 바뀌면 또 뿌려줘야지
+    })
+    console.log(replyService)
 
     const pageNum = 1
     const pageSize = 10
 
+
+
     //========================================================
+    function printPage(targetPage){
+
+        const lastPageNum = Math.ceil(replyCount/pageSize)
+
+        let endPageNum = Math.ceil((targetPage||replyCount)/pageSize)*10 //타겟, reply우선 비교
+
+
+        //강사님은 10으로 나누심
+        const startPageNum = endPageNum-9
+
+        endPageNum = lastPageNum < endPageNum ? lastPageNum: endPageNum //? ture:false
+
+
+
+        const current = targetPage? parseInt(targetPage):lastPageNum// 페이지를 클릭햇으면 그페이지 , 아니면 기본 마지막페이지
+        //숫자인데 뭔가 오류가 생긴다? 일단 받은값이 문자열이 아닌지 확인하자
+        console.log("current", current, "lastPage" ,lastPageNum)
+
+        console.log("pageParama"+ pageParam)
+
+        let str = ''
+
+
+        if(startPageNum > 1){
+            str  += `<li data-num=\${startPageNum -1} >\${startPageNum -1} 이전</li>`
+        }
+
+        for(let i = startPageNum; i<=endPageNum; i++){
+            str += `<li data-num = \${i} class="\${i === current?'current':''}">\${i}</li>`
+        }
+
+        if(lastPageNum > endPageNum){
+            str  += `<li data-num=\${endPageNum + 1} >\${endPageNum + 1} 다음</li>`
+        }
+
+
+        pageUL.innerHTML = str
+    }
+
     function getServerList(param) {
         replyService.getList(param, (replyArr) => {
             const liArr = replyArr.map(reply => `<li>\${reply.rno}</li>`)
             replyUL.innerHTML = liArr.join(" ")
+            printPage(param.page)//페이지 시작하면 자동으로 필요하니
         })
     }
 
@@ -272,12 +341,22 @@
     }
 
     qsAddEvent(".addReplyBtn","click",addServerReply)
+    qsAddEvent(".pageUL","click",(evt, realtarget) =>{
+        const num = realtarget.getAttribute("data-num")
+        getServerList({qaNo:qaNo, page:num, size:pageSize})
+    }, "li")
 
 
     const pageParam = Math.ceil(replyCount/pageSize)// 총 페이지 수
+
+    console.log("===============================================")
     console.log(pageParam)
+
+
     //after loading
+    qs(".replyCountShow").innerHTML = replyCount //댓글열자마자 보이게
     getServerList({qaNo:qaNo, page:pageParam, size:pageSize}) // 페이지 호출되자마자 틀게
+
 
 
 
