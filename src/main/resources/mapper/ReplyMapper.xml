@@ -19,4 +19,10 @@
     </select>
 <!-- where qaNo = #{qaNo} and rno > 0는 필요없어 보이지만 만들어둔 인덱스를 타기를...기원-->
 
+<!--    하나의 댓글 조회 -->
+    <select id="selectOneReply" resultType="com.osca.domain.Reply">
+        select * from tbl_reply where rno = #{rno}
+    </select>
+
+
 </mapper>

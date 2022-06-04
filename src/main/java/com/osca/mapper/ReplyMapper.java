@@ -22,6 +22,8 @@ public interface ReplyMapper {
     List<Reply> selectListOfContract(@Param("qaNo") Integer qaNo, @Param("listDTO") ListDTO listDTO);
 //  특정글의 총 댓글수
     int selectTotalOfBoard(Integer qaNo);
+//    특정글의 댓글 한가지
+    Reply selectOneReply(Integer rno);
 
 
 

@@ -47,4 +47,12 @@ public class ReplyServiceImpl implements ReplyService {
         //댓글을 추가한 후 페이징을 위해 다시한번 총 댓글수 반환
     }
 
+    @Override
+    public ReplyDTO selectOneReply(Integer rno) {
+
+        Reply reply =replyMapper.selectOneReply(rno);
+        ReplyDTO replyDTO = modelMapper.map(reply, ReplyDTO.class);
+        return replyDTO;
+    }
+
 }

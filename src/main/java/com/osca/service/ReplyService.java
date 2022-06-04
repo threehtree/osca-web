@@ -18,4 +18,6 @@ public interface ReplyService {
 
     int register(ReplyDTO replyDTO);
 
+    ReplyDTO selectOneReply(Integer rno);
+
 }

@@ -48,6 +48,13 @@ public class ReplyController {
         return replyService.getListOfContract(qaNo, listDTO);
     }
 
+    @GetMapping(value = "/{rno}")
+    public ReplyDTO getReplyDTO(@PathVariable("rno")Integer rno){
+
+        ReplyDTO replyDTO = replyService.selectOneReply(rno);
+        return replyDTO;
+    }
+
     
 
 }

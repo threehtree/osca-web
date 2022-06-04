@@ -39,6 +39,8 @@ const replyService = (function(){
 
     }
 
+
+
     return {addReply, getList, setReplyCount} //js파일을 가져다 사용할때 replyService.addReply  이런식으로 실행할수 있음
 
 })() //모듈패턴, 즉시실행
@@ -54,6 +56,8 @@ const qsAddEvent = function (selector, type, callback, tagName){//js는 파라�
     target.addEventListener(type, callback, false)
     }else {
         target.addEventListener(type, (e)=> {
+            e.preventDefault()
+            e.stopPropagation()//todo 내가 넣음 오류시 이거겟지
 
             const realTarget = e.target
             if(realTarget.tagName !== tagName.toUpperCase()){//tagName은 대문자로 반환된다
@@ -64,4 +68,9 @@ const qsAddEvent = function (selector, type, callback, tagName){//js는 파라�
         },false )
     }
 }//document.querySelector().addEventListener 간소화
+
+async function getReply(rno) {
+    const response = await axios.get(`/replies/${rno}`)
+    return response.data
+}
 

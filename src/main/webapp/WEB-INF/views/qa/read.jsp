@@ -233,6 +233,29 @@
 </div>
 
 
+<div class="modal modifyModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title replyHeader"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Reply Text</span>
+                    <input type="text" class="form-control modifyText" >
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info modifyBtn">Modify</button>
+                <button type="button" class="btn btn-danger removeBtn">Remove</button>
+                <button type="button" class="btn btn-outline-dark closeModifyBtn">Close</button>
+            </div>
+        </div>
+    </div>
+</div> <!--modifyModal -->
+
+
 
 
 
@@ -259,6 +282,19 @@
 
 
 <script>
+    //modifyModal
+    const modifyModal = new bootstrap.Modal(document.querySelector(".modifyModal"))
+
+    const replyHeader = document.querySelector(".replyHeader")
+    const modifyText = document.querySelector(".modifyText")
+    const modifyBtn = document.querySelector(".modifyBtn")
+    const removeBtn = document.querySelector(".removeBtn")
+    const closeModifyBtn = document.querySelector(".closeModifyBtn")
+
+
+
+
+
 
 
     const actionForm = document.querySelector(".actionForm")
@@ -320,10 +356,12 @@
 
         pageUL.innerHTML = str
     }
+    //================================================================================================
+
 
     function getServerList(param) {
         replyService.getList(param, (replyArr) => {
-            const liArr = replyArr.map(reply => `<li>\${reply.rno}</li>`)
+            const liArr = replyArr.map(reply => `<li data-rno =\${reply.rno} >\${reply.rno}.  \${reply.replyText}</li>`)
             replyUL.innerHTML = liArr.join(" ")
             printPage(param.page)//페이지 시작하면 자동으로 필요하니
         })
@@ -339,6 +377,23 @@
                 getServerList(param)//추가하면 댓글리스트를 다시 뽑아와야지
             })
     }
+    qsAddEvent(".replyUL","click",(e)=>{
+        const target = e.target
+
+        const rno = parseInt(target.getAttribute("data-rno"))
+
+        if(!rno){
+            return
+        }
+        getReply(rno).then(reply => {
+            console.log(reply)
+            replyHeader.innerHTML = reply.rno
+            modifyText.value = reply.replyText
+
+            modifyModal.show()
+        })
+
+    },"li")
 
     qsAddEvent(".addReplyBtn","click",addServerReply)
     qsAddEvent(".pageUL","click",(evt, realtarget) =>{
