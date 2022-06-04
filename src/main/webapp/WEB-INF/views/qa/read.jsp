@@ -265,8 +265,9 @@
             {   qaNo:qaNo,
                 replyText: qs("input[name='replyText']").value,
                 replyer:qs("input[name='replyer']").value},
-            ()=>{
-                getServerList()//추가하면 댓글리스트를 다시 뽑아와야지
+            pageSize,
+            (param)=>{
+                getServerList(param)//추가하면 댓글리스트를 다시 뽑아와야지
             })
     }
 

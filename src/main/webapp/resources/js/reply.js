@@ -1,12 +1,19 @@
 const replyService = (function(){
 
 
-    const addReply = async function(replyObj, callback){
+    const addReply = async function(replyObj,size, callback){
+
         console.log("addReply.......")
 
         const res = await axios.post("/replies/", replyObj)
 
-        callback()
+        const replyCount = parseInt(res.data.result)
+        //json은 문자열입니다
+        const qaNo = replyObj.qaNo
+        const page = Math.ceil(replyCount/size)
+
+
+        callback({qaNo,page,size})
     }
 
     const getList = async function({qaNo,page,size}, callback){
