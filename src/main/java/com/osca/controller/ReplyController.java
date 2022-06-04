@@ -70,6 +70,13 @@ public class ReplyController {
         return resultMap;
 
     }
+
+//    @DeleteMapping(value = "/{rno}", produces = MediaType.APPLICATION_JSON_VALUE)
+//    public Map<String, Integer> remove(@PathVariable ("rno")Integer rno, @RequestBody ReplyDTO replyDTO){
+//
+//
+//    }
+
     
 
 }

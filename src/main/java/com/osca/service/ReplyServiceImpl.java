@@ -64,4 +64,9 @@ public class ReplyServiceImpl implements ReplyService {
         replyMapper.updateReply(reply);
     }
 
+    @Override
+    public void deleteReply(Integer rno) {
+        replyMapper.deleteReply(rno);
+    }
+
 }

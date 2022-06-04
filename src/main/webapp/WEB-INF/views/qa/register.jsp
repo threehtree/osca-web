@@ -46,11 +46,13 @@
   </main>
 
   <h1>Register Page</h1>
-  <form action="/register" method="post">
-    <input type="text" name="title" value="파일드 테스트">
-    <input type="text" name="content" value="파일업로드 테스트">
-    <input type="text" name="writer" value="user00">
-    <button >CLICK</button>
+  <form class="actionForm" action="/qa/register" method="post">
+    <input type="text" name="qaTitle" value="파일업로드 테스트 ">
+    <input type="text" name="qaContent" value="파일업로드 작성내용 ">
+    <input type="text" name="qaWriter" value="파일업로드 작성자00 ">
+
+
+    <button class="formBtn">CLICK</button>
   </form>
 
   <h2>파일 업로드</h2>
@@ -87,27 +89,50 @@
 
 
 
-  <form class="actionForm" action="/list" method="get">
-    <input type="hidden" name="page" value="${listDTO.page}">
-    <%--    검색을 하면 일단 page는 1--%>
-    <input type="hidden" name="size" value="${listDTO.size}">
-    <input type="hidden" name="type" value="${listDTO.type}">
-    <input type="hidden" name="keyword" value="${listDTO.keyword}">
-    <%--    type, keyword는 검색한 값으로 대입함--%>
+<%--  <form class="actionForm" action="/list" method="get">--%>
+<%--    <input type="hidden" name="page" value="${listDTO.page}">--%>
+<%--    &lt;%&ndash;    검색을 하면 일단 page는 1&ndash;%&gt;--%>
+<%--    <input type="hidden" name="size" value="${listDTO.size}">--%>
+<%--    <input type="hidden" name="type" value="${listDTO.type}">--%>
+<%--    <input type="hidden" name="keyword" value="${listDTO.keyword}">--%>
+<%--    &lt;%&ndash;    type, keyword는 검색한 값으로 대입함&ndash;%&gt;--%>
   </form>
 
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
   <script>
-
-
+    const actionForm = document.querySelector(".actionForm")
+    const formBtn = document.querySelector(".formBtn")
     const uploadBtn = document.querySelector(".uploadBtn")
     const uploadResult = document.querySelector(".uploadResult")
 
     const cloneInput = document.querySelector(".uploadFile").cloneNode()
 
     //========================================================
+    formBtn.addEventListener("click", (e) =>{
+      e.preventDefault()
+      e.stopPropagation()
+
+      const divArr = document.querySelectorAll(".uploadResult > div")
+
+      let str =""
+      for (let i = 0; i <divArr.length ; i++) {
+        const fileObj = divArr[i]
+        const uuid = fileObj.getAttribute("data-uuid")
+        const img = fileObj.getAttribute("data-uuid")
+        const savePath = fileObj.getAttribute("data-uuid")
+        const fileName = fileObj.getAttribute("data-uuid")
+        str += `<input type='hidden' name ='uploads[\${i}].uuid' value='\${uuid}' }>`
+        str += `<input type='hidden' name ='uploads[\${i}].img' value='\${img}' }>`
+        str += `<input type='hidden' name ='uploads[\${i}].savePath' value='\${savePath}' }>`
+        str += `<input type='hidden' name ='uploads[\${i}].fileName' value='\${fileName}' }>`
+      }//endfor
+
+      actionForm.innerHTML += str
+      actionForm.submit()
+
+    },false)
 
     uploadResult.addEventListener("click", (e) => {
 
@@ -141,10 +166,11 @@
         //    formObj 라는 형식에 키|값을 추가하고 잇다
       }
       uploadToServer(formObj).then(resultArr =>{
-        uploadResult.innerHTML += resultArr.map(result =>`<div>
-                                <img src='/view?fileName=\${result.thumbnail}' >
-                                <button data-link='\${result.link}' class="delBtn">x</button>
-                                \${result.original}</div>`).join(" ")
+        uploadResult.innerHTML += resultArr.map( ({uuid,thumbnail,link,fileName,savePath,img }) =>`
+                                <div data-uuid = '\${uuid}' data-img ='\${img}' data-filename = '\${fileName}' data-savepath = '\${savePath}'>
+                                <img src='/view?fileName=\${thumbnail}' >
+                                <button data-link='\${link}' class="delBtn">x</button>
+                                \${fileName}</div>`).join(" ")
         //끝에 join안넣어주면 배열이라 , 가 사이에 붙네
 
         fileInput.remove() //input 타입중 file 은 유일하게 값 수정이 안되서 통으로 삭제 후 클론 생성

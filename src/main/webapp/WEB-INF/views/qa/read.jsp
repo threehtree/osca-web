@@ -411,6 +411,13 @@
         })
     },"button")
 
+    closeModifyBtn.addEventListener("click", function(e){
+
+        modifyModal.hide()
+
+    }, false)
+
+
     qsAddEvent(".addReplyBtn","click",addServerReply)
     qsAddEvent(".pageUL","click",(evt, realtarget) =>{
         const num = realtarget.getAttribute("data-num")

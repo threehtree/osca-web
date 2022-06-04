@@ -1,5 +1,6 @@
 package com.osca.service;
 
+import com.osca.domain.AttachFile;
 import com.osca.domain.QaBoard;
 import com.osca.dto.ListDTO;
 import com.osca.dto.ListResponseDTO;
@@ -40,7 +41,6 @@ public class QaBoardServiceImpl implements QaBoardService {
                 .qaContent(qaBoardDTO.getQaContent())
                 .build();
 
-        qaBoardMapper.qaInsert(qaBoard);
 
     }
 
@@ -54,6 +54,7 @@ public class QaBoardServiceImpl implements QaBoardService {
 
         return qaBoardDTO1;
     }
+
 
     @Override
     public ListResponseDTO<QaBoardDTO> getListOfQaBoard(ListDTO listDTO) {

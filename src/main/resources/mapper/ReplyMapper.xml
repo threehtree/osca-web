@@ -27,5 +27,10 @@
     <update id="updateReply">
         update tbl_reply set replyText = #{replyText} where rno =#{rno}
     </update>
+<!--댓글 삭제-->
+    <delete id="deleteReply">
+        delete from tbl_reply where rno =#{rno}
+    </delete>
+
 
 </mapper>

@@ -1,10 +1,8 @@
 package com.osca.controller;
 
 
-import com.osca.dto.ListDTO;
-import com.osca.dto.ListResponseDTO;
-import com.osca.dto.PageMaker;
-import com.osca.dto.QaBoardDTO;
+import com.osca.domain.QaBoard;
+import com.osca.dto.*;
 import com.osca.service.QaBoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -62,6 +61,8 @@ public class QaBoardController {
     }
     @PostMapping("/register")
     public String  qaRegisterPOST(QaBoardDTO qaBoardDTO){
+
+
         qaBoardService.qaInsert(qaBoardDTO);
 
         return "redirect:/qa/list";

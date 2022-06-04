@@ -2,6 +2,7 @@ package com.osca.controller;
 
 
 import com.osca.dto.UploadResultDTO;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.http.ResponseEntity;
@@ -25,32 +26,35 @@ import java.util.UUID;
 
 @Controller
 @Log4j2
+@RequiredArgsConstructor
 public class UploadController {
-//
-//    @PostMapping("/delete")
-//    @ResponseBody
-//    public Map<String, String> deleteFile(String fileName){
-//
-//        int idx = fileName.lastIndexOf("/"); // 마지막 / 를 체크해서 경로 자를려고
-//        String path = fileName.substring(0,idx); //이걸로 경로자르고
-//        String name = fileName.substring(idx+1); //마지막/ 이후부터 이름 , uuid_fileName
-//        String uuid = name.substring(0,name.indexOf("_"));
-//
-//        log.info("path: "+ path);
-//        log.info("name: " + name);
-//        File targetFile = new File("C:\\upload\\" + fileName);
-//        //경로가 있어야 삭제를하지
-//
-//        boolean result = targetFile.delete();
-//
-//        //이미지 파일을 삭제했다면 thumbnail 도 삭제해야한다
-//        if(result){
-//            File thumbFile = new File("C:\\upload\\"+path+"\\s_"+name);
-//            thumbFile.delete();
-//        }
-//
-//        return Map.of("result", "success");// 삭제했다는 결과만 알려주면되지
-//    }
+
+
+    @PostMapping("/delete")
+    @ResponseBody
+    public Map<String, String> deleteFile(String fileName){
+
+        int idx = fileName.lastIndexOf("/"); // 마지막 / 를 체크해서 경로 자를려고
+        String path = fileName.substring(0,idx); //이걸로 경로자르고
+        String name = fileName.substring(idx+1); //마지막/ 이후부터 이름 , uuid_fileName
+        String uuid = name.substring(0,name.indexOf("_"));
+
+        log.info("path: "+ path);
+        log.info("name: " + name);
+        File targetFile = new File("C:\\upload\\" + fileName);
+        //경로가 있어야 삭제를하지
+
+        boolean result = targetFile.delete();
+
+        //이미지 파일을 삭제했다면 thumbnail 도 삭제해야한다
+        if(result){
+            File thumbFile = new File("C:\\upload\\"+path+"\\s_"+name);
+            thumbFile.delete();
+        }
+
+
+        return Map.of("result", "success");// 삭제했다는 결과만 알려주면되지
+    }
 
     @GetMapping("/view")
     public ResponseEntity<byte[]> viewFile(String fileName) {
@@ -88,7 +92,7 @@ public class UploadController {
 
         List<UploadResultDTO> list = new ArrayList<>();
 
-        for(MultipartFile file:files){
+        for(MultipartFile file:files){ //업로드 된 파일이 있다는 가정
 
             String oiginalFileName = file.getOriginalFilename();
 
@@ -113,7 +117,7 @@ public class UploadController {
 
             if(img){ // 만약 이미지가 true인 상황이면 섬네일을 만들어야지
 
-                //saveName = UUID+"_"+fileName
+//                saveName = UUID+"_"+fileName
                 String thumbFileName = saveFolder+"\\s_"+saveName;
                 File thumbFile = new File("C:\\upload\\" +thumbFileName);
                 //File 메소드에 경로지정이 있는건가 , ㅇㅇ 경로지정용
@@ -127,12 +131,16 @@ public class UploadController {
                 }
 
             }//end if
-            list.add(UploadResultDTO.builder()
-                    .original(oiginalFileName)
+
+            UploadResultDTO uploadResultDTO = UploadResultDTO.builder()
+                    .fileName(oiginalFileName)
                     .uuid(uuid)
                     .img(img)
                     .savePath(saveFolder)
-                    .build());
+                    .build();
+
+            list.add(uploadResultDTO);
+
         }//end for
         return list;
     }

@@ -26,6 +26,7 @@ public interface ReplyMapper {
     Reply selectOneReply(Integer rno);
 //    특정글의 댓글 수정
     void updateReply(Reply reply);
-
+//    특정글의 댓글 삭제
+    void deleteReply(Integer rno);
 
 }

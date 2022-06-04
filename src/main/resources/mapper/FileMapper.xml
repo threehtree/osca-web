@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.osca.mapper.FileMapper">
+    <insert id="fileInsert">
+        insert into tbl_file (uuid, fileName, savepath, img)
+            values (#{uuid}, #{fileName}, #{savepath}, #{img})
+    </insert>
+
+    <delete id="fileDelete">
+        delete from tbl_file where uuid = #{uuid}
+    </delete>
+
+</mapper>
