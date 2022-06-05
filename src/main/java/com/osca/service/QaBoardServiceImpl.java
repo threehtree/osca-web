@@ -5,6 +5,7 @@ import com.osca.domain.QaBoard;
 import com.osca.dto.ListDTO;
 import com.osca.dto.ListResponseDTO;
 import com.osca.dto.QaBoardDTO;
+import com.osca.mapper.FileMapper;
 import com.osca.mapper.QaBoardMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -21,7 +22,7 @@ import java.util.stream.Collectors;
 public class QaBoardServiceImpl implements QaBoardService {
     private final QaBoardMapper qaBoardMapper;
     private final ModelMapper modelMapper;
-
+    private final FileMapper fileMapper;
     @Override
     public void qaUpdate(QaBoardDTO qaBoardDTO){
         QaBoard qaBoard = QaBoard.builder()
@@ -44,9 +45,18 @@ public class QaBoardServiceImpl implements QaBoardService {
         QaBoard qaBoard = modelMapper.map(qaBoardDTO, QaBoard.class);
 //        qaBoardMapper.qaInsert(qaBoard);
 
+        List<AttachFile> files =
+                qaBoardDTO.getUploads().stream().map(uploadResultDTO -> modelMapper.map(uploadResultDTO,AttachFile.class)
+                ).collect(Collectors.toList());
+
+
         log.info("=====================");
         log.info("=====================");
         log.info(qaBoard);
+        log.info(files);
+        qaBoardMapper.qaInsert(qaBoard);
+
+        files.forEach(file -> fileMapper.fileInsert(file));
         log.info("=====================");
         log.info("=====================");
 
