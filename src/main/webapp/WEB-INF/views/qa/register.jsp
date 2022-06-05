@@ -119,6 +119,12 @@
       let str =""
       for (let i = 0; i <divArr.length ; i++) {
         const fileObj = divArr[i]
+
+        if(i===0){
+          const mainImageLink = fileObj.querySelector("img").getAttribute("src")
+          str += `<input type='hidden' name ='mainImage' value='\${mainImageLink}' }>`
+        }//대표이미지
+
         const uuid = fileObj.getAttribute("data-uuid")
         const img = fileObj.getAttribute("data-img")
         const savePath = fileObj.getAttribute("data-savepath")

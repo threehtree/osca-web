@@ -27,4 +27,5 @@ public class QaBoardDTO {
     private int replyCount;
 
     private List<UploadResultDTO> uploads = new ArrayList<>();
+    private String mainImage;
 }

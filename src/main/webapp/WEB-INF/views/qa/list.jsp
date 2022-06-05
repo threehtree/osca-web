@@ -133,12 +133,19 @@
                             <tbody class="qaBoardList">
                             <c:forEach items="${qaDTO}" var="qaDTO">
                             <tr>
+<%--                                <td>--%>
+<%--                                <c:if test="${qaDTO.mainImage !=null}">--%>
+<%--                                    <img src = '${qaDTO.mainImage}'>--%>
+<%--                                </c:if>--%>
+<%--                                </td>--%>
+<%--                                대표 이미지 없는게 나은것 같은데  --%>
                                 <td data-qaNo = "/qa/read/${qaDTO.qaNo}" class="qa-link">${qaDTO.qaNo}</td>
                                 <td data-qaNo = "/qa/read/${qaDTO.qaNo}" class="qa-link">${qaDTO.qaTitle}</td>
                                 <td data-qaNo = "/qa/read/${qaDTO.qaNo}" class="qa-link">${qaDTO.qaWriter}</td>
                                 <td data-qaNo = "/qa/read/${qaDTO.qaNo}" class="qa-link">${qaDTO.regDate}</td>
                                 <td data-qaNo = "/qa/read/${qaDTO.qaNo}" class="qa-link">${qaDTO.replyCount}</td>
                                 <td data-qaNo = "/qa/read/${qaDTO.qaNo}" class="qa-link">${qaDTO.qaDelFlag}</td>
+
                             </tr>
                             </c:forEach>
                             </tbody>
@@ -148,7 +155,7 @@
                         <button type="submit" onclick="location.href='/qa/register'" class="btn btn-primary btn-sm">작성하기</button>
     <ul class="pagination">
         <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
+            <a class="page-link" href="${pageMaker.start -1}" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
             </a>
         </li>
@@ -157,9 +164,9 @@
             <li class="page-item"><a class="page-link" href="${num}">${num}</a></li>
         </c:forEach>
 
-
+<%--jstl이용안하고 css안에서 조건 만족하면 display none처리 하는게 어떤거엿죠? todo check--%>
         <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
+            <a class="page-link" href="${pageMaker.end+1}" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
             </a>
         </li>

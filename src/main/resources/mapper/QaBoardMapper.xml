@@ -26,8 +26,8 @@
 
 <!--crud-->
     <insert id="qaInsert">
-        insert into tbl_qaboard (qaWriter, qaTitle, qaContent)
-        VALUES (#{qaWriter},#{qaTitle},#{qaContent});
+        insert into tbl_qaboard (qaWriter, qaTitle, qaContent,mainImage)
+        VALUES (#{qaWriter},#{qaTitle},#{qaContent},#{mainImage});
     </insert>
 
     <select id="getOneOfQaBoard" resultType="com.osca.domain.QaBoard">
