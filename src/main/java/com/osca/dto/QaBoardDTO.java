@@ -27,5 +27,17 @@ public class QaBoardDTO {
     private int replyCount;
 
     private List<UploadResultDTO> uploads = new ArrayList<>();
+    //메인이미지 섬네일
     private String mainImage;
+
+    public String getMain(){
+        if(mainImage == null){
+            return null;
+        }
+        int idx = mainImage.indexOf("s_");
+        String first = mainImage.substring(0,idx);//경로까지 컷.
+        String second = mainImage.substring(idx+2);// s_ 제거
+
+        return first+second;
+    }
 }

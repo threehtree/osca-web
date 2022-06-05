@@ -5,6 +5,7 @@ import com.osca.domain.QaBoard;
 import com.osca.dto.ListDTO;
 import com.osca.dto.ListResponseDTO;
 import com.osca.dto.QaBoardDTO;
+import com.osca.dto.UploadResultDTO;
 import com.osca.mapper.FileMapper;
 import com.osca.mapper.QaBoardMapper;
 import lombok.RequiredArgsConstructor;
@@ -71,6 +72,16 @@ public class QaBoardServiceImpl implements QaBoardService {
        QaBoardDTO qaBoardDTO1 = modelMapper.map( qaBoardMapper.getOneOfQaBoard(qaBoard),QaBoardDTO.class);
 
         return qaBoardDTO1;
+    }
+
+    @Override
+    public List<UploadResultDTO> getFiles(Integer qaNo) {
+
+        List<AttachFile> attachFiles = qaBoardMapper.selectFiles(qaNo);
+
+
+        return attachFiles.stream().map(attachFile -> modelMapper.map(attachFile, UploadResultDTO.class))
+                .collect(Collectors.toList());
     }
 
 

@@ -16,5 +16,8 @@ public interface QaBoardService {
 
     ListResponseDTO<QaBoardDTO> getListOfQaBoard(ListDTO listDTO);
     QaBoardDTO getOneOfQaBoard(QaBoardDTO qaBoardDTO);
+
+//
+    List<UploadResultDTO> getFiles(Integer qaNo);
     
 }

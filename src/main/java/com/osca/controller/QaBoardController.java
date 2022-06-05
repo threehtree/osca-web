@@ -66,4 +66,10 @@ public class QaBoardController {
 
         return "redirect:/qa/list";
     }
+    @GetMapping("/files/{qaNo}")
+    @ResponseBody
+    public List<UploadResultDTO> getFiles (@PathVariable("qaNo") Integer qaNo){
+        return qaBoardService.getFiles(qaNo);
+    }
+
 }

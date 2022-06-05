@@ -119,9 +119,24 @@
                 </ol>
 
                 ${pageMaker}
+
+                <style>
+                    .pictures img {
+                        max-width: 80vw;
+                    }
+                </style>
+                <button class="moreBtn">더보기</button>
                 <div class="card mb-4">
                     <div class="card-body">
-
+<%--                            <c:if test="${qaDTO.mainImage != null}">--%>
+<%--                                <img src="${qaDTO.mainImage}">--%>
+<%--                            </c:if>--%>
+<%--    todo check 이것도 대표이미지 이용인데 나에게는 필요없을 것 같다 --%>
+                        <div class="pictures">
+                            <c:if test="${qaDTO.mainImage != null}">
+                                <img src="${qaDTO.getMain()}">
+                            </c:if>
+                        </div>
 
 
                             <%--====================--%>
@@ -261,7 +276,24 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    const qaNO = ${qaDTO.qaNo}
+    document.querySelector(".moreBtn").addEventListener("click",(e)=>{
+        axios.get("/qa/files/${qaDTO.qaNo}").then(
+            res => {
+                const arr = res.data
+                let str =''
+                for (let i = 0; i <arr.length ; i++) {
+                    str += `<img src='/view?fileName=\${arr[i].link}'>`
+                }
 
+                document.querySelector(".pictures").innerHTML =str
+            }
+
+        )
+    },false)
+
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="/resources/js/scripts.js"></script>

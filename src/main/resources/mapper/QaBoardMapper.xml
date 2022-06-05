@@ -56,6 +56,9 @@
     <update id="updateReplyCount">
         update tbl_qaboard set replyCount = replyCount + #{amount} where qaNo =#{qaNo}
     </update>
-
+<!--이미지 목록요청-->
+    <select id="selectFiles" resultType="com.osca.domain.AttachFile">
+        select * from tbl_attach where qaNo = #{qaNo}
+    </select>
 
 </mapper>

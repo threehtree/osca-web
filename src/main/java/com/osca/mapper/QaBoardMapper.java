@@ -1,5 +1,6 @@
 package com.osca.mapper;
 
+import com.osca.domain.AttachFile;
 import com.osca.domain.QaBoard;
 import com.osca.domain.Reply;
 import com.osca.dto.ListDTO;
@@ -23,5 +24,7 @@ public interface QaBoardMapper {
     //댓글이 추가/삭제 되면 값이 바뀌어야지
     void updateReplyCount(@Param("qaNo") Integer qaNo,@Param("amount") int amount);
 
+    //이미지 목록 요청
+    List<AttachFile> selectFiles(Integer qaNo);
 
 }
