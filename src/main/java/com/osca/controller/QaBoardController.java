@@ -6,12 +6,11 @@ import com.osca.dto.*;
 import com.osca.service.QaBoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Arrays;
 import java.util.List;
@@ -59,11 +58,11 @@ public class QaBoardController {
     public void qaRegister(){
 
     }
-    @PostMapping("/register")
-    public String  qaRegisterPOST(QaBoardDTO qaBoardDTO){
-
+    @PostMapping(value = "/register")
+    public String  qaRegisterPOST(QaBoardDTO qaBoardDTO, RedirectAttributes rttr){
 
         qaBoardService.qaInsert(qaBoardDTO);
+        rttr.addFlashAttribute("result", 123);
 
         return "redirect:/qa/list";
     }

@@ -120,9 +120,9 @@
       for (let i = 0; i <divArr.length ; i++) {
         const fileObj = divArr[i]
         const uuid = fileObj.getAttribute("data-uuid")
-        const img = fileObj.getAttribute("data-uuid")
-        const savePath = fileObj.getAttribute("data-uuid")
-        const fileName = fileObj.getAttribute("data-uuid")
+        const img = fileObj.getAttribute("data-img")
+        const savePath = fileObj.getAttribute("data-savepath")
+        const fileName = fileObj.getAttribute("data-filename")
         str += `<input type='hidden' name ='uploads[\${i}].uuid' value='\${uuid}' }>`
         str += `<input type='hidden' name ='uploads[\${i}].img' value='\${img}' }>`
         str += `<input type='hidden' name ='uploads[\${i}].savePath' value='\${savePath}' }>`

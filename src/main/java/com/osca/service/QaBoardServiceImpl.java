@@ -35,12 +35,20 @@ public class QaBoardServiceImpl implements QaBoardService {
     @Override
     public void qaInsert(QaBoardDTO qaBoardDTO) {
 
-        QaBoard qaBoard = QaBoard.builder()
-                .qaWriter(qaBoardDTO.getQaWriter())
-                .qaTitle(qaBoardDTO.getQaTitle())
-                .qaContent(qaBoardDTO.getQaContent())
-                .build();
+//        QaBoard qaBoard = QaBoard.builder()
+//                .qaWriter(qaBoardDTO.getQaWriter())
+//                .qaTitle(qaBoardDTO.getQaTitle())
+//                .qaContent(qaBoardDTO.getQaContent())
+//                .build();
 
+        QaBoard qaBoard = modelMapper.map(qaBoardDTO, QaBoard.class);
+//        qaBoardMapper.qaInsert(qaBoard);
+
+        log.info("=====================");
+        log.info("=====================");
+        log.info(qaBoard);
+        log.info("=====================");
+        log.info("=====================");
 
     }
 
