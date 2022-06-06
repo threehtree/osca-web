@@ -177,12 +177,11 @@
                                                 </div>
 
                                                 <div class="my-4">
-                                                    <div class="float-end">
-                                                        <button type="button" class="btn btn-primary listBtn">List</button>
-                                                        <form action="/qa/modify" method="get">
-                                                            <input type="hidden" name="qaNo" value="${qaDTO.qaNo}">
-                                                        <button type="submit" class="btn btn-secondary">modify</button>
-                                                        </form>
+                                                    <div class="qaBoardMoveBtn float-end">
+                                                        <button data-qaNo="/qa/modify/${qaDTO.qaNo}"  type="button" class="qa-link btn btn-primary listBtn">List</button>
+
+                                                        <button data-qaNo="/qa/modify/${qaDTO.qaNo}" type="button" class="qa-link btn btn-secondary">modify</button>
+
 
                                                     </div>
                                                 </div>
@@ -328,6 +327,7 @@
 
 
 
+    const qaBoardMoveBtn = document.querySelector(".qaBoardMoveBtn")
 
     const actionForm = document.querySelector(".actionForm")
     const pageUL = qs(".pageUL")
@@ -346,7 +346,19 @@
 
     const pageNum = 1
     const pageSize = 10
+    //=======================================================
+    qaBoardMoveBtn.addEventListener("click", (e)=> {
+        e.preventDefault()
+        e.stopPropagation()
 
+
+        if (e.target.getAttribute("class").indexOf('qa-link') < 0) {
+            return
+        }
+        const qNo = e.target.getAttribute("data-qaNo")
+        actionForm.setAttribute("action", qNo)
+        actionForm.submit() //
+    },false)
 
 
     //========================================================

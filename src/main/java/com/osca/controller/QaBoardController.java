@@ -22,18 +22,18 @@ import java.util.List;
 public class QaBoardController {
     private final QaBoardService qaBoardService;
 
-    @PostMapping("/modify")
-    public String qaModifyPOST( QaBoardDTO qaBoardDTO){
+    @PostMapping("/modify/{qaNo}")
+    public String qaModifyPOST(@PathVariable("qaNo") Integer qaNo, QaBoardDTO qaBoardDTO){
         qaBoardService.qaUpdate(qaBoardDTO);
 
         return "redirect:/qa/read/"+qaBoardDTO.getQaNo();
     }
 
-    @GetMapping("/modify")
-    public void qaModify(QaBoardDTO qaBoardDTO, Model model){
+    @GetMapping("/modify/{qaNo}")
+    public String qaModify(@PathVariable("qaNo") Integer qaNo,  QaBoardDTO qaBoardDTO, Model model){
         QaBoardDTO dtoOne =qaBoardService.getOneOfQaBoard(qaBoardDTO);
         model.addAttribute("qaDTO", dtoOne);
-//        return "/qa/modify";
+        return "/qa/modify";
     }
 
     @GetMapping("/read/{qaNo}")

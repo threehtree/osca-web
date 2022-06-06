@@ -131,53 +131,78 @@
                                             Board Modify
                                         </div>
                                         <div class="card-body">
-                                            <form action="/qa/modify/"+${qaDTO.qaNo} method="post" id="f1">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text">번호</span>
-                                                    <input type="text" class="form-control" name="qaNo" value="${qaDTO.qaNo}"  readonly>
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text">제목</span>
-                                                    <input type="text" class="form-control" name="qaTitle" value="${qaDTO.qaTitle}">
-                                                </div>
-
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text">내용</span>
-                                                    <textarea class="form-control col-sm-5" rows="5" name="qaContent">${qaDTO.qaContent}</textarea>
-                                                </div>
-
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text">작성자</span>
-                                                    <input type="text" class="form-control" name="qaWriter" value="${qaDTO.qaWriter}"  readonly>
-                                                </div>
-
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text">첨부파일</span>
-                                                    <div class="float-end uploadHidden">
-                                                        <button type="button" class="btn btn-primary uploadFileBtn">ADD Files</button>
+<%--                                            <form action="/qa/modify/"+${qaDTO.qaNo} method="post" id="f1">--%>
+                                        <form class="modForm" action="/qa/modify/${qaDTO.qaNo}" method="post">
+                                            <input type="hidden" name="page" value="${listDTO.page}">
+                                            <input type="hidden" name="size" value="${listDTO.size}">
+                                            <input type="hidden" name="type" value="${listDTO.type}">
+                                            <input type="hidden" name="keyword" value="${listDTO.keyword}">
+                                            <div>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text">번호</span>
+                                                        <input type="text" class="form-control" name="qaNo" value="${qaDTO.qaNo}"  readonly>
                                                     </div>
-                                                </div>
-
-
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text">작성일자</span>
-                                                    <input type="text" class="form-control" value="${qaDTO.regDate}" readonly>
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text">수정일자</span>
-                                                    <input type="text" class="form-control" value="" readonly>
-                                                </div>
-
-                                                <div class="my-4">
-                                                    <div class="float-end">
-                                                        <button type="button" class="btn btn-primary listBtn">List</button>
-
-                                                        <button type="submit" class="btn btn-secondary modBtn">작성완료</button>
-
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text">제목</span>
+                                                        <input type="text" class="form-control" name="qaTitle" value="${qaDTO.qaTitle}">
                                                     </div>
-                                                </div>
-                                            </form>
 
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text">내용</span>
+                                                        <textarea class="form-control col-sm-5" rows="5" name="qaContent">${qaDTO.qaContent}</textarea>
+                                                    </div>
+
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text">작성자</span>
+                                                        <input type="text" class="form-control" name="qaWriter" value="${qaDTO.qaWriter}"  readonly>
+                                                    </div>
+
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text">첨부파일</span>
+                                                        <div class="float-end uploadHidden">
+                                                            <button type="button" class="btn btn-primary uploadFileBtn">ADD Files</button>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text">작성일자</span>
+                                                        <input type="text" class="form-control" value="${qaDTO.regDate}" readonly>
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text">수정일자</span>
+                                                        <input type="text" class="form-control" value="" readonly>
+                                                    </div>
+
+                                                    <div class="uploadResult">
+                                                    </div>
+
+                                                    <div class="my-4">
+                                                        <div class="float-end">
+                                                            <button type="button" class="btn btn-primary listBtn">List</button>
+
+                                                            <button type="button" class="btn btn-secondary modBtn">작성완료</button>
+
+                                                        </div>
+                                                    </div>
+    <%--                                            </form>--%>
+
+                                            </div>
+<%--                                            modForm--%>
+                                            <div>
+                                                <input type="file" name="upload" multiple class="uploadFile">
+                                                <button class="uploadBtn">Upload</button>
+                                            </div>
+                                            <style>
+                                                .uploadResult {
+                                                    display: flex;
+
+                                                }
+                                                .uploadResult > div {
+                                                    margin: 3em;
+                                                    border: 1px solid red;
+                                                }
+                                            </style>
 
                                         </div><!--end card body-->
                                     </div><!--end card-->
@@ -204,6 +229,7 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/resources/js/reply.js"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -222,8 +248,53 @@
 <%--</form>--%>
 
 
-<%--<script>--%>
+<script>
+    const uploadResult = document.querySelector(".uploadResult")
 
+    function loadImage(){
+        axios.get("/qa/files/${qaDTO.qaNo}").then(
+            res => {
+                const resultArr = res.data
+                    uploadResult.innerHTML += resultArr.map( ({uuid,thumbnail,link,fileName,savePath,img }) =>`
+                            <div data-uuid = '\${uuid}' data-img ='\${img}' data-filename = '\${fileName}' data-savepath = '\${savePath}'>
+                            <img src='/view?fileName=\${thumbnail}' >
+                            <button data-link='\${link}' class="delBtn">x</button>
+                            \${fileName}</div>`).join(" ")
+                    //끝에 join안넣어주면 배열이라 , 가 사이에 붙네
+            }
+
+        )
+    }
+    loadImage()
+
+
+
+
+    uploadResult.addEventListener("click", (e) => {
+        e.stopPropagation()
+        e.preventDefault()
+
+        if(e.target.getAttribute("class").indexOf("delBtn") < 0){
+            return
+        }
+        const btn = e.target
+        const link = btn.getAttribute("data-link")
+
+        deleteToServer(link).then(result => {
+            btn.closest("div").remove()
+            //현재 e.target의 위치 바로 위에 div값이 있다
+            //이게 화면단 에서 삭제
+        })
+
+    }, false)
+
+    const modBtn = document.querySelector(".modBtn")
+
+    modBtn.addEventListener("click",(e)=>{
+
+        document.querySelector(".modForm").submit()
+
+    },false)
 
 <%--    const linkDiv = document.querySelector(".pagination")--%>
 <%--    const actionForm = document.querySelector(".actionForm")--%>

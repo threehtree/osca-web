@@ -100,6 +100,7 @@
 
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/resources/js/reply.js"></script>
 
   <script>
     const actionForm = document.querySelector(".actionForm")
@@ -194,36 +195,12 @@
 
 
     //=========================================================
+
     function register(){
       const reqForm = document.getElementsByClassName(".reqForm")
       reqForm.submit()
     }
-    async function deleteToServer(fileName){
-      const options = {headers: { "Content-Type": "application/x-www-form-urlencoded"}}
 
-      const res = await axios.post("/delete", "fileName="+fileName, options )
-
-      console.log(res.data)
-
-      return res.data
-    }
-
-    async function uploadToServer (formObj) {
-
-      console.log("upload to server......")
-      console.log(formObj)
-
-      const response = await axios({
-        method: 'post',
-        url: '/upload1',
-        data: formObj, //우리가 받을 formData
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-
-      return response.data
-    }
     //여기까지는 보냈고 이제 파일 중복을 걱정함
 
   </script>
