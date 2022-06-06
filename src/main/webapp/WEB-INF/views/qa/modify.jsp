@@ -158,11 +158,16 @@
                                                     </div>
 
                                                     <div class="input-group mb-3">
-                                                        <span class="input-group-text">첨부파일</span>
-                                                        <div class="float-end uploadHidden">
-                                                            <button type="button" class="btn btn-primary uploadFileBtn">ADD Files</button>
-                                                        </div>
+                                                        <input type="file" name="upload" class="uploadFile form-control" multiple >
                                                     </div>
+
+<%--                                                    <div class="input-group mb-3">--%>
+<%--                                                        <span class="input-group-text">첨부파일</span>--%>
+<%--                                                        <input type="file" name="upload" multiple class="uploadFile">--%>
+<%--                                                        <div class="float-end uploadHidden">--%>
+<%--                                                            <button type="button" class="btn btn-primary uploadFileBtn">ADD Files</button>--%>
+<%--                                                        </div>--%>
+<%--                                                    </div>--%>
 
 
                                                     <div class="input-group mb-3">
@@ -191,7 +196,7 @@
                                         </form>
 <%--                                            modForm--%>
                                             <div>
-                                                <input type="file" name="upload" multiple class="uploadFile">
+
                                                 <button class="uploadBtn">Upload</button>
                                             </div>
                                             <style>
