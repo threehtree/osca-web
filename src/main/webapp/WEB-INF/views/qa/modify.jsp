@@ -159,6 +159,7 @@
 
                                                     <div class="input-group mb-3">
                                                         <input type="file" name="upload" class="uploadFile form-control" multiple >
+                                                        <button type="button" class="uploadBtn btn btn-primary">Upload</button>
                                                     </div>
 
 <%--                                                    <div class="input-group mb-3">--%>
@@ -195,10 +196,7 @@
                                             </div>
                                         </form>
 <%--                                            modForm--%>
-                                            <div>
 
-                                                <button class="uploadBtn">Upload</button>
-                                            </div>
                                             <style>
                                                 .uploadResult {
                                                     display: flex;
@@ -294,11 +292,69 @@
 
     }, false)
 
+    document.querySelector(".uploadBtn").addEventListener("click", (e) => {
+        e.stopPropagation()
+        e.preventDefault()
+//register에서 긇기
+
+        const formObj = new FormData;
+        const fileInput = document.querySelector(".uploadFile")
+
+        const files = fileInput.files
+        console.log(files)
+        //multiple 은 여러게를 의미하고 그럼 배열로 들어오겟지
+
+        for(let i = 0; i<files.length; i++){
+            console.log(files[i])
+            formObj.append("files", files[i])
+            //    formObj 라는 형식에 키|값을 추가하고 잇다
+        }
+        uploadToServer(formObj).then(resultArr =>{
+            uploadResult.innerHTML += resultArr.map( ({uuid,thumbnail,link,fileName,savePath,img }) =>`
+                                <div data-uuid = '\${uuid}' data-img ='\${img}' data-filename = '\${fileName}' data-savepath = '\${savePath}'>
+                                <img src='/view?fileName=\${thumbnail}' >
+                                <button data-link='\${link}' class="delBtn">x</button>
+                                \${fileName}</div>`).join(" ")
+            //끝에 join안넣어주면 배열이라 , 가 사이에 붙네
+        })
+
+    },false)
+
     const modBtn = document.querySelector(".modBtn")
 
-    modBtn.addEventListener("click",(e)=>{
 
-        document.querySelector(".modForm").submit()
+
+    const modForm = document.querySelector(".modForm")
+
+    modBtn.addEventListener("click",(e)=>{
+        e.preventDefault()
+        e.stopPropagation()
+
+        const divArr = document.querySelectorAll(".uploadResult > div")
+
+        let str =""
+        for (let i = 0; i <divArr.length ; i++) {
+            const fileObj = divArr[i]
+
+            if(i===0){
+                const mainImageLink = fileObj.querySelector("img").getAttribute("src")
+                str += `<input type='hidden' name ='mainImage' value='\${mainImageLink}' }>`
+            }//대표이미지
+
+            const uuid = fileObj.getAttribute("data-uuid")
+            const img = fileObj.getAttribute("data-img")
+            const savePath = fileObj.getAttribute("data-savepath")
+            const fileName = fileObj.getAttribute("data-filename")
+            str += `<input type='hidden' name ='uploads[\${i}].uuid' value='\${uuid}' }>`
+            str += `<input type='hidden' name ='uploads[\${i}].img' value='\${img}' }>`
+            str += `<input type='hidden' name ='uploads[\${i}].savePath' value='\${savePath}' }>`
+            str += `<input type='hidden' name ='uploads[\${i}].fileName' value='\${fileName}' }>`
+        }//endfor
+
+        modForm.innerHTML += str
+        // modForm.submit()
+
+
 
     },false)
 
