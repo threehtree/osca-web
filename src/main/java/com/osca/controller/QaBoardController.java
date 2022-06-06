@@ -24,6 +24,7 @@ public class QaBoardController {
 
     @PostMapping("/modify/{qaNo}")
     public String qaModifyPOST(@PathVariable("qaNo") Integer qaNo, QaBoardDTO qaBoardDTO){
+        qaBoardDTO.setQaNo(qaNo);
         qaBoardService.qaUpdate(qaBoardDTO);
 
         return "redirect:/qa/read/"+qaBoardDTO.getQaNo();

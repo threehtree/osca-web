@@ -35,7 +35,9 @@
     </select>
 
     <update id="qaUpdate">
-        update tbl_qaboard set  qaTitle =#{qaTitle}, qaContent = #{qaContent}
+        update tbl_qaboard
+        set  qaTitle =#{qaTitle}, qaContent = #{qaContent}, mainImage =#{mainImage}
+        where qaNo = #{qaNo}
     </update>
 
 

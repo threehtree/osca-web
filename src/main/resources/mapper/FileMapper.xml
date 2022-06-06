@@ -12,7 +12,12 @@
 
 
     <delete id="fileDelete">
-        delete from tbl_attach where uuid = #{uuid}
+        delete from tbl_attach where qaNo = #{qaNo}
     </delete>
+<!--파일수정은 게시글 번호가 잇어야 하지 -->
+    <insert id="fileInsertQaBoard">
+        insert into tbl_attach (uuid, fileName, savepath, img, qaNo)
+        values (#{uuid}, #{fileName}, #{savepath}, #{img}, #{qaNo})
+    </insert>
 
 </mapper>

@@ -352,7 +352,7 @@
         }//endfor
 
         modForm.innerHTML += str
-        // modForm.submit()
+        modForm.submit()
 
 
 

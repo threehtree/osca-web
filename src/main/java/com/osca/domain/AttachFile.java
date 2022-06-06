@@ -14,4 +14,8 @@ public class AttachFile {
     private String fileName;
     private String savepath;
     private boolean img;
+
+    public void setQaNo(Integer qaNo){
+        this.qaNo = qaNo;
+    }
 }

@@ -26,11 +26,26 @@ public class QaBoardServiceImpl implements QaBoardService {
     private final FileMapper fileMapper;
     @Override
     public void qaUpdate(QaBoardDTO qaBoardDTO){
+        //기존파일 모두 삭제
+        fileMapper.fileDelete(qaBoardDTO.getQaNo());
+
+
         QaBoard qaBoard = QaBoard.builder()
                 .qaTitle(qaBoardDTO.getQaTitle())
                 .qaContent(qaBoardDTO.getQaContent())
+                .qaNo(qaBoardDTO.getQaNo())
+                .mainImage(qaBoardDTO.getMainImage())
                 .build();
         qaBoardMapper.qaUpdate(qaBoard);
+
+        for (UploadResultDTO uploadDTO : qaBoardDTO.getUploads()) {
+            AttachFile attachFile = modelMapper.map(uploadDTO, AttachFile.class);
+            attachFile.setQaNo(qaBoard.getQaNo());
+            // 처음에 uploadresultDTO에 qano가 지정되지 않아 qano가 수집 이 안되서
+            // attach File에 임의로 setter를 넣었다
+            //todo check 현재 게시물 삭제 는 업뎃처리 + 첨부파일은 삭제가 필요하다 
+            fileMapper.fileInsertQaBoard(attachFile);
+        }// 여기까지 되야 업뎃 성공
 
     }
 

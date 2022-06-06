@@ -6,5 +6,7 @@ public interface FileMapper {
 
     void fileInsert(AttachFile attachFile);
 
-    void fileDelete(String uuid);
+    void fileDelete(Integer qaNo);
+
+    void fileInsertQaBoard(AttachFile attachFile);
 }
