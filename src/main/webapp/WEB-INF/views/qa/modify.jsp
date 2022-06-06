@@ -188,6 +188,7 @@
     <%--                                            </form>--%>
 
                                             </div>
+                                        </form>
 <%--                                            modForm--%>
                                             <div>
                                                 <input type="file" name="upload" multiple class="uploadFile">
