@@ -1,6 +1,7 @@
 package com.osca.controller;
 
 
+import com.osca.domain.AttachFile;
 import com.osca.domain.QaBoard;
 import com.osca.dto.*;
 import com.osca.service.QaBoardService;
@@ -40,7 +41,10 @@ public class QaBoardController {
     @GetMapping("/read/{qaNo}")
     public String getOneOfQaBoard(@PathVariable ("qaNo") Integer qaNo, QaBoardDTO qaBoardDTO, Model model){
     QaBoardDTO dtoOne =qaBoardService.getOneOfQaBoard(qaBoardDTO);
+//        dtoOne.setUploads(qaBoardService.getFiles(qaNo));
+
         model.addAttribute("qaDTO", dtoOne);
+       
     return "/qa/read";
     }
 
