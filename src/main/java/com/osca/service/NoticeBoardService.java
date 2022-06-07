@@ -9,6 +9,8 @@ public interface NoticeBoardService {
 
     void noInsert(NoticeBoardDTO noticeBoardDTO);
 
+    NoticeBoardDTO getOneNoticeBoard(NoticeBoardDTO noticeBoardDTO);
+
     ListResponseDTO<NoticeBoardDTO> getListOfNoticeBoard(ListDTO listDTO);
 
 }

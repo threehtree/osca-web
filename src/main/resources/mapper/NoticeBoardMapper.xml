@@ -11,6 +11,10 @@
         VALUES (#{noWriter},#{noTitle},#{noContent});
     </insert>
 
+    <select id="getOneOfNoticeBoard" resultType="com.osca.domain.NoticeBoard">
+        select * from tbl_noticeboard where noNo = #{noNo}
+    </select>
+
 
 <!--    -->
     <!--    -->

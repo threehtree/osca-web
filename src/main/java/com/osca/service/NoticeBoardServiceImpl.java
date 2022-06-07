@@ -33,6 +33,15 @@ public class NoticeBoardServiceImpl implements NoticeBoardService{
     }
 
     @Override
+    public NoticeBoardDTO getOneNoticeBoard(NoticeBoardDTO noticeBoardDTO) {
+        NoticeBoard noticeBoard = modelMapper.map(noticeBoardDTO, NoticeBoard.class);
+        noticeBoardMapper.getOneOfNoticeBoard(noticeBoard);
+        NoticeBoardDTO noticeBoardDTO1 = modelMapper.map(noticeBoard, NoticeBoardDTO.class);
+
+        return noticeBoardDTO1;
+    }
+
+    @Override
     public ListResponseDTO<NoticeBoardDTO> getListOfNoticeBoard(ListDTO listDTO) {
 
         List<NoticeBoard> noticeBoardList = noticeBoardMapper.getListOfNoticeBoard(listDTO);

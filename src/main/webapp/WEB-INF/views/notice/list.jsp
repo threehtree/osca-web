@@ -103,13 +103,13 @@
 
 <%--                            </tfoot>--%>
 <%--                            <tbody class="reqMemList">--%>
-<%--                            ${noticeDTO}--%>
+<%--                            ${noDTO}--%>
 <%--                            <tr>--%>
-<%--                                <td class="req-link">${noticeDTO.qaNo}</td>--%>
-<%--                                <td class="req-link">${noticeDTO.qaTitle}</td>--%>
-<%--                                <td class="req-link">${noticeDTO.qaWriter}</td>--%>
-<%--                                <td class="req-link">${noticeDTO.regDate}</td>--%>
-<%--                                <td class="req-link">${noticeDTO.qaDelFlag}</td>--%>
+<%--                                <td class="req-link">${noDTO.qaNo}</td>--%>
+<%--                                <td class="req-link">${noDTO.qaTitle}</td>--%>
+<%--                                <td class="req-link">${noDTO.qaWriter}</td>--%>
+<%--                                <td class="req-link">${noDTO.regDate}</td>--%>
+<%--                                <td class="req-link">${noDTO.qaDelFlag}</td>--%>
 
 
 <%--                            </tr>--%>
@@ -130,18 +130,18 @@
 
                             </tfoot>
                             <tbody class="noticeBoardList">
-                            <c:forEach items="${noticeDTO}" var="noticeDTO">
+                            <c:forEach items="${noDTO}" var="noDTO">
                             <tr>
 <%--                                <td>--%>
-<%--                                <c:if test="${noticeDTO.mainImage !=null}">--%>
-<%--                                    <img src = '${noticeDTO.mainImage}'>--%>
+<%--                                <c:if test="${noDTO.mainImage !=null}">--%>
+<%--                                    <img src = '${noDTO.mainImage}'>--%>
 <%--                                </c:if>--%>
 <%--                                </td>--%>
 <%--                                대표 이미지 없는게 나은것 같은데  --%>
-                                <td data-noNo = "/notice/read/${noticeDTO.noNo}" class="no-link">${noticeDTO.noNo}</td>
-                                <td data-noNo = "/notice/read/${noticeDTO.noNo}" class="no-link">${noticeDTO.noTitle}</td>
-                                <td data-noNo = "/notice/read/${noticeDTO.noNo}" class="no-link">${noticeDTO.noWriter}</td>
-                                <td data-noNo = "/notice/read/${noticeDTO.noNo}" class="no-link">${noticeDTO.regDate}</td>
+                                <td data-noNo = "/notice/read/${noDTO.noNo}" class="no-link">${noDTO.noNo}</td>
+                                <td data-noNo = "/notice/read/${noDTO.noNo}" class="no-link">${noDTO.noTitle}</td>
+                                <td data-noNo = "/notice/read/${noDTO.noNo}" class="no-link">${noDTO.noWriter}</td>
+                                <td data-noNo = "/notice/read/${noDTO.noNo}" class="no-link">${noDTO.regDate}</td>
 
                             </tr>
                             </c:forEach>
