@@ -6,10 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -21,6 +18,16 @@ import java.util.List;
 public class NoticeBoardController {
     private final NoticeBoardService noticeBoardService;
 
+    @GetMapping("/files/{noNo}")
+    @ResponseBody
+    public List<UploadResultDTO> getFiles(@PathVariable("noNo")Integer noNo){return null;}
+
+    @GetMapping("/modify/{noNo}")
+    public String noModify(@PathVariable("noNo")Integer noNo, NoticeBoardDTO noticeBoardDTO, Model model){
+        NoticeBoardDTO dtoOne = noticeBoardService.getOneNoticeBoard(noticeBoardDTO);
+        model.addAttribute("noDTO",dtoOne);
+        return "/notice/modify";
+    }
 
 
     @GetMapping("/read/{noNo}")

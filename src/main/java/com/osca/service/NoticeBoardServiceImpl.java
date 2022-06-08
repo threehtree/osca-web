@@ -1,13 +1,17 @@
 package com.osca.service;
 
 
+import com.osca.domain.AttachFile;
 import com.osca.domain.NoticeBoard;
+import com.osca.domain.NoticeFile;
 import com.osca.domain.QaBoard;
 import com.osca.dto.ListDTO;
 import com.osca.dto.ListResponseDTO;
 import com.osca.dto.NoticeBoardDTO;
 import com.osca.dto.QaBoardDTO;
+import com.osca.mapper.FileMapper;
 import com.osca.mapper.NoticeBoardMapper;
+import com.osca.mapper.NoticeFileMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
@@ -22,13 +26,20 @@ import java.util.stream.Collectors;
 public class NoticeBoardServiceImpl implements NoticeBoardService{
     private final NoticeBoardMapper noticeBoardMapper;
     private final ModelMapper modelMapper;
+    private final NoticeFileMapper noticeFileMapper;
 
 
     @Override
     public void noInsert(NoticeBoardDTO noticeBoardDTO) {
 
         NoticeBoard noticeBoard = modelMapper.map(noticeBoardDTO , NoticeBoard.class);
+
+        List<NoticeFile> files =
+                noticeBoardDTO.getUploads().stream().map(uploadResultDTO -> modelMapper.map(uploadResultDTO,NoticeFile.class)
+                ).collect(Collectors.toList());
+
         noticeBoardMapper.noInsert(noticeBoard);
+        files.forEach(file -> noticeFileMapper.noFileInsert(file));
 
     }
 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.osca.mapper.NoticeFileMapper">
+
+    <insert id="noFileInsert">
+        insert into tbl_noticefile (uuid, fileName, savepath, img, noNo)
+        values (#{uuid}, #{fileName}, #{savepath}, #{img}, last_insert_id())
+    </insert>
+    <!--    qano가 없어도 글 작성이 마지막으로 들어가는 qano니까 lastInsertID도 가능-->
+
+
+    <delete id="noFileDelete">
+        delete from tbl_noticeboard where noNo = #{noNo}
+    </delete>
+
+    <!--파일수정은 게시글 번호가 잇어야 하지 -->
+    <insert id="noFileInsertNoticeBoard">
+        insert into tbl_noticefile (uuid, fileName, savepath, img, noNo)
+        values (#{uuid}, #{fileName}, #{savepath}, #{img}, #{noNo})
+    </insert>
+
+</mapper>

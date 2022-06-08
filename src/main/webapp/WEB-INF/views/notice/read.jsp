@@ -195,8 +195,9 @@
                                     </div>
                                     <div class="my-4">
                                         <div class="noBoardMoveBtn float-end">
-                                            <button data-noNo="/notice/list/${noDTO.noNo}" type="button"
-                                                    class="no-link btn btn-primary listBtn">List
+                                            <button onclick="location.href='/notice/list';"
+                                                    type="button"
+                                                    class="btn btn-primary listBtn">List
                                             </button>
 
                                             <button data-noNo="/notice/modify/${noDTO.noNo}" type="button"
@@ -213,14 +214,6 @@
 
                         </div><!-- end col-->
                     </div><!-- end row-->
-
-                    <div>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
-                            댓글 추가
-                        </button>
-
-                    </div>
 
 
                     <div>

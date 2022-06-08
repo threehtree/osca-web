@@ -6,7 +6,7 @@
 <mapper namespace="com.osca.mapper.FileMapper">
     <insert id="fileInsert">
         insert into tbl_attach (uuid, fileName, savepath, img, qaNo)
-            values (#{uuid}, #{fileName}, #{savepath}, #{img}, last_insert_id())
+            values (#{uuid}, #{fileName}, #{savepath}, #{img}, #{qaNo})
     </insert>
 <!--    qano가 없어도 글 작성이 마지막으로 들어가는 qano니까 lastInsertID도 가능-->
 

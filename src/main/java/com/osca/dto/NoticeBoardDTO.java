@@ -3,6 +3,8 @@ package com.osca.dto;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 public class NoticeBoardDTO {
@@ -18,4 +20,6 @@ public class NoticeBoardDTO {
 
         //중요 공지사항 여부
         private boolean strong;
+
+        private List<UploadResultDTO> uploads = new ArrayList<>();
 }
