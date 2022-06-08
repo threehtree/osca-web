@@ -124,9 +124,27 @@
 
             imgList.innerHTML += str
             regForm.submit()
+        }, false)
 
+        uploadResult.addEventListener("click", (e) => {
+            e.preventDefault()
+            e.stopPropagation()
+
+            if(e.target.getAttribute("class").indexOf("delBtn") < 0){
+                return
+            }
+            const btn = e.target
+            const link = btn.getAttribute("data-link")
+
+            deleteToServer(link).then(result => {
+                btn.closest("div").remove()
+                //현재 e.target의 위치 바로 위에 div값이 있다
+                //이게 화면단 에서 삭제
+            })
 
         }, false)
+
+
 
 
         //===================================================================
@@ -145,6 +163,15 @@
             });
             console.log(response.data)
             return response.data
+        }
+        async function deleteToServer(fileName){
+            const options = {headers: { "Content-Type": "application/x-www-form-urlencoded"}}
+
+            const res = await axios.post("/delete", "fileName="+fileName, options )
+
+            console.log(res.data)
+
+            return res.data
         }
     </script>
 
