@@ -215,15 +215,19 @@
     const linkDiv = document.querySelector(".pagination")
     const actionForm = document.querySelector(".actionForm")
 
+
+
     //=========================================================
+
 
     noticeBoardList.addEventListener("click",(e)=> {
         e.stopPropagation()
         e.preventDefault()
 
-        if(e.target.getAttribute("class").indexOf('no-link')<0){
+        if(e.target.getAttribute("class").indexOf('no-link') <0){
             return
         }
+
         const noNo = e.target.getAttribute("data-noNo")
         actionForm.setAttribute("action",noNo)
         actionForm.submit()

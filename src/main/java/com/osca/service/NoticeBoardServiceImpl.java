@@ -35,8 +35,8 @@ public class NoticeBoardServiceImpl implements NoticeBoardService{
     @Override
     public NoticeBoardDTO getOneNoticeBoard(NoticeBoardDTO noticeBoardDTO) {
         NoticeBoard noticeBoard = modelMapper.map(noticeBoardDTO, NoticeBoard.class);
-        noticeBoardMapper.getOneOfNoticeBoard(noticeBoard);
-        NoticeBoardDTO noticeBoardDTO1 = modelMapper.map(noticeBoard, NoticeBoardDTO.class);
+        NoticeBoard oneOfNoticeBoard = noticeBoardMapper.getOneOfNoticeBoard(noticeBoard);
+        NoticeBoardDTO noticeBoardDTO1 = modelMapper.map(oneOfNoticeBoard, NoticeBoardDTO.class);
 
         return noticeBoardDTO1;
     }

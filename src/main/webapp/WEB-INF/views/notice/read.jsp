@@ -126,7 +126,7 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">읽기</h1>
+                <h1 class="mt-4">공지사항</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                     <li class="breadcrumb-item active">Tables</li>
@@ -153,41 +153,38 @@
                             <div class="col">
                                 <div class="card">
                                     <div class="card-header">
-                                        Board Modify
+                                       1---1
                                     </div>
                                     <div class="card-body">
-
+${noDTO}
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">번호</span>
-                                            <input type="text" class="form-control" name="qaNo" value="${qaDTO.qaNo}"
+                                            <input type="text" class="form-control" name="noNo" value="${noDTO.noNo}"
                                                    readonly>
                                         </div>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">제목</span>
-                                            <input type="text" class="form-control" name="qaTitle"
-                                                   value="${qaDTO.qaTitle}" readonly>
+                                            <input type="text" class="form-control" name="noTitle"
+                                                   value="${noDTO.noTitle}" readonly>
                                         </div>
 
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">내용</span>
-                                            <textarea class="form-control col-sm-5" rows="5" name="qaContent"
-                                                      readonly>${qaDTO.qaContent}</textarea>
+                                            <textarea class="form-control col-sm-5" rows="5" name="noContent"
+                                                      readonly>${noDTO.noContent}</textarea>
                                         </div>
 
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">작성자</span>
-                                            <input type="text" class="form-control" name="qaWriter"
-                                                   value="${qaDTO.qaWriter}" readonly>
+                                            <input type="text" class="form-control" name="noWriter"
+                                                   value="${noDTO.noWriter}" readonly>
                                         </div>
 
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">작성일자</span>
-                                            <input type="text" class="form-control" value="${qaDTO.regDate}" readonly>
+                                            <input type="text" class="form-control" value="${noDTO.regDate}" readonly>
                                         </div>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text">수정일자</span>
-                                            <input type="text" class="form-control" value="" readonly>
-                                        </div>
+
 
                                         <div class="pictures">
                                             <%--                            <c:if test="${qaDTO.mainImage != null}">--%>
@@ -198,12 +195,12 @@
                                     </div>
                                     <div class="my-4">
                                         <div class="qaBoardMoveBtn float-end">
-                                            <button data-qaNo="/qa/modify/${qaDTO.qaNo}" type="button"
-                                                    class="qa-link btn btn-primary listBtn">List
+                                            <button data-noNo="/notice/modify/${noDTO.noNo}" type="button"
+                                                    class="no-link btn btn-primary listBtn">List
                                             </button>
 
-                                            <button data-qaNo="/qa/modify/${qaDTO.qaNo}" type="button"
-                                                    class="qa-link btn btn-secondary">modify
+                                            <button data-noNo="/notice/modify/${noDTO.noNo}" type="button"
+                                                    class="no-link btn btn-secondary">modify
                                             </button>
 
 
