@@ -1,15 +1,9 @@
 package com.osca.service;
 
 
-import com.osca.domain.AttachFile;
 import com.osca.domain.NoticeBoard;
 import com.osca.domain.NoticeFile;
-import com.osca.domain.QaBoard;
-import com.osca.dto.ListDTO;
-import com.osca.dto.ListResponseDTO;
-import com.osca.dto.NoticeBoardDTO;
-import com.osca.dto.QaBoardDTO;
-import com.osca.mapper.FileMapper;
+import com.osca.dto.*;
 import com.osca.mapper.NoticeBoardMapper;
 import com.osca.mapper.NoticeFileMapper;
 import lombok.RequiredArgsConstructor;
@@ -51,6 +45,18 @@ public class NoticeBoardServiceImpl implements NoticeBoardService{
 
         return noticeBoardDTO1;
     }
+
+    @Override
+    public List<UploadResultDTO> getNoFiles(Integer noNo) {
+
+        List<NoticeFile> noticeFiles = noticeBoardMapper.selectNoFiles(noNo);
+
+
+        return noticeFiles.stream().map(noticeFile -> modelMapper.map(noticeFile, UploadResultDTO.class))
+                .collect(Collectors.toList());
+    }
+
+
 
     @Override
     public ListResponseDTO<NoticeBoardDTO> getListOfNoticeBoard(ListDTO listDTO) {

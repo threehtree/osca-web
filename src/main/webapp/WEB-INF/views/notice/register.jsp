@@ -12,7 +12,9 @@
                             <div class="card-header"><h3 class="text-center font-weight-light my-4">공지사항 작성</h3></div>
                             <div class="card-body">
                                 <form class="regForm" action="/notice/register" method="post">
+                                    <div class="imgList">
 
+                                    </div>
                                     <div class="mb-3">
                                         <label>제목</label>
                                         <input class="form-control" name="noTitle" type="text"/>
@@ -93,26 +95,6 @@
                                 <img src='/view?fileName=\${thumbnail}' >
                                 <button data-link='\${link}' class="delBtn">x</button>
                                 \${fileName}</div>`).join(" ")
-
-
-                const divArr = document.querySelectorAll(".uploadResult > div")
-
-                let str = ""
-                for (let i = 0; i < divArr.length; i++) {
-                    const fileObj = divArr[i]
-
-                    const uuid = fileObj.getAttribute("data-uuid")
-                    const img = fileObj.getAttribute("data-img")
-                    const savePath = fileObj.getAttribute("data-savepath")
-                    const fileName = fileObj.getAttribute("data-filename")
-                    str += `<input type='hidden' name ='uploads[\${i}].uuid' value='\${uuid}' }>`
-                    str += `<input type='hidden' name ='uploads[\${i}].img' value='\${img}' }>`
-                    str += `<input type='hidden' name ='uploads[\${i}].savePath' value='\${savePath}' }>`
-                    str += `<input type='hidden' name ='uploads[\${i}].fileName' value='\${fileName}' }>`
-                }//endfor
-
-                regForm.innerHTML += str
-
                 //끝에 join안넣어주면 배열이라 , 가 사이에 붙네
             })
 
@@ -122,7 +104,25 @@
             e.preventDefault()
             e.stopPropagation()
             console.log("register")
+            const divArr = document.querySelectorAll(".uploadResult > div")
 
+            let str = ""
+            for (let i = 0; i < divArr.length; i++) {
+                const fileObj = divArr[i]
+
+                const uuid = fileObj.getAttribute("data-uuid")
+                const img = fileObj.getAttribute("data-img")
+                const savePath = fileObj.getAttribute("data-savepath")
+                const fileName = fileObj.getAttribute("data-filename")
+                str += `<input type='hidden' name ='uploads[\${i}].uuid' value='\${uuid}' }>`
+                str += `<input type='hidden' name ='uploads[\${i}].img' value='\${img}' }>`
+                str += `<input type='hidden' name ='uploads[\${i}].savePath' value='\${savePath}' }>`
+                str += `<input type='hidden' name ='uploads[\${i}].fileName' value='\${fileName}' }>`
+            }//endfor
+
+            const imgList = document.querySelector(".imgList")
+
+            imgList.innerHTML += str
             regForm.submit()
 
 

@@ -154,6 +154,7 @@
                                 <div class="card">
                                     <div class="card-header">
                                        1---1
+
                                     </div>
                                     <div class="card-body">
 
@@ -184,6 +185,7 @@
                                             <span class="input-group-text">작성일자</span>
                                             <input type="text" class="form-control" value="${noDTO.regDate}" readonly>
                                         </div>
+
 
 
                                         <div class="pictures">
@@ -280,12 +282,30 @@
 <script>
 
 
-
+    const noNO = ${noDTO.noNo}
     const noBoardMoveBtn = document.querySelector(".noBoardMoveBtn")
 
     const actionForm = document.querySelector(".actionForm")
 
     //=======================================================
+
+
+    document.addEventListener('DOMContentLoaded', (e) => {
+        axios.get("/notice/files/${noDTO.noNo}").then(
+            res => {
+
+                const arr = res.data
+                console.log(res)
+                let str = ''
+                for (let i = 0; i < arr.length; i++) {
+                    str += `<img src='/view?fileName=\${arr[i].link}'>`
+                }
+                console.log(res)
+                document.querySelector(".pictures").innerHTML = str
+            }
+        )
+    }, false)
+
     noBoardMoveBtn.addEventListener("click", (e) => {
         e.preventDefault()
         e.stopPropagation()

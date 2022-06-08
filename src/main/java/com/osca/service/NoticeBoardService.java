@@ -1,15 +1,16 @@
 package com.osca.service;
 
-import com.osca.dto.ListDTO;
-import com.osca.dto.ListResponseDTO;
-import com.osca.dto.NoticeBoardDTO;
-import com.osca.dto.QaBoardDTO;
+import com.osca.dto.*;
+
+import java.util.List;
 
 public interface NoticeBoardService {
 
     void noInsert(NoticeBoardDTO noticeBoardDTO);
 
     NoticeBoardDTO getOneNoticeBoard(NoticeBoardDTO noticeBoardDTO);
+
+    List<UploadResultDTO> getNoFiles(Integer noNo);
 
     ListResponseDTO<NoticeBoardDTO> getListOfNoticeBoard(ListDTO listDTO);
 

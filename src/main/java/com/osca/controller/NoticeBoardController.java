@@ -20,7 +20,9 @@ public class NoticeBoardController {
 
     @GetMapping("/files/{noNo}")
     @ResponseBody
-    public List<UploadResultDTO> getFiles(@PathVariable("noNo")Integer noNo){return null;}
+    public List<UploadResultDTO> getNoFiles(@PathVariable("noNo") Integer noNo){
+        return noticeBoardService.getNoFiles(noNo);
+    }
 
     @GetMapping("/modify/{noNo}")
     public String noModify(@PathVariable("noNo")Integer noNo, NoticeBoardDTO noticeBoardDTO, Model model){

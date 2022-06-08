@@ -30,4 +30,11 @@
         select count(*) from tbl_noticeboard where noDelFlag != 1
     </select>
 
+    <!--이미지 목록요청-->
+    <select id="selectNoFiles" resultType="com.osca.domain.NoticeFile">
+        select * from tbl_noticefile where noNo = #{noNo}
+    </select>
+
+
+
 </mapper>
