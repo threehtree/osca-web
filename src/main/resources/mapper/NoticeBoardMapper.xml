@@ -15,6 +15,12 @@
         select * from tbl_noticeboard where noNo = #{noNo}
     </select>
 
+    <update id="noUpdate">
+        update tbl_noticeboard
+        set noTitle = #{noTitle}, noContent = #{noContent}
+        where noNo = #{noNo}
+    </update>
+
 
 <!--    -->
     <!--    -->

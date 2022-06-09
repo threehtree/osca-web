@@ -1,8 +1,10 @@
 package com.osca.service;
 
 
+import com.osca.domain.AttachFile;
 import com.osca.domain.NoticeBoard;
 import com.osca.domain.NoticeFile;
+import com.osca.domain.QaBoard;
 import com.osca.dto.*;
 import com.osca.mapper.NoticeBoardMapper;
 import com.osca.mapper.NoticeFileMapper;
@@ -44,6 +46,19 @@ public class NoticeBoardServiceImpl implements NoticeBoardService{
         NoticeBoardDTO noticeBoardDTO1 = modelMapper.map(oneOfNoticeBoard, NoticeBoardDTO.class);
 
         return noticeBoardDTO1;
+    }
+
+    @Override
+    public void noUpdate(NoticeBoardDTO noticeBoardDTO) {
+        noticeFileMapper.noFileDelete(noticeBoardDTO.getNoNo());
+        NoticeBoard noticeBoard = modelMapper.map(noticeBoardDTO, NoticeBoard.class);
+        noticeBoardMapper.noUpdate(noticeBoard);
+        
+        for (UploadResultDTO uploadResultDTO: noticeBoardDTO.getUploads()){
+            NoticeFile noticeFile = modelMapper.map(uploadResultDTO, NoticeFile.class);
+            noticeFile.setNoNo(noticeBoard.getNoNo());
+            noticeFileMapper.noFileInsertNoticeBoard(noticeFile);
+        }
     }
 
     @Override

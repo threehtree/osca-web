@@ -24,6 +24,14 @@ public class NoticeBoardController {
         return noticeBoardService.getNoFiles(noNo);
     }
 
+
+    @PostMapping("/modify/{noNo}")
+    public String noModifyPOST(@PathVariable("noNo") Integer noNo,NoticeBoardDTO noticeBoardDTO){
+        noticeBoardDTO.setNoNo(noNo);
+        noticeBoardService.noUpdate(noticeBoardDTO);
+        return "redirect:/notice/read"+noticeBoardDTO.getNoNo();
+    }
+
     @GetMapping("/modify/{noNo}")
     public String noModify(@PathVariable("noNo")Integer noNo, NoticeBoardDTO noticeBoardDTO, Model model){
         NoticeBoardDTO dtoOne = noticeBoardService.getOneNoticeBoard(noticeBoardDTO);

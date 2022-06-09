@@ -19,5 +19,5 @@ public class NoticeBoard {
     private int noDelFlag;
 
     //중요 공지사항 여부
-    private boolean strong;
+    private boolean noticeRead;
 }

@@ -132,7 +132,7 @@
                                         </div>
                                         <div class="card-body">
 
-                                        <form class="modForm" action="/qa/modify/${qaDTO.qaNo}" method="post">
+                                        <form class="modForm" action="/notice/modify/${noDTO.noNo}" method="post">
                                             <input type="hidden" name="page" value="${listDTO.page}">
                                             <input type="hidden" name="size" value="${listDTO.size}">
                                             <input type="hidden" name="type" value="${listDTO.type}">
@@ -179,7 +179,8 @@
                                                         </div>
                                                     </div>
     <%--                                            </form>--%>
-
+                                                <div class="uploadResult">
+                                                </div>
                                             </div>
                                         </form>
 <%--                                            modForm--%>
@@ -242,7 +243,7 @@
     const uploadResult = document.querySelector(".uploadResult")
 
     function loadImage(){
-        axios.get("/qa/files/${qaDTO.qaNo}").then(
+        axios.get("/notice/files/${noDTO.noNo}").then(
             res => {
                 const resultArr = res.data
                     uploadResult.innerHTML += resultArr.map( ({uuid,thumbnail,link,fileName,savePath,img }) =>`
@@ -275,7 +276,7 @@
         })
 
     }, false)
-
+////===========================================================000000000000000000000000000000000
     document.querySelector(".uploadBtn").addEventListener("click", (e) => {
         e.stopPropagation()
         e.preventDefault()
@@ -306,6 +307,8 @@
 
     const modBtn = document.querySelector(".modBtn")
     const modForm = document.querySelector(".modForm")
+
+
 
     modBtn.addEventListener("click",(e)=>{
         e.preventDefault()
@@ -364,7 +367,34 @@
 <%--        //reply보면 post로 되어있네 넘겨주는 부분이 필요해--%>
 <%--    },false)--%>
 
+    async function deleteToServer(fileName){
+        const options = {headers: { "Content-Type": "application/x-www-form-urlencoded"}}
 
+        const res = await axios.post("/delete", "fileName="+fileName, options )
+
+        console.log(res.data)
+
+        return res.data
+    }
+
+
+
+    async function uploadToServer (formObj) {
+
+        console.log("upload to server......")
+        console.log(formObj)
+
+        const response = await axios({
+            method: 'post',
+            url: '/upload1',
+            data: formObj, //우리가 받을 formData
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
+
+        return response.data
+    }
 
 
 

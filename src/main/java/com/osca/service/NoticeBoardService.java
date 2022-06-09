@@ -10,6 +10,9 @@ public interface NoticeBoardService {
 
     NoticeBoardDTO getOneNoticeBoard(NoticeBoardDTO noticeBoardDTO);
 
+    void noUpdate(NoticeBoardDTO noticeBoardDTO);
+
+
     List<UploadResultDTO> getNoFiles(Integer noNo);
 
     ListResponseDTO<NoticeBoardDTO> getListOfNoticeBoard(ListDTO listDTO);

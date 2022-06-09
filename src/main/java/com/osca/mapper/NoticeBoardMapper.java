@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface NoticeBoardMapper {
     void noInsert(NoticeBoard noticeBoard);
-
     NoticeBoard getOneOfNoticeBoard(NoticeBoard noticeBoard);
+    void noUpdate(NoticeBoard noticeBoard);
 
     List<NoticeBoard> getListOfNoticeBoard(ListDTO listDTO);
     int noticeGetTotal(ListDTO listDTO);

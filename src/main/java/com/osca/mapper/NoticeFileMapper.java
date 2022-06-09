@@ -10,7 +10,7 @@ public interface NoticeFileMapper {
 
     void noFileDelete(Integer noNo);
 
-    void noFileInsertQaBoard(NoticeFile noticeFile);
+    void noFileInsertNoticeBoard(NoticeFile noticeFile);
 
 
 }

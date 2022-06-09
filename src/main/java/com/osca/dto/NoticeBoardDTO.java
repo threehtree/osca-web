@@ -19,7 +19,7 @@ public class NoticeBoardDTO {
         private int noDelFlag;
 
         //중요 공지사항 여부
-        private boolean strong;
+        private boolean noticeRead;
 
         private List<UploadResultDTO> uploads = new ArrayList<>();
 }
