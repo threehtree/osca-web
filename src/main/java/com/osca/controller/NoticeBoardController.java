@@ -29,7 +29,7 @@ public class NoticeBoardController {
     public String noModifyPOST(@PathVariable("noNo") Integer noNo,NoticeBoardDTO noticeBoardDTO){
         noticeBoardDTO.setNoNo(noNo);
         noticeBoardService.noUpdate(noticeBoardDTO);
-        return "redirect:/notice/read"+noticeBoardDTO.getNoNo();
+        return "redirect:/notice/read/"+noticeBoardDTO.getNoNo();
     }
 
     @GetMapping("/modify/{noNo}")

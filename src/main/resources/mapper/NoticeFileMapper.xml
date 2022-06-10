@@ -13,7 +13,7 @@
 
 
     <delete id="noFileDelete">
-        delete from tbl_noticeboard where noNo = #{noNo}
+        delete from tbl_noticefile where noNo = #{noNo}
     </delete>
 
     <!--파일수정은 게시글 번호가 잇어야 하지 -->
@@ -21,5 +21,7 @@
         insert into tbl_noticefile (uuid, fileName, savepath, img, noNo)
         values (#{uuid}, #{fileName}, #{savepath}, #{img}, #{noNo})
     </insert>
+
+
 
 </mapper>

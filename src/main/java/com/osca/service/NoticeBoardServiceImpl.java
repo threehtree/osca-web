@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -48,18 +49,31 @@ public class NoticeBoardServiceImpl implements NoticeBoardService{
         return noticeBoardDTO1;
     }
 
+
+
+
     @Override
     public void noUpdate(NoticeBoardDTO noticeBoardDTO) {
         noticeFileMapper.noFileDelete(noticeBoardDTO.getNoNo());
+
         NoticeBoard noticeBoard = modelMapper.map(noticeBoardDTO, NoticeBoard.class);
+
         noticeBoardMapper.noUpdate(noticeBoard);
-        
-        for (UploadResultDTO uploadResultDTO: noticeBoardDTO.getUploads()){
-            NoticeFile noticeFile = modelMapper.map(uploadResultDTO, NoticeFile.class);
+
+
+        for (UploadResultDTO uploadDTO: noticeBoardDTO.getUploads()){
+            NoticeFile noticeFile = modelMapper.map(uploadDTO, NoticeFile.class);
             noticeFile.setNoNo(noticeBoard.getNoNo());
             noticeFileMapper.noFileInsertNoticeBoard(noticeFile);
+
         }
+
+
     }
+
+
+
+
 
     @Override
     public List<UploadResultDTO> getNoFiles(Integer noNo) {

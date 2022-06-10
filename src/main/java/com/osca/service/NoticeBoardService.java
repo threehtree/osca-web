@@ -1,9 +1,11 @@
 package com.osca.service;
 
 import com.osca.dto.*;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Transactional
 public interface NoticeBoardService {
 
     void noInsert(NoticeBoardDTO noticeBoardDTO);

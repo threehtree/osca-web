@@ -337,36 +337,6 @@
 
     },false)
 
-<%--    const linkDiv = document.querySelector(".pagination")--%>
-<%--    const actionForm = document.querySelector(".actionForm")--%>
-
-
-<%--    //=========================================================--%>
-
-<%--    //================================================================--%>
-
-
-
-
-
-<%--    linkDiv.addEventListener("click", (e) => {--%>
-<%--        e.stopPropagation()--%>
-<%--        e.preventDefault()--%>
-
-<%--        const target = e.target--%>
-
-<%--        if(target.getAttribute("class") !== 'page-link'){--%>
-<%--            return--%>
-<%--        }--%>
-
-<%--        const pageNum = target.getAttribute("href")--%>
-<%--        actionForm.querySelector("input[name='page']").value = pageNum--%>
-<%--        actionForm.setAttribute("action","/qa/list")--%>
-<%--        actionForm.submit()--%>
-<%--        //todo 현재 진짜 end 값이 안되는데 size를 넘기는 부분이--%>
-<%--        //reply보면 post로 되어있네 넘겨주는 부분이 필요해--%>
-<%--    },false)--%>
-
     async function deleteToServer(fileName){
         const options = {headers: { "Content-Type": "application/x-www-form-urlencoded"}}
 

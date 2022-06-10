@@ -28,8 +28,6 @@ public class QaBoardServiceImpl implements QaBoardService {
     public void qaUpdate(QaBoardDTO qaBoardDTO){
         //기존파일 모두 삭제
         fileMapper.fileDelete(qaBoardDTO.getQaNo());
-
-
         QaBoard qaBoard = QaBoard.builder()
                 .qaTitle(qaBoardDTO.getQaTitle())
                 .qaContent(qaBoardDTO.getQaContent())
