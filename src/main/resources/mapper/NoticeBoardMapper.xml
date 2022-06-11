@@ -29,17 +29,34 @@
 
 <!--    -->
     <!--    -->
+<!--    <select id="getListOfNoticeBoard" resultType="com.osca.domain.NoticeBoard">-->
+<!--        select *-->
+<!--        from tbl_noticeboard-->
+<!--        where noDelFlag != 1-->
+<!--        order by noNo desc-->
+<!--        limit #{skip}, #{size}-->
+<!--    </select>-->
+<!--    -->
     <select id="getListOfNoticeBoard" resultType="com.osca.domain.NoticeBoard">
-        select *
-        from tbl_noticeboard
-        where noDelFlag != 1
-        order by noNo desc
-        limit #{skip}, #{size}
+
+        (select noNo,noTitle,noWriter,regDate,noDelFlag,noticeRead
+        from tbl_noticeboard as a where noticeRead = 1 and noDelFlag != 1
+        order by noNo desc limit 10)
+        union
+        (select noNo,noTitle,noWriter,regDate,noDelFlag,noticeRead
+        from tbl_noticeboard as b where noticeRead = 0 and noDelFlag != 1
+        order by noNo desc)  limit #{skip}, #{size};
+
     </select>
 
+<!--    <select id="noticeGetTotal" resultType="int">-->
+<!--        select count(*) from tbl_noticeboard where noDelFlag != 1-->
+<!--    </select>-->
+
     <select id="noticeGetTotal" resultType="int">
-        select count(*) from tbl_noticeboard where noDelFlag != 1
+        select count(*) from tbl_noticeboard where noticeRead = 0 and noDelFlag != 1
     </select>
+
 
     <!--이미지 목록요청-->
     <select id="selectNoFiles" resultType="com.osca.domain.NoticeFile">

@@ -129,8 +129,9 @@
                             <tfoot>
 
                             </tfoot>
+                            ${noDTO}
                             <tbody class="noticeBoardList">
-                            <c:forEach items="${noDTO}" var="noDTO">
+                            <c:forEach items="${noDTO}" var="noDTO" >
                             <tr>
 <%--                                <td>--%>
 <%--                                <c:if test="${noDTO.mainImage !=null}">--%>
@@ -138,7 +139,7 @@
 <%--                                </c:if>--%>
 <%--                                </td>--%>
 <%--                                대표 이미지 없는게 나은것 같은데  --%>
-                                <td data-noNo = "/notice/read/${noDTO.noNo}" class="no-link">${noDTO.noNo}</td>
+                                <td  data-noNo = "/notice/read/${noDTO.noNo}" class="no-link">${noDTO.noNo}</td>
                                 <td data-noNo = "/notice/read/${noDTO.noNo}" class="no-link">${noDTO.noTitle}</td>
                                 <td data-noNo = "/notice/read/${noDTO.noNo}" class="no-link">${noDTO.noWriter}</td>
                                 <td data-noNo = "/notice/read/${noDTO.noNo}" class="no-link">${noDTO.regDate}</td>

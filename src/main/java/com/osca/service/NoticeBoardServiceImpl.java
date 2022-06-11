@@ -109,7 +109,7 @@ public class NoticeBoardServiceImpl implements NoticeBoardService{
 
         return ListResponseDTO.<NoticeBoardDTO>builder()
                 .dtoList(dtoList)
-                .total(noticeBoardMapper.noticeGetTotal(listDTO))
+                .total(noticeBoardMapper.noticeGetTotal(listDTO)+10)
                 .build();
     }
 
