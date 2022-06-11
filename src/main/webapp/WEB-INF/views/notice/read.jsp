@@ -199,15 +199,16 @@
                                         <div class="noBoardMoveBtn float-end">
                                             <button onclick="location.href='/notice/list';"
                                                     type="button"
-                                                    class="btn btn-primary listBtn">List
+                                                    class="btn btn-secondary listBtn">List
                                             </button>
 
                                             <button data-noNo="/notice/modify/${noDTO.noNo}" type="button"
-                                                    class="no-link btn btn-secondary">modify
+                                                    class="no-link btn btn-primary">수정하기
                                             </button>
+                                            <button data-noNo="/notice/delete/${noDTO.noNo}" type="button"
+                                                    class="removeBtn btn btn-danger">삭제하기</button>
 
-
-                                        </div>
+                                       </div>
                                     </div>
 
 
@@ -284,6 +285,7 @@
 
     const noNO = ${noDTO.noNo}
     const noBoardMoveBtn = document.querySelector(".noBoardMoveBtn")
+    const removeBtn = document.querySelector(".removeBtn")
 
     const actionForm = document.querySelector(".actionForm")
 
@@ -311,7 +313,7 @@
         e.stopPropagation()
 
 
-        if (e.target.getAttribute("class").indexOf('no-link') < 0) {
+        if (e.target.getAttribute("class").indexOf('no-link') > 0) {
             return
         }
         const noNo = e.target.getAttribute("data-noNo")
@@ -319,6 +321,15 @@
         actionForm.submit() //
     }, false)
 
+    removeBtn.addEventListener("click", (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+
+        const noNo = e.target.getAttribute("data-noNo")
+        actionForm.setAttribute("action", noNo)
+        actionForm.setAttribute("method", "post")
+        actionForm.submit() //
+    }, false)
 
     //========================================================
 

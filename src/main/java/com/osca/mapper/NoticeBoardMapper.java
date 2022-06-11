@@ -11,6 +11,7 @@ public interface NoticeBoardMapper {
     void noInsert(NoticeBoard noticeBoard);
     NoticeBoard getOneOfNoticeBoard(NoticeBoard noticeBoard);
     void noUpdate(NoticeBoard noticeBoard);
+    void noDelUpdate(NoticeBoard noticeBoard);
 
     List<NoticeBoard> getListOfNoticeBoard(ListDTO listDTO);
     int noticeGetTotal(ListDTO listDTO);

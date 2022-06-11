@@ -20,6 +20,11 @@
         set noTitle = #{noTitle}, noContent = #{noContent}
         where noNo = #{noNo}
     </update>
+    <update id="noDelUpdate">
+        update tbl_noticeboard
+        set noTitle = 'DELETE', noContent = 'DELETE', noWriter= 'DELETE', noDelFlag = 1
+        where noNo = #{noNo}
+    </update>
 
 
 <!--    -->

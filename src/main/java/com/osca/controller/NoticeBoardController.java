@@ -24,6 +24,13 @@ public class NoticeBoardController {
         return noticeBoardService.getNoFiles(noNo);
     }
 
+    @PostMapping("/delete/{noNo}")
+    public String noDelModifyPOST(@PathVariable("noNo") Integer noNo,NoticeBoardDTO noticeBoardDTO){
+        noticeBoardDTO.setNoNo(noNo);
+        noticeBoardService.noDelUpdate(noticeBoardDTO);
+        return "redirect:/notice/list";
+    }
+
 
     @PostMapping("/modify/{noNo}")
     public String noModifyPOST(@PathVariable("noNo") Integer noNo,NoticeBoardDTO noticeBoardDTO){

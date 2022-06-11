@@ -14,6 +14,8 @@ public interface NoticeBoardService {
 
     void noUpdate(NoticeBoardDTO noticeBoardDTO);
 
+    void noDelUpdate(NoticeBoardDTO noticeBoardDTO);
+
 
     List<UploadResultDTO> getNoFiles(Integer noNo);
 

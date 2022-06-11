@@ -70,6 +70,16 @@ public class NoticeBoardServiceImpl implements NoticeBoardService{
 
 
     }
+    @Override
+    public void noDelUpdate(NoticeBoardDTO noticeBoardDTO) {
+        noticeFileMapper.noFileDelete(noticeBoardDTO.getNoNo());
+
+        NoticeBoard noticeBoard = modelMapper.map(noticeBoardDTO, NoticeBoard.class);
+
+        noticeBoardMapper.noDelUpdate(noticeBoard);
+
+
+    }
 
 
 
