@@ -167,6 +167,10 @@
                                                         <input type="text" class="form-control" value="${noDTO.regDate}" readonly>
                                                     </div>
 
+                                                    <div class="imgList">
+
+                                                    </div>
+
                                                     <div class="uploadResult">
                                                     </div>
 
@@ -174,7 +178,7 @@
                                                         <div class="float-end">
                                                             <button type="button" class="btn btn-primary listBtn">List</button>
 
-                                                            <button type="button" class="btn btn-secondary modBtn">작성완료</button>
+                                                            <button type="button" class="modBtn btn btn-secondary ">작성완료</button>
 
                                                         </div>
                                                     </div>
@@ -307,6 +311,7 @@
 
     const modBtn = document.querySelector(".modBtn")
     const modForm = document.querySelector(".modForm")
+    const imgList = document.querySelector(".imgList")
 
 
 
@@ -330,7 +335,7 @@
             str += `<input type='hidden' name ='uploads[\${i}].fileName' value='\${fileName}' }>`
         }//endfor
 
-        modForm.innerHTML += str
+        imgList.innerHTML += str
         modForm.submit()
 
 
