@@ -12,6 +12,13 @@
                             <div class="card-header"><h3 class="text-center font-weight-light my-4">게시글 작성</h3></div>
                             <div class="card-body">
                                 <form class="regForm" action="/notice/register" method="post">
+
+                                    <div class="mb-3">
+                                        <label>공지사항</label>
+                                       <input type="checkbox"  name="noticeRead" value=1>
+                                    </div>
+
+
                                     <div class="imgList">
 
                                     </div>

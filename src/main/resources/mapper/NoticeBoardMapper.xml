@@ -7,8 +7,8 @@
 
     <!--crud-->
     <insert id="noInsert">
-        insert into tbl_noticeboard (noWriter, noTitle, noContent)
-        VALUES (#{noWriter},#{noTitle},#{noContent});
+        insert into tbl_noticeboard (noWriter, noTitle, noContent,noticeRead)
+        VALUES (#{noWriter},#{noTitle},#{noContent},#{noticeRead});
     </insert>
 
     <select id="getOneOfNoticeBoard" resultType="com.osca.domain.NoticeBoard">

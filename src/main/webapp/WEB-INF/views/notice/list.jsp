@@ -141,10 +141,9 @@
 <%--                                대표 이미지 없는게 나은것 같은데  --%>
                                 <td data-noNo = "/notice/read/${noDTO.noNo}" class="no-link">
                                     <c:if test="${noDTO.noticeRead}"><b>공지사항</b></c:if>
-                                    <c:if test="${!noDTO.noticeRead}">  ${noDTO.noNo}</c:if>
-
+                                    <c:if test="${!noDTO.noticeRead}">${noDTO.noNo}</c:if>
                                 </td>
-                                <td  data-noNo = "/notice/read/${noDTO.noNo}" class="no-link">${noDTO.noNo}</td>
+<%--                                <td  data-noNo = "/notice/read/${noDTO.noNo}" class="no-link">${noDTO.noNo}</td>--%>
                                 <td data-noNo = "/notice/read/${noDTO.noNo}" class="no-link">${noDTO.noTitle}</td>
                                 <td data-noNo = "/notice/read/${noDTO.noNo}" class="no-link">${noDTO.noWriter}</td>
                                 <td data-noNo = "/notice/read/${noDTO.noNo}" class="no-link">${noDTO.regDate}</td>
