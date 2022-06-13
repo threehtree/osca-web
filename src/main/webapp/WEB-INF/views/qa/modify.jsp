@@ -283,7 +283,7 @@
         }
         const btn = e.target
         const link = btn.getAttribute("data-link")
-
+        alert(link)
         deleteToServer(link).then(result => {
             btn.closest("div").remove()
             //현재 e.target의 위치 바로 위에 div값이 있다

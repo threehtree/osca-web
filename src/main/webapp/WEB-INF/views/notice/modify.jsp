@@ -167,12 +167,12 @@
                                                         <input type="text" class="form-control" value="${noDTO.regDate}" readonly>
                                                     </div>
 
-                                                    <div class="imgList">
+                                                    <div class="imgList mb-3">
 
                                                     </div>
 
-                                                    <div class="uploadResult">
-                                                    </div>
+<%--                                                    <div class="uploadResult">--%>
+<%--                                                    </div>--%>
 
                                                     <div class="my-4">
                                                         <div class="float-end">
@@ -183,7 +183,7 @@
                                                         </div>
                                                     </div>
     <%--                                            </form>--%>
-                                                <div class="uploadResult">
+                                                <div class="uploadResult flex-column w-25 h-100">
                                                 </div>
                                             </div>
                                         </form>
