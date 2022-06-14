@@ -14,9 +14,17 @@
             <appender-ref ref="console" />
         </logger>
 
+        <logger name="org.springframework.web" level="TRACE" additivity="false">
+            <appender-ref ref="console" />
+        </logger>
+
+
         <logger name="org.springframework.security" level="TRACE" additivity="false">
             <appender-ref ref="console" />
         </logger>
+
+<!--        시큐리티 설정 -->
+
 
         <logger name="com.osca" level="INFO" additivity="false">
             <appender-ref ref="console" />
