@@ -53,6 +53,12 @@ dependencies {
     //AOP 작업할때 이미 등록해놓음 [트랜젝션]
     implementation 'org.springframework:spring-webmvc:5.3.19'
 
+    implementation 'org.springframework.security:spring-security-core:5.6.2'
+    implementation 'org.springframework.security:spring-security-config:5.6.2'
+    implementation 'org.springframework.security:spring-security-taglibs:5.6.2'
+    implementation 'org.springframework.security:spring-security-web:5.6.2'
+    //Spring Security 설정
+
     //log4j2
     // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
     implementation 'org.apache.logging.log4j:log4j-core:2.17.2'
@@ -99,6 +105,7 @@ dependencies {
     implementation 'javax.mail:mail:1.4.7'
 // https://mvnrepository.com/artifact/org.springframework/spring-context-support
     implementation 'org.springframework:spring-context-support:5.3.20'
+
 
 
 
