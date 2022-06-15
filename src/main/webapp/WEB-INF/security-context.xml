@@ -10,10 +10,18 @@
 
         <security:form-login />
 
+        <security:intercept-url pattern="/sample/all"></security:intercept-url>
+        <security:intercept-url pattern="/sample/member" access="hasRole('ROLE_MEMBER')"></security:intercept-url>
     </security:http>
 
 
     <security:authentication-manager>
+        <security:authentication-provider>
+            <security:password-encoder ref="passwordEncoder"></security:password-encoder>
+            <security:user-service>
+                <security:user name="user00" authorities="ROLE_MEMBER" password="$2a$10$4XtwtjuIB0WDtlaRAYggjuvGhj8wgywdGxXs0EkqMVukIY34eHs0K"></security:user>
+            </security:user-service>
+        </security:authentication-provider>
 
     </security:authentication-manager>
 

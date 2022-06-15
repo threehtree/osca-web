@@ -14,7 +14,7 @@
             <appender-ref ref="console" />
         </logger>
 
-        <logger name="org.springframework.web" level="TRACE" additivity="false">
+        <logger name="org.springframework.web" level="INFO" additivity="false">
             <appender-ref ref="console" />
         </logger>
 
