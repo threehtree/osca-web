@@ -3,6 +3,8 @@ package com.osca.domain;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @ToString
@@ -23,5 +25,8 @@ public class Member {
     private LocalDate regDate;
     private LocalDate updateDate;
     private int delFlag ;
+
+    @Builder.Default
+    private List<Auth> authList = new ArrayList<>();
 
 }
