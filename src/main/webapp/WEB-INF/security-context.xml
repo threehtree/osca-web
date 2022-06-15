@@ -6,12 +6,20 @@
        xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
+    <bean id="loginFailHandler" class="com.osca.security.handler.CustomLoginFailHandler"></bean>
+
     <security:http>
 
-        <security:form-login />
+        <security:form-login login-page="/customLogin" authentication-failure-handler-ref="loginFailHandler"/>
 
         <security:intercept-url pattern="/sample/all"></security:intercept-url>
         <security:intercept-url pattern="/sample/member" access="hasRole('ROLE_MEMBER')"></security:intercept-url>
+        <security:intercept-url pattern="/sample/admin" access="hasRole('ROLE_ADMIN')"></security:intercept-url>
+
+        <security:access-denied-handler error-page="/accessError"></security:access-denied-handler>
+
+
+        <security:csrf disabled="true"></security:csrf>
     </security:http>
 
 
@@ -20,6 +28,7 @@
             <security:password-encoder ref="passwordEncoder"></security:password-encoder>
             <security:user-service>
                 <security:user name="user00" authorities="ROLE_MEMBER" password="$2a$10$4XtwtjuIB0WDtlaRAYggjuvGhj8wgywdGxXs0EkqMVukIY34eHs0K"></security:user>
+                <security:user name="admin00" authorities="ROLE_MEMBER,ROLE_ADMIN" password="$2a$10$4XtwtjuIB0WDtlaRAYggjuvGhj8wgywdGxXs0EkqMVukIY34eHs0K"></security:user>
             </security:user-service>
         </security:authentication-provider>
 
