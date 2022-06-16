@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/includes/listheader.jsp" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
@@ -153,9 +154,9 @@
                             </tbody>
 
                         </table>
-
-                        <button type="submit" onclick="location.href='/notice/register'" class="btn btn-primary btn-sm">작성하기</button>
-
+                        <sec:authorize access="hasRole('ROLE_ADMIN')">
+                            <button type="submit" onclick="location.href='/notice/register'" class="btn btn-primary btn-sm">작성하기</button>
+                        </sec:authorize>
 
     <ul class="pagination">
         

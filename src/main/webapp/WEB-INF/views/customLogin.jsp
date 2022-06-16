@@ -15,6 +15,7 @@
 <form action="/login" method="post">
     <input name="username">
     <input name="password">
+    <input type="checkbox" name="remember-me"> 로그인 체크
     <button>Login</button>
 
 </form>
