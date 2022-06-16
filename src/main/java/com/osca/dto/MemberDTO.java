@@ -19,4 +19,6 @@ public class MemberDTO {
     private LocalDate regDate;
     private LocalDate updateDate;
     private int delFlag ;
+
+    
 }

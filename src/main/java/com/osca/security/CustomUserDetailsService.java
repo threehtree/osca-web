@@ -1,6 +1,7 @@
 package com.osca.security;
 
 import com.osca.domain.Member;
+import com.osca.dto.LoginDTO;
 import com.osca.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -9,12 +10,14 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Log4j2
 @RequiredArgsConstructor
+@Service
 public class CustomUserDetailsService implements UserDetailsService {
     private final MemberMapper memberMapper;
 
@@ -33,8 +36,8 @@ public class CustomUserDetailsService implements UserDetailsService {
         List<SimpleGrantedAuthority> authList = member.getAuthList().stream()
                 .map(auth -> new SimpleGrantedAuthority("ROLE_"+auth.getRolename()))
                 .collect(Collectors.toList());//문자열이라 다시 권한명에 맞게 인코딩 해줘야한다
-        User user = new User(member.getMemID(), member.getMemPW(), authList);
-
-        return user;
+        LoginDTO loginDTO = new LoginDTO(member.getMemID(), member.getMemPW(), authList);
+        loginDTO.setMemName(member.getMemName());
+        return loginDTO;
     }
 }

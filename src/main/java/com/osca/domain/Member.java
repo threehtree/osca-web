@@ -29,4 +29,6 @@ public class Member {
     @Builder.Default
     private List<Auth> authList = new ArrayList<>();
 
+
+
 }

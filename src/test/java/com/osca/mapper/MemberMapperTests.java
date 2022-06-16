@@ -25,19 +25,20 @@ public class MemberMapperTests {
     @Test
     public void testInsert(){
         for (int i = 0; i < 30; i++) {
-            Member member = Member.builder()
-                    .memID("Auser"+i)
-                    .memPW(passwordEncoder.encode("1111"))
-                    .memName("닉닉네임")
-                    .build();
-            mapper.memRoleInsert(member);
-//            if(i >  10 ){
-//                Auth auth = Auth.builder().memID("Auser"+i).rolename("ROLE_MEMBER").build();
-//                mapper.addAuth(auth);
-//            }else {
-//                Auth auth = Auth.builder().memID("Auser"+i).rolename("ROLE_ADMIN").build();
-//                mapper.addAuth(auth);
-//            }
+//            Member member = Member.builder()
+//                    .memID("Auser"+i)
+//                    .memPW(passwordEncoder.encode("1111"))
+//                    .memName("닉닉네임")
+//                    .build();
+//            mapper.memRoleInsert(member);
+            if(i >  10 ){
+                Auth auth = Auth.builder().memID("Auser"+i).rolename("ADMIN").build();
+                mapper.addAuth(auth);
+
+            }
+            Auth auth = Auth.builder().memID("Auser"+i).rolename("MEMBER").build();
+            mapper.addAuth(auth);
+
 
         }
 
