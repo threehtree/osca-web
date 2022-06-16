@@ -18,4 +18,27 @@
 
 
 
+
+
+    <select id="memSelectOne" resultMap="memberMap">
+        select *
+        from tbl_member mem inner JOIN tbl_auth au
+            on mem.memID = au.memID
+        where mem.memID = #{memID}
+    </select>
+
+    <resultMap id="memberMap" type="com.osca.domain.Member">
+        <result property="memNo" column="memNo"></result>
+        <result property="memID" column="memID"></result>
+        <result property="memPW" column="memPW"></result>
+        <result property="memName" column="memName"></result>
+        <collection property="authList" resultMap="authMap"></collection>
+    </resultMap>
+    <resultMap id="authMap" type="com.osca.domain.Auth">
+        <result property="memID" column="memID"></result>
+        <result property="rolename" column="rolename"></result>
+    </resultMap>
+
+
+
 </mapper>

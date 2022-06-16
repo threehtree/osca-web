@@ -23,13 +23,12 @@
     </security:http>
 
 
+    <bean id="customDetails" class="com.osca.security.CustomUserDetailsService"></bean>
+
     <security:authentication-manager>
-        <security:authentication-provider>
+        <security:authentication-provider user-service-ref="customDetails">
             <security:password-encoder ref="passwordEncoder"></security:password-encoder>
-            <security:user-service>
-                <security:user name="user00" authorities="ROLE_MEMBER" password="$2a$10$4XtwtjuIB0WDtlaRAYggjuvGhj8wgywdGxXs0EkqMVukIY34eHs0K"></security:user>
-                <security:user name="admin00" authorities="ROLE_MEMBER,ROLE_ADMIN" password="$2a$10$4XtwtjuIB0WDtlaRAYggjuvGhj8wgywdGxXs0EkqMVukIY34eHs0K"></security:user>
-            </security:user-service>
+
         </security:authentication-provider>
 
     </security:authentication-manager>

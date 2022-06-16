@@ -28,6 +28,8 @@ public interface MemberMapper {
     void addAuth(Auth auth);
     //동시에 처리해야하니까
 
+    Member memSelectOne(String mid);
+
 
 
 }

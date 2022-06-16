@@ -43,4 +43,13 @@ public class MemberMapperTests {
 
     }
 
+    @Test
+    public void testSelectOne(){
+        String memID = "Auser10";
+        Member member = mapper.memSelectOne(memID);
+        log.info("=======================================");
+        log.info(member);
+
+    }
+
 }
