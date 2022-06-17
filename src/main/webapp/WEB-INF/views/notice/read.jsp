@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -201,14 +203,18 @@
                                                     type="button"
                                                     class="btn btn-secondary listBtn">List
                                             </button>
-
+                                            <sec:authentication property="principal" var="pinfo"/>
+                                            <sec:authorize access="isAuthenticated()">
+                                                <c:if test="${pinfo.username == noDTO.noWriter}">
                                             <button data-noNo="/notice/modify/${noDTO.noNo}" type="button"
                                                     class="no-link btn btn-primary">수정하기
                                             </button>
                                             <button data-noNo="/notice/delete/${noDTO.noNo}" type="button"
                                                     class="removeBtn btn btn-danger">삭제하기</button>
+                                                </c:if>
+                                            </sec:authorize>
 
-                                       </div>
+                                        </div>
                                     </div>
 
 

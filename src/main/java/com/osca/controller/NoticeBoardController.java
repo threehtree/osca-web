@@ -4,6 +4,7 @@ import com.osca.dto.*;
 import com.osca.service.NoticeBoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +40,7 @@ public class NoticeBoardController {
         return "redirect:/notice/read/"+noticeBoardDTO.getNoNo();
     }
 
+    @PreAuthorize("principal.username == #noticeBoardDTO.noWriter")
     @GetMapping("/modify/{noNo}")
     public String noModify(@PathVariable("noNo")Integer noNo, NoticeBoardDTO noticeBoardDTO, Model model){
         NoticeBoardDTO dtoOne = noticeBoardService.getOneNoticeBoard(noticeBoardDTO);
@@ -73,6 +75,7 @@ public class NoticeBoardController {
     public void noRegisterGET(){
 
     }
+    @PreAuthorize("isAuthenticated()")//로그인한 사용자야 가능
     @PostMapping(value = "/register")
     public String  noRegisterPOST(NoticeBoardDTO noticeBoardDTO, RedirectAttributes rttr){
 

@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/includes/listheader.jsp" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 
 
 <div id="layoutSidenav_content">
@@ -22,6 +24,7 @@
                                     <div class="imgList">
 
                                     </div>
+
                                     <div class="mb-3">
                                         <label>제목</label>
                                         <input class="form-control" name="noTitle" type="text"/>
@@ -39,7 +42,7 @@
 
                                     <div class="mb-3">
                                         <label>글쓴이</label>
-                                        <input class="form-control" name="noWriter" type="text" value="관리자A"/>
+                                        <input class="form-control" name="noWriter" type="text" value='<sec:authentication property="principal.username"/>'>
 
                                         <div class="uploadResult">
                                         </div>
