@@ -41,7 +41,7 @@
 
         (select noNo,noTitle,noWriter,regDate,noDelFlag,noticeRead
         from tbl_noticeboard as a where noticeRead = 1 and noDelFlag != 1
-        order by noNo desc limit 10)
+        order by noNo desc limit 5)
         union
         (select noNo,noTitle,noWriter,regDate,noDelFlag,noticeRead
         from tbl_noticeboard as b where noticeRead = 0 and noDelFlag != 1
