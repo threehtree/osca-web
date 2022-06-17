@@ -24,7 +24,7 @@ public class NoticeBoardController {
     public List<UploadResultDTO> getNoFiles(@PathVariable("noNo") Integer noNo){
         return noticeBoardService.getNoFiles(noNo);
     }
-
+    @PreAuthorize("principal.username == #noticeBoardDTO.noWriter")
     @PostMapping("/delete/{noNo}")
     public String noDelModifyPOST(@PathVariable("noNo") Integer noNo,NoticeBoardDTO noticeBoardDTO){
         noticeBoardDTO.setNoNo(noNo);
@@ -32,7 +32,7 @@ public class NoticeBoardController {
         return "redirect:/notice/list";
     }
 
-
+    @PreAuthorize("principal.username == #noticeBoardDTO.noWriter")
     @PostMapping("/modify/{noNo}")
     public String noModifyPOST(@PathVariable("noNo") Integer noNo,NoticeBoardDTO noticeBoardDTO){
         noticeBoardDTO.setNoNo(noNo);
@@ -40,7 +40,7 @@ public class NoticeBoardController {
         return "redirect:/notice/read/"+noticeBoardDTO.getNoNo();
     }
 
-    @PreAuthorize("principal.username == #noticeBoardDTO.noWriter")
+    @PreAuthorize("principal.username == #noticeBoardDTO.noWriter")//로그인한 사람과 작성자 비교
     @GetMapping("/modify/{noNo}")
     public String noModify(@PathVariable("noNo")Integer noNo, NoticeBoardDTO noticeBoardDTO, Model model){
         NoticeBoardDTO dtoOne = noticeBoardService.getOneNoticeBoard(noticeBoardDTO);
@@ -48,7 +48,7 @@ public class NoticeBoardController {
         return "/notice/modify";
     }
 
-
+    @PreAuthorize("isAuthenticated()") //로그인함?
     @GetMapping("/read/{noNo}")
     public String getOneOfNoticeBoard(@PathVariable("noNo")Integer noNo, NoticeBoardDTO noticeBoardDTO, Model model){
     NoticeBoardDTO dtoOne =noticeBoardService.getOneNoticeBoard(noticeBoardDTO);
