@@ -72,9 +72,9 @@
             </div>
         </nav>
     </div>
-    <div id="layoutSidenav_content">
-        <main>
-            <div class="container-fluid px-4">
+    <div id="layoutSidenav_content" class="vw-100">
+        <main >
+            <div class="flex-wrap container-fluid px-4">
                 <h1 class="mt-4">Q&A</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
@@ -82,9 +82,7 @@
                 </ol>
                 <div class="card mb-4">
                     <div class="card-body">
-                        DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                        <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                        .
+
                     </div>
                 </div>
                 ${pageMaker}
