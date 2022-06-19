@@ -70,7 +70,7 @@ public class NoticeBoardController {
 
     }
 
-
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/register")
     public void noRegisterGET(){
 

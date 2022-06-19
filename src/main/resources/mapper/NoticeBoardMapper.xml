@@ -44,10 +44,14 @@
         order by noNo desc limit 5)
         union
         (select noNo,noTitle,noWriter,regDate,noDelFlag,noticeRead
-        from tbl_noticeboard as b where noticeRead = 0 and noDelFlag != 1
-        order by noNo desc)  limit #{skip}, #{size};
+        from tbl_noticeboard as b where noticeRead = 0 and noDelFlag != 1)
+        order by noticeRead desc, noNo desc limit #{skip}, #{size}
 
     </select>
+<!-- 원래 끝에 limit #{skip}, #{size}값을 줬는데 부트스트랩 자체 페이징 기능이 있어서 쓸려면 이거 쓸지 강사님에게 물어봐라 -->
+<!--    그런데 이래버리면 자동으로 페이징 만들어서 넣어버리네 다시 limit 넣자-->
+
+
 
 <!--    <select id="noticeGetTotal" resultType="int">-->
 <!--        select count(*) from tbl_noticeboard where noDelFlag != 1-->
