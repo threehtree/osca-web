@@ -6,7 +6,7 @@
     <div id="layoutSidenav_nav">
 
     </div>
-    <div id="layoutSidenav_content">
+    <div id="layoutSidenav_content" class="vw-100">
         <main>
             <div class="container-fluid px-4">
                 <h1 class="mt-4">읽기</h1>

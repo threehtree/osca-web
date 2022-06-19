@@ -89,27 +89,27 @@
                             </button>
                         </sec:authorize>
 
-                        <ul class="pagination">
+<%--                        <ul class="pagination">--%>
 
-                            <c:if test="${pageMaker.end >10}">
-                                <li class="page-item">
-                                    <a class="page-link" href="${pageMaker.start -1}" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                            </c:if>
+<%--                            <c:if test="${pageMaker.end >10}">--%>
+<%--                                <li class="page-item">--%>
+<%--                                    <a class="page-link" href="${pageMaker.start -1}" aria-label="Previous">--%>
+<%--                                        <span aria-hidden="true">&laquo;</span>--%>
+<%--                                    </a>--%>
+<%--                                </li>--%>
+<%--                            </c:if>--%>
 
-                            <c:forEach begin="${pageMaker.start}" end="${pageMaker.end}" var="num">
-                                <li class="page-item"><a class="page-link" href="${num}">${num}</a></li>
-                            </c:forEach>
+<%--                            <c:forEach begin="${pageMaker.start}" end="${pageMaker.end}" var="num">--%>
+<%--                                <li class="page-item"><a class="page-link" href="${num}">${num}</a></li>--%>
+<%--                            </c:forEach>--%>
 
-                            <%--jstl이용안하고 css안에서 조건 만족하면 display none처리 하는게 어떤거엿죠? todo check--%>
-                            <li class="page-item">
-                                <a class="page-link" href="${pageMaker.end+1}" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
+<%--                            &lt;%&ndash;jstl이용안하고 css안에서 조건 만족하면 display none처리 하는게 어떤거엿죠? todo check&ndash;%&gt;--%>
+<%--                            <li class="page-item">--%>
+<%--                                <a class="page-link" href="${pageMaker.end+1}" aria-label="Next">--%>
+<%--                                    <span aria-hidden="true">&raquo;</span>--%>
+<%--                                </a>--%>
+<%--                            </li>--%>
+<%--                        </ul>--%>
 
 
                     </div>
