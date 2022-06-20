@@ -57,6 +57,7 @@ public class NoticeBoardController {
 
     }
 
+    @PreAuthorize("isAuthenticated()") //로그인함?
 
     @GetMapping("/list")
     public void noList(ListDTO listDTO, Model model){

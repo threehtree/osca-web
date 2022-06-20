@@ -8,6 +8,7 @@ import com.osca.service.QaBoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,7 @@ import java.util.List;
 public class QaBoardController {
     private final QaBoardService qaBoardService;
 
+    @PreAuthorize("isAuthenticated()") //로그인함?
     @PostMapping("/modify/{qaNo}")
     public String qaModifyPOST(@PathVariable("qaNo") Integer qaNo, QaBoardDTO qaBoardDTO){
         qaBoardDTO.setQaNo(qaNo);
@@ -30,14 +32,14 @@ public class QaBoardController {
 
         return "redirect:/qa/read/"+qaBoardDTO.getQaNo();
     }
-
+    @PreAuthorize("isAuthenticated()") //로그인함?
     @GetMapping("/modify/{qaNo}")
     public String qaModify(@PathVariable("qaNo") Integer qaNo,  QaBoardDTO qaBoardDTO, Model model){
         QaBoardDTO dtoOne =qaBoardService.getOneOfQaBoard(qaBoardDTO);
         model.addAttribute("qaDTO", dtoOne);
         return "/qa/modify";
     }
-
+    @PreAuthorize("isAuthenticated()") //로그인함?
     @GetMapping("/read/{qaNo}")
     public String getOneOfQaBoard(@PathVariable ("qaNo") Integer qaNo, QaBoardDTO qaBoardDTO, Model model){
     QaBoardDTO dtoOne =qaBoardService.getOneOfQaBoard(qaBoardDTO);
@@ -47,7 +49,7 @@ public class QaBoardController {
        
     return "/qa/read";
     }
-
+    @PreAuthorize("isAuthenticated()") //로그인함?
     @GetMapping("/list")
     public void qaList(ListDTO listDTO,Model model){
 
@@ -59,10 +61,12 @@ public class QaBoardController {
         model.addAttribute("pageMaker",new PageMaker(listDTO.getPage(), qaBoardDTOListResponseDTO.getTotal()));
 
     }
+    @PreAuthorize("isAuthenticated()") //로그인함?
     @GetMapping("/register")
     public void qaRegister(){
 
     }
+    @PreAuthorize("isAuthenticated()") //로그인함?
     @PostMapping(value = "/register")
     public String  qaRegisterPOST(QaBoardDTO qaBoardDTO, RedirectAttributes rttr){
 

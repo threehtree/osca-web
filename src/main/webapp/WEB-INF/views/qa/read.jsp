@@ -14,11 +14,7 @@
 
                 </ol>
 
-                <style>
-                    .pictures img {
-                        max-width: 80vw;
-                    }
-                </style>
+
                 <%--                <button class="moreBtn">더보기</button>--%>
                 <div class="card mb-4">
                     <div class="card-body">
@@ -202,7 +198,7 @@
                     const arr = res.data
                     let str = ''
                     for (let i = 0; i < arr.length; i++) {
-                        str += `<img src='/view?fileName=\${arr[i].link}'>`
+                        str += `<img src='/view?fileName=\${arr[i].link}' class="img-fluid">`
                     }
 
                     document.querySelector(".pictures").innerHTML = str
@@ -247,8 +243,7 @@
     const actionForm = document.querySelector(".actionForm")
     const pageUL = qs(".pageUL")
 
-    const qaNo =
-    ${qaDTO.qaNo}
+    const qaNo =${qaDTO.qaNo}
     const replyUL = qs(".replyUL")
     let replyCount = ${qaDTO.replyCount} //댓글의 갯수가 잇다면 댓글페이징 + 마지막페이지 가능
 
@@ -376,6 +371,25 @@
             console.log(e)
         })
     }, "button")
+    //--------------------------------------------------------------------------------
+    qsAddEvent(".removeBtn", "click", () => {
+        const replyObj = {
+            qaNo: qaNo,
+            rno: replyHeader.innerHTML,
+            replyText: modifyText.value
+        }
+
+        removeReply(replyObj).then(result => {
+            alert(' 댓글이 삭제되었습니다.')
+            // replyText.value = '' //이건 용도가 어떻게 되는거지???? todo
+            modifyModal.hide()
+            getServerList({qaNo: qaNo, page: pageNum, size: pageSize})
+
+        }).catch(e => {
+            console.log(e)
+        })
+    }, "button")
+    //--------------------------------------------------------------------------------
 
     closeModifyBtn.addEventListener("click", function (e) {
 

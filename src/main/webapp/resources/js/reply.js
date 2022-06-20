@@ -79,6 +79,18 @@ async function modifyReply(replyObj) {
     console.log(response.data)
     return response.data
 }
+
+async function removeReply(replyObj) {
+
+    const response = await axios.delete(`/replies/${replyObj.rno}`)
+    console.log(response.data)
+
+    return response.data
+}
+
+
+
+
 async function deleteToServer(fileName){
     const options = {headers: { "Content-Type": "application/x-www-form-urlencoded"}}
 
