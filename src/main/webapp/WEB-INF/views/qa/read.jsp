@@ -101,12 +101,15 @@
 
                         </div>
 
-
                         <div>
                             <h2 class="replyCountShow"></h2>
-                            <ul class="replyUL">
+                            <ul class="replyUL replyCheck">
+
 
                             </ul>
+
+
+
                             <style>
                                 .pageUL {
                                     display: flex;
@@ -250,7 +253,7 @@
         replyService.setReplyCount(function (num) {
             console.log("set---------------- " + num)
             replyCount = num
-            qs(".replyCountShow").innerHTML = replyCount
+            // qs(".replyCountShow").innerHTML = replyCount
             printPage()//replycount 바뀌면 또 뿌려줘야지
         })
     console.log(replyService)
@@ -309,6 +312,7 @@
 
 
         pageUL.innerHTML = str
+
     }
 
     //================================================================================================
@@ -317,9 +321,22 @@
     function getServerList(param) {
         replyService.getList(param, (replyArr) => {
             //\${reply.rno}.
-            const liArr = replyArr.map(reply => `<li style="list-style: none;
-" data-rno =\${reply.rno} > \${reply.replyText}</li>`)
-            replyUL.innerHTML = liArr.join(" ")
+//             const liArr = replyArr.map(reply => `<li style="list-style: none;
+// " data-rno =\${reply.rno} > \${reply.replyText}</li>`)
+
+            const liArr2 = replyArr.map(reply => `<div class="mb-1 d-flex">
+            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."></div>
+            <div class="replyCheck ms-3 ">
+                <div class="fw-bold">\${reply.replyer}</div>
+                <span data-rno =\${reply.rno} style="list-style: none">\${reply.replyText}</span>
+            </div>
+        </div>`)
+
+
+            // replyUL.innerHTML = liArr.join(" ")
+            replyUL.innerHTML =liArr2.join(" ")
+            //todo chek 6-20 이거 넣으면 예쁠것 같은데 쪼개야하네
+            //https://startbootstrap.com/previews/blog-post
             printPage(param.page)//페이지 시작하면 자동으로 필요하니
         })
     }
