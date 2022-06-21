@@ -324,11 +324,11 @@
 //             const liArr = replyArr.map(reply => `<li style="list-style: none;
 // " data-rno =\${reply.rno} > \${reply.replyText}</li>`)
 
-            const liArr2 = replyArr.map(reply => `<div class="mb-1 d-flex">
+            const liArr2 = replyArr.map(reply => `<div data-rno =\${reply.rno}  class="mb-1 d-flex">
             <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."></div>
             <div class="replyCheck ms-3 ">
                 <div class="fw-bold">\${reply.replyer}</div>
-                <span data-rno =\${reply.rno} style="list-style: none">\${reply.replyText}</span>
+                <span style="list-style: none">\${reply.replyText}</span>
             </div>
         </div>`)
 
@@ -356,7 +356,6 @@
 
     qsAddEvent(".replyUL", "click", (e) => {
         const target = e.target
-
         const rno = parseInt(target.getAttribute("data-rno"))
 
         if (!rno) {
@@ -370,7 +369,7 @@
             modifyModal.show()
         })
 
-    }, "li")
+    }, "div")
     qsAddEvent(".modifyBtn", "click", () => {
         const replyObj = {
             qaNo: qaNo,
