@@ -68,6 +68,8 @@
         select * from tbl_noticefile where noNo = #{noNo}
     </select>
 
-
+    <update id="noViewsUp">
+        update tbl_noticeboard set noViews = noViews + #{views} where noNo = #{noNO}
+    </update>
 
 </mapper>

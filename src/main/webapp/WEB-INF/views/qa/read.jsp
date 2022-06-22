@@ -153,10 +153,10 @@
             </div>
             <div class="modal-body">
                 <div>
-                    <input type="text" class="form-control" name="replyText" value="샘플댓글">
+                    <input type="text" class="form-control" name="replyText" value="">
                 </div>
                 <div>
-                    <input type="text" class="form-control" name="replyer" value="testUser00">
+                    <input type="hidden" class="form-control" name="replyer" value='<sec:authentication property="principal.username"/>'>
                 </div>
             </div>
             <div class="modal-footer">

@@ -60,10 +60,11 @@
                                         <th><div class="dataTable-sorter">제목</div></th>
                                         <th><div class="dataTable-sorter">글쓴이</div></th>
                                         <th><div class="dataTable-sorter">등록일자</div></th>
+                                        <th><div class="dataTable-sorter">조회수</div></th>
                                     </tr>
                                     </thead>
 
-
+                                                ${noDTO}
                                     <tbody class="noticeBoardList">
                                     <c:forEach items="${noDTO}" var="noDTO">
                                     <tr>
@@ -75,6 +76,7 @@
                                         <td data-nono="/notice/read/${noDTO.noNo}" class="no-link">${noDTO.noTitle}</td>
                                         <td data-nono="/notice/read/${noDTO.noNo}" class="no-link">${noDTO.noWriter}</td>
                                         <td data-nono="/notice/read/${noDTO.noNo}" class="no-link">${noDTO.regDate}</td>
+                                        <td data-nono="/notice/read/${noDTO.noNo}" class="no-link">${noDTO.noViews}</td>
                                     </tr>
                                     </c:forEach>
                                     </tbody>
