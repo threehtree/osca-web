@@ -64,7 +64,7 @@
                                     </tr>
                                     </thead>
 
-                                                ${noDTO}
+
                                     <tbody class="noticeBoardList">
                                     <c:forEach items="${noDTO}" var="noDTO">
                                     <tr>
