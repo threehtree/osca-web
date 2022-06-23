@@ -85,7 +85,7 @@
     </div>
 
     <sec:authorize access="hasRole('ROLE_MEMBER')">
-        <button type="submit" onclick="location.href='/notice/register'"
+        <button type="submit" onclick="location.href='/qa/register'"
                 class="btn btn-primary btn-sm">작성하기
         </button>
     </sec:authorize>

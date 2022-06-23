@@ -29,7 +29,6 @@
                             <div class="col">
                                 <div class="card">
                                     <div class="card-header">
-                                        Board Modify
                                     </div>
                                     <div class="card-body">
 

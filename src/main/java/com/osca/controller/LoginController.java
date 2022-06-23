@@ -5,6 +5,7 @@ import com.osca.service.MemberService;
 import com.osca.service.RequestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -21,6 +22,7 @@ import java.util.List;
 public class LoginController {
     private final RequestService requestService;
     private final MemberService memberService;
+    private final PasswordEncoder passwordEncoder;
 
     @GetMapping("/")
     public String login(){
@@ -28,11 +30,11 @@ public class LoginController {
     }
 
 
-//    @GetMapping("/register")
-//    public void register(){
-//
-//
-//    }
+    @GetMapping("/register")
+    public void register(){
+
+
+    }
 //
 //
 //
@@ -93,24 +95,23 @@ public class LoginController {
 //        return "redirect:/list";
 //    }
 ////    현재 uploadController와 경로 겹쳐서 막음음
-//    @GetMapping("/memRegister")
-//    public void memRegister(){
-//
-//    }
-//
-//    @PostMapping("/memberSignUp")
-//    public String memberRegister(MemberDTO memberDTO, RedirectAttributes rttr){
-//        log.info("=============================");
-//        log.info(memberDTO);
-//
-//        memberService.memInsert(memberDTO);
-//
-//        rttr.addFlashAttribute("result", 111);
-//        //값이 잘 전달 됫는지 확인용
-//
-//        return "redirect:/list";
-//    }
-//
+    @GetMapping("/memRegister")
+    public void memRegister(){
+
+    }
+
+    @PostMapping("/memberSignUp")
+    public String memberRegister(MemberDTO memberDTO, RedirectAttributes rttr){
+        log.info("=============================");
+        log.info(memberDTO);
+        memberService.memRoleInsert(memberDTO);
+
+        rttr.addFlashAttribute("result", 111);
+        //값이 잘 전달 됫는지 확인용
+
+        return "redirect:/";
+    }
+
 //    @PostMapping("/companySignUp")
 //    public String companyRegister(@RequestBody Object body){
 //        return "redirect:/list";

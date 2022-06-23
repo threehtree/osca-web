@@ -1,5 +1,6 @@
 package com.osca.domain;
 
+import com.osca.dto.UploadResultDTO;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -28,6 +29,9 @@ public class Member {
 
     @Builder.Default
     private List<Auth> authList = new ArrayList<>();
+
+    private List<UploadResultDTO> uploads = new ArrayList<>();
+    private String profileImage;
 
 
 

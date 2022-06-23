@@ -14,18 +14,28 @@
                                 <form action="/memberSignUp" method="post">
 
                                     <div class="mb-3">
-                                        <label>ID</label>
-                                        <input class="memName form-control" name="memID" placeholder="myID" type="text"/>
-                                    </div>
-
-                                    <div class="mb-3">
                                         <label>이름</label>
                                         <input class="memName form-control" name="memName" placeholder="홍길동" type="text"/>
                                     </div>
 
                                     <div class="mb-3">
+                                        <label>ID</label>
+                                        <input class="memName form-control" name="memID" placeholder="myID" type="text"/>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label>PW</label>
+                                        <input class="memPW form-control" name="memPW" placeholder="myPW" type="password"/>
+                                    </div>
+
+
+                                    <div class="mb-3">
                                         <label>E-mail</label>
                                         <input class="memEmail form-control" name="memEmail" placeholder="name@example.com" type="email"/>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <input type="file" name="upload" class="uploadFile form-control" multiple>
+                                        <button type="button" class="uploadBtn btn btn-success">Upload</button>
                                     </div>
 <%--                                    todo 이렇게 되면 나중에 값이 이상한 것을 넣을때 체크가 안됨 axios를 통해 보낼방법--%>
 <%--                                    <div class="form-check">--%>
@@ -42,7 +52,8 @@
 <%--                                    </div>--%>
 
                                     <div class="mt-4 mb-0">
-                                        <div class="d-grid"><button class="btn btn-primary btn-block" onclick="registerUser()">작성 완료</button></div>
+                                        <div class="d-grid"><button class="btn btn-primary btn-block" >작성 완료</button></div>
+<%--                                        onclick="registerUser()"--%>
 
                                     </div>
                                 </form>
