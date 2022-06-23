@@ -79,7 +79,10 @@
 
         const regBtn = document.querySelector(".regBtn")
         const regForm = document.querySelector(".regForm")
+
         const formBtn = document.querySelector(".formBtn")
+        //안쓰는 버튼 같은데
+
         const uploadBtn = document.querySelector(".uploadBtn")
         const uploadResult = document.querySelector(".uploadResult")
         //==================================================================

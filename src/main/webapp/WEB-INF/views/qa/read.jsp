@@ -55,6 +55,7 @@
                                                    value="${qaDTO.qaWriter}" readonly>
                                         </div>
 
+
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">작성일자</span>
                                             <input type="text" class="form-control" value="${qaDTO.regDate}" readonly>
@@ -158,6 +159,8 @@
                     <input type="hidden" class="form-control" name="replyer" value='<sec:authentication property="principal.username"/>'>
                 </div>
             </div>
+
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary addReplyBtn">Save changes</button>
@@ -324,12 +327,13 @@
 // " data-rno =\${reply.rno} > \${reply.replyText}</li>`)
 
             const liArr2 = replyArr.map(reply => `<div data-rno =\${reply.rno}  class="mb-1 d-flex">
-            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."></div>
+            <div class="flex-shrink-0"></div>
             <div class="replyCheck ms-3 ">
                 <div class="fw-bold">\${reply.replyer}</div>
                 <span style="list-style: none">\${reply.replyText}</span>
             </div>
-        </div>`)
+
+        </div><hr/>`)
 
 
             // replyUL.innerHTML = liArr.join(" ")
