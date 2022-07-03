@@ -39,11 +39,11 @@
 <!--    -->
     <select id="getListOfNoticeBoard" resultType="com.osca.domain.NoticeBoard">
 
-        (select noNo,noTitle,noWriter,regDate,noDelFlag,noticeRead
+        (select noNo,noTitle,noWriter,regDate,noDelFlag,noticeRead,noViews
         from tbl_noticeboard as a where noticeRead = 1 and noDelFlag != 1
         order by noNo desc limit 5)
         union
-        (select noNo,noTitle,noWriter,regDate,noDelFlag,noticeRead
+        (select noNo,noTitle,noWriter,regDate,noDelFlag,noticeRead,noViews
         from tbl_noticeboard as b where noticeRead = 0 and noDelFlag != 1)
         order by noticeRead desc, noNo desc limit #{skip}, #{size}
 
@@ -68,6 +68,8 @@
         select * from tbl_noticefile where noNo = #{noNo}
     </select>
 
-
+    <update id="noViewsUp">
+        update tbl_noticeboard set noViews = noViews + #{views} where noNo = #{noNO}
+    </update>
 
 </mapper>

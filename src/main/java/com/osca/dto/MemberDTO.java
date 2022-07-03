@@ -3,6 +3,8 @@ package com.osca.dto;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 public class MemberDTO {
@@ -20,5 +22,6 @@ public class MemberDTO {
     private LocalDate updateDate;
     private int delFlag ;
 
-    
+    private List<UploadResultDTO> uploads = new ArrayList<>();
+    private String profileImage;
 }

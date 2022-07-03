@@ -58,7 +58,7 @@
                     <th><div class="dataTable-sorter">제목</div></th>
                     <th><div class="dataTable-sorter">글쓴이</div></th>
                     <th><div class="dataTable-sorter">등록일자</div></th>
-                    <th><div class="dataTable-sorter">댓글수</div></th>
+<%--                    <th><div class="dataTable-sorter">댓글수</div></th>--%>
 <%--                    <th><div class="dataTable-sorter">답변유무</div></th>--%>
                 </tr>
                 </thead>
@@ -70,10 +70,10 @@
 
 
                         <td data-qaNo = "/qa/read/${qaDTO.qaNo}" class="qa-link">${qaDTO.qaNo}</td>
-                        <td data-qaNo = "/qa/read/${qaDTO.qaNo}" class="qa-link">${qaDTO.qaTitle}</td>
+                        <td data-qaNo = "/qa/read/${qaDTO.qaNo}" class="qa-link">${qaDTO.qaTitle} <b data-qaNo = "/qa/read/${qaDTO.qaNo}" class="qa-link">[${qaDTO.replyCount}]</b></td>
                         <td data-qaNo = "/qa/read/${qaDTO.qaNo}" class="qa-link">${qaDTO.qaWriter}</td>
                         <td data-qaNo = "/qa/read/${qaDTO.qaNo}" class="qa-link">${qaDTO.regDate}</td>
-                        <td data-qaNo = "/qa/read/${qaDTO.qaNo}" class="qa-link">${qaDTO.replyCount}</td>
+<%--                        <td data-qaNo = "/qa/read/${qaDTO.qaNo}" class="qa-link">${qaDTO.replyCount}</td>--%>
 <%--                        <td data-qaNo = "/qa/read/${qaDTO.qaNo}" class="qa-link">${qaDTO.}</td>--%>
 
                     </tr>
@@ -85,7 +85,7 @@
     </div>
 
     <sec:authorize access="hasRole('ROLE_MEMBER')">
-        <button type="submit" onclick="location.href='/notice/register'"
+        <button type="submit" onclick="location.href='/qa/register'"
                 class="btn btn-primary btn-sm">작성하기
         </button>
     </sec:authorize>

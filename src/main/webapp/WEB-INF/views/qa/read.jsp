@@ -29,7 +29,6 @@
                             <div class="col">
                                 <div class="card">
                                     <div class="card-header">
-                                        Board Modify
                                     </div>
                                     <div class="card-body">
 
@@ -55,6 +54,7 @@
                                             <input type="text" class="form-control" name="qaWriter"
                                                    value="${qaDTO.qaWriter}" readonly>
                                         </div>
+
 
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">작성일자</span>
@@ -153,12 +153,14 @@
             </div>
             <div class="modal-body">
                 <div>
-                    <input type="text" class="form-control" name="replyText" value="샘플댓글">
+                    <input type="text" class="form-control" name="replyText" value="">
                 </div>
                 <div>
-                    <input type="text" class="form-control" name="replyer" value="testUser00">
+                    <input type="hidden" class="form-control" name="replyer" value='<sec:authentication property="principal.username"/>'>
                 </div>
             </div>
+
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary addReplyBtn">Save changes</button>
@@ -324,13 +326,14 @@
 //             const liArr = replyArr.map(reply => `<li style="list-style: none;
 // " data-rno =\${reply.rno} > \${reply.replyText}</li>`)
 
-            const liArr2 = replyArr.map(reply => `<div class="mb-1 d-flex">
-            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."></div>
+            const liArr2 = replyArr.map(reply => `<div data-rno =\${reply.rno}  class="mb-1 d-flex">
+            <div class="flex-shrink-0"></div>
             <div class="replyCheck ms-3 ">
                 <div class="fw-bold">\${reply.replyer}</div>
-                <span data-rno =\${reply.rno} style="list-style: none">\${reply.replyText}</span>
+                <span style="list-style: none">\${reply.replyText}</span>
             </div>
-        </div>`)
+
+        </div><hr/>`)
 
 
             // replyUL.innerHTML = liArr.join(" ")
@@ -356,7 +359,6 @@
 
     qsAddEvent(".replyUL", "click", (e) => {
         const target = e.target
-
         const rno = parseInt(target.getAttribute("data-rno"))
 
         if (!rno) {
@@ -370,7 +372,7 @@
             modifyModal.show()
         })
 
-    }, "li")
+    }, "div")
     qsAddEvent(".modifyBtn", "click", () => {
         const replyObj = {
             qaNo: qaNo,

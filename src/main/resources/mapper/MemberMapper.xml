@@ -11,8 +11,7 @@
 
 
     <insert id="memRoleInsert">
-        insert into tbl_member (memId, memPW, memName, regDate, updateDate) values (#{memID}, #{memPW}, #{memName}, #{regDate},
-                                                                                    #{updateDate})
+        insert into tbl_member (memId, memPW, memName,memEmail) values (#{memID}, #{memPW}, #{memName}, #{memEmail})
     </insert>
 
 

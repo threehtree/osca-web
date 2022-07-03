@@ -13,7 +13,7 @@ public class NoticeBoard {
     private String noWriter;
     private String noTitle;
     private String noContent;
-    private String noFile;
+    private Integer noViews;
 
     private LocalDate regDate;
     private int noDelFlag;
